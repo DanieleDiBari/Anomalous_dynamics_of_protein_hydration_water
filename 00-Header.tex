@@ -1,0 +1,104 @@
+% documento per A4
+\documentclass[a4paper,12pt,twoside, openright]{book}
+%\usepackage{times} % usa i font PostScript
+%\usepackage[italian]{babel} % sillabazione italiana
+%Usare \hyphenation [] per specificare la sillabazione di una parola specifica
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{xcolor}
+
+\usepackage{cite}
+\usepackage{indentfirst} % indenta la prima riga dei capitoli
+\setlength{\parindent}{0pt}
+
+\usepackage{hyperref} % collegamenti ipertestuali e segnalibri
+\hypersetup{
+	colorlinks=true,
+	bookmarksopen =true,
+	bookmarksnumbered=true,
+	linkcolor=black,
+	anchorcolor=black,
+	citecolor=black,
+	urlcolor=blue,
+	pdftitle={The impact of narcotraffics in the environmental economical analysis},
+	pdfauthor={Perla Rivadeneyra Garc\'{i}a},
+}
+
+\urlstyle{same}
+
+\usepackage{bookmark} % gestire i bookmarks
+
+%Sources
+\usepackage{apacite}
+\bibliographystyle{apacite}
+\usepackage[nottoc]{tocbibind}
+
+%immagini
+\usepackage{tikz} 
+\usepackage{graphicx,url}
+\usepackage{sidecap}
+%\usepackage{wrapfig}
+\usepackage{float}
+\usepackage[bf, small]{caption}
+\usepackage{subcaption}
+%\usepackage{subfigure} 
+\usepackage{enumerate}
+
+\graphicspath{	
+	{./Images/}
+}
+
+%tabelle
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs} % aggiunge: \toprule , \midrule e \bottomrule ; stile tabella
+
+% per i grafici e simboli matematici
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{eufrak}
+\usepackage{mathptmx}
+
+\usepackage{fancyhdr} % impostare layout pagina - intestazione e pié di pagina
+\pagestyle{fancy}
+
+%\fancyhead{} % clear all header fields
+%\fancyfoot{} % clear all footer fields
+
+%\fancyfoot[LE,RO]{\thepage} %imposta pagine non centrate | L-sx C-centro R-dx | E-pag pari O-pag dispari
+%\renewcommand{\headrulewidth}{0pt} % spessore linea intestazione 
+%\renewcommand{\footrulewidth}{0pt} % spessore linea pié pagina 
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}} % imposta come indici dei pié di pagina dei simboli 
+
+\usepackage{epigraph} % epigrafe all'inizio dei capitoli
+%\epigraphfontsize{\small}
+\setlength\epigraphwidth{7.5cm}
+\setlength\epigraphrule{0pt}
+
+% Modifica interlinea:
+\usepackage{setspace}
+%\singlespace % interlinea singola
+\onehalfspace % interlinea 1.5
+%\doublespace % interlinea doppia
+
+%\usepackage{lastpage}
+\pagestyle{plain} % layout semplice - page into the foot centered
+
+\setlength{\marginparwidth}{0cm} % imposta larghezza margini per le note a lato
+
+
+\interfootnotelinepenalty=10000 %  più è grande il numero più è importante mantenere la nota a pié pagina di una singola pagina
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+% colors
+\definecolor{dred}{RGB}{200,0,0}
+
+\newcommand{\changes}[1]{\textcolor{black}{#1}}
+
+\title{The impact of narcotraffics in the environmental economical analysis} % titolo
+\author{Perla Rivadeneyra Garc\'{i}a} 
