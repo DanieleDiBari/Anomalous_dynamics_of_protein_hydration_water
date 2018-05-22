@@ -417,12 +417,13 @@ Heating and cooling or equilibration at fixed temperature permits biopolymer to 
 XX
 The initial velocities of each atom of the system are typically set pseudorandomly so that the total kinetic energy of the system corresponds to the expected value at the target temperature $T$. According to the classical equipartition theorem, each normal mode has $k_B \, T \,/\,2$ energy, on average, at thermal equilibrium.
 
-The heating process, usually done in the NVT ensemble, consist in the progressively increasing of the temperature of the thermostat to heat gradually the system. This process has mainly two different aims: 
+The heating process, usually done in the NVT ensemble, consist in the progressively increasing of  the reservoir's temperature to heat gradually the system. This process has mainly two different aims: 
 \begin{itemize}
 \item reach the desired temperature at which the system has to be studied;
-\item change the configuration of the system obtained from the minimization with the purpose of escape from local minima of the energy landscape that probably do not represent the real state of the system.\footnote{This might be done also in alternation with some phases of cooling.}
+\item change the configuration of the system with the purpose of escape from some local minima of the energy landscape that probably do not represent the real state of the system.\footnote{This might be done also in alternation with some phases of cooling.}
+\item change the configuration of the system to escape from local minima of the energy landscape that probably are reached with the minimization but that do not represent the real state of the system.\footnote{This might be done also in alternation with some phases of cooling.}
 \end{itemize}
-In any case, the need of a gradually increase of the temperature is due to the fact that starting from the structures obtained from the x-ray experiment, typically made at low temperature, and after the minimization that modify these structures without taking into account the velocities and hence the contribution of the kinetic energy to the total energy, the s
+In any case, the need of a gradually increase of the temperature is due to the fact that, starting from the structures obtained from the x-ray experiment, typically made at low temperature, and after some manipulations and the minimization that modify these structures, the configuration of the system obtained in this way is built without taking into account the velocities and hence the contribution of the kinetic energy to the total energy. Thus starting with an artificial configuration of the``frozen'' system 
 
 At the beginning of the heating the velocities of the atoms are typically set pseudorandomly so that the total kinetic energy of the system corresponds to the expected value at the target temperature $T$.
 
