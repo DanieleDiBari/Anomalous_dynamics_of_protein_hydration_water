@@ -1,16 +1,16 @@
 \chapter{Introduction to molecular dynamics simulations with NAMD and VMD}
 
 Thermal neutron scattering, which is sensitive to the dynamics and the structure of condensed matter on the atomic scale, gives precise information about atomic fluctuations and dynamics in proteins, enhancing an average view of all atomic contributions.
-In this way, as seen in section \ref{}, with simple analytical models it is possible to analyze some basic feautures of the protein spectra. However, due to the high complexity of these system, usually their internal dynamics is too complicated to for a quantitative interpretation in terms of such models based almost only upon average information. 
+In this way, as seen in section \ref{}, with simple analytical models it is possible to analyze some basic feautures of the protein spectra. However, due to the high complexity of these systems, usually their internal dynamics is too complicated to for a quantitative interpretation in terms of such models based almost only upon average information. 
 
 To overcome this limitation of neutron scattering it is possible to use computer simulations, and in particular Molecular Dynamics (MD) simulations, that enable to gain a wider insight into the dynamics of proteins that are not provided from the neutron scattering experiments. The combination of both methods access in the same time and space domains, and the comparison of simulated and measured spectra is thouroughly direct, since neutrons are diffused by the atomic nuclei (neglecting magnetic scattering), which are the actual objects of study of MD simulations. Once an alignment between simulated and experimental spectra is found, thus the experimental data supports the data obtained from the computer simulation, then the simulated trajectories can be analyzed in detail and information not accessible from experiments can be extracted from computer simulations.
 
-In this sense, computer simulations that are built upon the actual experimental data, can overcome the limitations of neutron scattering and grasp the more complex spectra of the proteins.\footnote{Some iteresting applications, relevant to the interpretation of quasielastic neutron scattering and concerning the simulation-based development of models for slow protein dynamics, are discussed in Kneller's lecture \cite{ref:QNS_Keller}.}
+In this sense, computer simulations that are built upon the actual experimental data, can overcome the limitations of neutron scattering and grasp the more complex spectra of the proteins.\footnote{Some interesting applications, relevant to the interpretation of quasielastic neutron scattering and concerning the simulation-based development of models for slow protein dynamics, are discussed in Kneller's lecture \cite{ref:QNS_Keller}.}
 
 \section{Introduction to molecular dynamics simulations}
-MD simulations are one of the principal tools in the theoretical study of biomolecules providing informations on thermal fluctations of atoms in a molecule as well as informations about relative positions of molecules and atoms in dependence of time. In fact, MD is a computational method which allows to calculate the time dependent behavior of complex molecular system (e.g. proteins, enzymes, etc.) and hence it is generally used to describe such systems in terms of a realistic atomic model, with an aim to understand and predict macroscopic properties based on detailed knowledge on an atomic scale. Indeed, starting from an atomistic level, MD simulations are used to predict and better understand the properties of complex materials. In this way MD provide a direct route from the microscopic details of a system (the masses of the atoms, the interactions between them, etc.) to macroscopic properties of experimental interest (the equation of state, transport coefficients and so on). In particular, usually biomolecular MD simulations are used to gain insight into ligand binding, enzymatic activities, signalling mechanisms and protein folding \cite{ref:NAMD-VMD_Kukol}. Additionally simulations are valuable tools for the refinement of electron microscopy, x-ray, inelastic neutron scattering or other spectroscopic data in order to obtain more accurate molecular structures.
+MD simulations are one of the principal tools in the theoretical study of biomolecules providing informations on thermal fluctations of atoms in a molecule as well as informations about relative positions of molecules and atoms in dependence of time. In fact, MD is a computational method which allows to calculate the time dependent behavior of complex molecular system (e.g. proteins, enzymes, etc.) and hence it is generally used to describe such systems in terms of a realistic atomic model, with the aim to understand and predict macroscopic properties based on detailed knowledge on an atomic scale. Indeed, starting from an atomistic level, MD simulations are used to predict and better understand the properties of complex materials. In this way MD providea a direct route from the microscopic details of a system (the masses of the atoms, the interactions between them, etc.) to macroscopic properties of experimental interest (the equation of state, transport coefficients and so on). In particular, usually biomolecular MD simulations are used to gain insight into ligand binding, enzymatic activities, signalling mechanisms and protein folding \cite{ref:NAMD-VMD_Kukol}. Additionally simulations are valuable tools for the refinement of electron microscopy, x-ray, inelastic neutron scattering or other spectroscopic data in order to obtain more accurate molecular structures.
 
-More to the point, MD simulations compute the motions of individual molecules for a classical many-body system in order to describe the equilibrium and transport properties of solids, liquids and gasses.
+Actually, MD simulations compute the motions of individual molecules for a classical many-body system in order to describe the equilibrium and transport properties of solids, liquids and gasses.
 Although this modelling of the matter at the microscopic level must be, in principle, based on quantum mechanics, MD generally adopts a classical point of view.
 In this context, the word classical means that the nuclear motion of the constituent particles obeys the laws of classical mechanics (the motion is described by the second Newton's law).
 This is an excellent approximation for a wide range of materials.
@@ -28,16 +28,16 @@ MD simulations allow to calculate several properties of many-particle systems. H
 Actually, molecular simulations generate information at the microscopic level (atomic and molecular positions, velocities, etc.) and the conversion of this very detailed information into macroscopic terms (pressure, internal energy, etc.) is the field of the statistical mechanics. Thus, the language of statistical mechanics is necessary to use these simulations as the numerical counterpart of experiments.
 
 In this context, it is useful to see that there is a direct connection between MD simulations and the microcanonical ensemble of statistical mechanics. Indeed, the microcanonical ensemble consists of all microscopic states $( \bold{r}^N(t), \, \bold{p}^N(t) )$  on the constant energy hypersurface $H (\bold{r}^N(t) , \, \bold{p}^N(t)) \:=\: E$.
-On the other hand, the classical Hamiltonian mechanics the equations of motion conserve the total energy: 
+On the other hand in the classical Hamiltonian mechanics the equations of motion conserve the total energy: 
 \begin{equation}\label{eq:hamilton-energy_cons}
 \frac{dH}{dt} \:=\: 0 \quad \Longrightarrow \quad H ( \bold{r}^N(t), \, \bold{p}^N(t) ) \:=\: const.
 \end{equation}
 
-This suggests a link between the microcanonical ensemble and classical Hamiltonian mechanics. In fact, for a system that evolves according to Hamilton's equations of motion:
+This suggests a link between the microcanonical ensemble and classical Hamiltonian mechanics. In fact, for a system that evolves according to Hamilton's equations of motion a trajectory computed with these equations, namely:
 \begin{equation}\label{eq:hamilton}
 \dot{\bold{r}}_i(t) \:=\: \frac{\partial H}{\partial \bold{p}_i} \qquad \qquad \dot{\bold{p}}_i(t) \:=\: - \frac{\partial H}{\partial \bold{r}_i}
 \end{equation}
-a trajectory computed with these equations will generate microscopic configurations belonging to the microcanonical ensemble with the constant energy $E$. Thus, if after a long time a system with energy $E$ is able to visit practically all the configurations on the constant energy hypersurface, the dynamical evolution of this system can be used to generate a micro-canonical ensemble. A system that has this property is said to be \textit{ergodic}.
+that will generate microscopic configurations belonging to the microcanonical ensemble with the constant energy $E$. Thus, if after a long time a system with energy $E$ is able to visit practically all the configurations on the constant energy hypersurface, the dynamical evolution of this system can be used to generate a microcanonical ensemble. A system that has this property is said to be \textit{ergodic}.
 
 In general this dynamical approach, that is at the basis of MD simulations, provides a powerful method for generating an ensemble and its averages.\footnote{In MD programs the phase of the simulation used to generate the ensemble is usually named: \textit{equilibration}.} Thus MD simulations have evolved into one of the most widely used techniques for solving statistical mechanical problems.
 
@@ -47,7 +47,7 @@ In general this dynamical approach, that is at the basis of MD simulations, prov
 	\centering
     \includegraphics[width=0.8\textwidth]{phase_space.png}
     
-    \footnotesize{\caption{A schematic representation of phase space. The hexagonal cells represent state points $( \bold{r}^N, \, \bold{p}^N )$. In an ergodic system, all the trajectories here would be different sections of a single long trajectory. Indeed, if the system is ergodic, the single long trajectory would eventually pass through (or arbitrarily near) all states. A substantial region of cyclical trajectories, and a barrier region leading to bottleneck, are shaded. 
+    \footnotesize{\caption{A schematic representation of phase space. The hexagonal cells represent state points $( \bold{r}^N, \, \bold{p}^N )$. In an ergodic system, all the trajectories in this figure represent different sections of a single long trajectory. Indeed, if the system is ergodic, the single long trajectory would eventually pass through (or arbitrarily near) all states. A substantial region of cyclical trajectories, and a barrier region leading to bottleneck, are shaded. 
     \textit{Source:} Allen and Tildesley, \textit{Computer Simulation of Liquids} (1st edition, 1987) 
     \cite{ref:AllenTildesley_1ed}.}
     \label{fig:generation-of-microcan_state}
@@ -61,13 +61,13 @@ Given an ergodic trajectory, microcanonical phase space averages can be replaced
 \frac{\int dx \; A(x) \: \delta(H (x) - E)}{\int dx \; \delta(H (x) - E)} \:=\: 
 \lim_{\tau \rightarrow \infty} \; \frac{1}{\tau} \: \int_0^\tau dt \; A[x(t)] \:\equiv\: \bar{A}
 \end{equation}
-where $x(t)$ is a representative point of the phase space define as $x(t) \:=\: ( \bold{r}^N(t), \, \bold{p}^N(t) )$. 
-This formula can be discretized for MD simulations as follow:
+where $x(t)$ is a representative point of the phase space defined as $x(t) \:=\: ( \bold{r}^N(t), \, \bold{p}^N(t) )$. 
+This formula can be discretized for MD simulations as follows:
 \begin{equation}\label{eq:stat_mean_val-discr}
 \left< A \right> \:=\: \frac{1}{M} \: \sum_{n = 0}^M \: A(x_{n \, \Delta t})
 \end{equation}
 
-The discretization derive from the fact that the equations of motion are solved numerically using some numerical integrators that generate phase space vectors at discrete times that are multiples of a fundamental time discretization parameter $\Delta t$, known as \textit{the time step}.
+The discretization derives from the fact that the equations of motion are solved numerically using some numerical integrators that generate phase space vectors at discrete times that are multiples of a fundamental time discretization parameter $\Delta t$, known as \textit{time step}.
 Starting from $x_0$, the vectors $x_{n \, \Delta t}$ (where $n \:=\: 0 \, , \, \dots \, , \, M\:$ with $M$ as the total number of integration steps) are generated by applying the integrator iteratively\footnote{For biological MD simulations $\Delta t$ is usually of the order of few femtoseconds $(10^{-15} \: s)$ therefore, in order to obtain a trajectory of few nanoseconds $(10^{-9} \: s)$, one has to perform at least a million of integration steps.} \cite{ref:mypresentation}.
 \begin{equation}\label{eq:discretization}
 x(t) \xrightarrow[\quad t \;\rightarrow\; n\,\Delta t \quad]{} x_{n \, \Delta t}
@@ -82,26 +82,26 @@ where the forces are derived as the negative derivatives of the potential energy
 \begin{equation}\label{eq:force-enpot}
 \bold{F}_i [\bold{r}^N(t)] \:=\: - \, \nabla_{\bold{r}_i} \: U [\bold{r}^N(t)] 
 \end{equation}
-This equations are solved simultaneously every time steps. The system is followed for sometime, taking care that the temperature and pressure remain at the required values and the coordinates are written to an output file at regular intervals. The coordinates as a function of time represent a trajectory of the system. After initial changes, the system will usually reach an equillibrium state. By averaging over an equilibrium trajectory many macroscopic properties can be extracted from an output file.
+The equations \eqref{eq:newtons2law} and \eqref{eq:force-enpot} are solved simultaneously every time steps. The system is supervised for a certain lapse of time, taking care that temperature and pressure remain at the required values and the coordinates are written to an output file at regular intervals. The coordinates, as a function of time, represent a trajectory of the system. After the initial changes, the system will usually reach an equilibrium state. By averaging over an equilibrium trajectory many macroscopic properties can be extracted from an output file.
 
 %\section[Approaching to a real MD simulation: \textit{Setting up and running molecular dynamics simulations}]{Approaching to a real MD simulation\\ {\large \textit{Setting up and running molecular dynamics simulations}}}
 \section{Molecular dynamics: concepts and algorithms}
 
-In this section are shown several concepts that are useful to understand how MD simulations of macromolecular systems, like protein, generally work. Specifically, first it is introduce the problem of the calculation of the forces: classical MD force field and boundary condition with a considerations of the special case of the long range Coulomb interactions are shown. Then, there is a brief introduction to the numerical integration used to solve \eqref{eq:newtons2law} with an outline of simulation strategies for controlling temperature and pressure. Finally, the problem concerning the creation of the initial state is discussed: the starting structure, solvation, minimization and equilibration.
+In this section several useful concepts are presented to outline how MD simulations of macromolecular systems generally work. Firstly, an introduction to the problem of the calculation of the forces is set: classical MD force field and boundary condition, with a consideration of the special case of the long range Coulomb interactions, are shown. Followed by a brief introduction to the numerical integration of \eqref{eq:newtons2law} with mention to a simulation strategy for controlling temperature and pressure. Finally, the problem concerning the creation of the initial state is discussed: the starting structure, solvation, minimization and equilibration.
 
-Note: these topics are presented focusing on a particular case of MD simulations - those concerning biological system and performed with NAMD software (see section ..). 
+These topics are presented focusing on a particular case of MD simulations - those concerning biological system and performed with NAMD software (see section ..). 
 %Preparation of the system (i.e. creation of the initial state - $\bold{r}^N(t=0)$), 
 %In the case of such simulationsintegration methods along with the efficient electrostatics evaluation algorithms employed and temperature and pressure controls used. 
 
 %Below we introduce first the functional form of the force field utilized in NAMD. We then comment on the special problem of calculating the Coulomb potential and forces efficiently. The numerical integration of \eqref{eq:newtons2law} is then explained, followed by an outline of simulation strategies for controlling temperature. In the case of such simulations, frictional and fluctuating forces are added to \eqref{eq:newtons2law} following the principles of nonequilibrium statistical mechanics.
 
 \subsection{Calculation of the forces}
-The potential energy is one of the most crucial part of the simulation because it must faithfully represent the interaction between atoms, yet be cast in the form of a simple mathematical function that can be calculated quickly. Indeed the computation of the forces acting on every particle is the most time-consuming part of almost all MD simulations.
+The potential energy is one of the most crucial part of the simulation because it must faithfully represent the interaction between atoms, cast in the form of a simple mathematical function that can be calculated quickly. Indeed, the computation of the forces acting on every particle is the most time-consuming task of almost all MD simulations.
 
-Hence, since biological systems involve many atoms of different types, a quantum mechanical treatment of these atoms is not feasible. The usual way to solve them is to use empirical potential energy functions, conventionally called \textit{force fields}, which are computationally less expensive, but involve numerous approximations leading to certain limitations.\footnote{A force field, in the context of a computer simulation, refers to the functional forms used to describe the intra-molecular and inter-molecular potential energy of a collection of atoms, and the corresponding parameters that will determine the energy of a given configuration. Thus it is a special case of interatomic potentials and it must not be confused with force field in classical physics.} 
+As biological systems involve many atoms of different types, a quantum mechanical treatment of these atoms is not feasible. The usual way to solve them is to use empirical potential energy functions, conventionally called \textit{force fields}, which are computationally less expensive, but involve numerous approximations leading to certain limitations.\footnote{A force field, in the context of a computer simulation, refers to the functional forms used to describe the intra-molecular and inter-molecular potential energy of a collection of atoms, and the corresponding parameters that will determine the energy of a given configuration. Thus it is a special case of interatomic potentials and it must not be confused with force field in classical physics.} 
 These functions and parameters have been derived from experimental results and quantum mechanical calculations of small model compounds. They are often refined by the use of computer simulations to compare calculated condensed phase properties with experiment.
 Current generation force fields provide a reasonable good compromise between accuracy and computational efficiency. 
-Among the most commonly used potential energy functions are the AMBER, CHARMM, GROMOS and OPLS/AMBER force fields. However, one of the most important limitation of the empirical force fields is that no drastic changes in the electronic structure are allowed. i.e. no events like bond making or breaking can be modeled \cite{ref:MDsim_Gkeka}.
+Among the most commonly used potential energy functions are the AMBER, CHARMM, GROMOS and OPLS/AMBER force fields. However, one of the most important limitations of the empirical force fields is that no drastic changes in the electronic structure are allowed. i.e. no events like bond making or breaking can be modeled \cite{ref:MDsim_Gkeka}.
 
 NAMD is able to use the parameterizations from both CHARMM and AMBER force field specifications.
 
@@ -116,20 +116,20 @@ NAMD is able to use the parameterizations from both CHARMM and AMBER force field
 
 \subsubsection{Force field example: CHARMM}
 
-As shown in eq. \eqref{eq:force-enpot}, the force acting on an atom $i$ is calculated as the negative gradient of a scalar potential energy function $U$ that that depends on all atomic positions and, thereby, couples the motion of atoms. For systems of biomolecules, this potential energy function is usually divided in two parts:
+As shown in eq. \eqref{eq:force-enpot}, the force acting on an atom $i$ is calculated as the negative gradient of a scalar potential energy function $U$ that depends on all atomic positions and, thereby, couples the motion of atoms. For systems of biomolecules, this potential energy function is usually divided in two parts:
 \begin{equation}\label{eq:forcefield-PotEnergy}
 U \: = \: U_{\text{bonded}} \, + \, U_{\text{non-bonded}} 
 \end{equation}
 
 The bonded potential $U_{\text{bonded}}$ involve 2 , 3, and 4-body interactions of covalently bonded atoms, with $O(N)$ terms in the summation.\footnote{Indeed, the number of covalent bound is proportional to the number of atoms.}
-The non-bonded potential $U_{\text{non-bonded}}$ involve long-range interactions between all pairs of atoms (usually excluding pairs of atoms already involved in a bonded term), with $O(N^2)$ terms in the summation, although fast evaluation techniques are used to compute good approximations to their contribution to the potential with $O(N)$ or $O(N$ log $N )$ computational cost. The different terms will now be presented in more detail.
+The non-bonded potential $U_{\text{non-bonded}}$ involves long-range interactions between all pairs of atoms (usually excluding pairs of atoms already involved in a bonded term), with $O(N^2)$ terms in the summation, although fast evaluation techniques are used to compute good approximations to their contribution to the potential with $O(N)$ or $O(N$ log $N )$ computational cost. The different terms will be explained in more detail in following sections.
 
 \vspace{0.25cm}
 
 \begin{center}
 {\textbf{\textit{Bonded potential terms}}}
 \end{center}
-The bonded potential describe the stretching, bending, and torsional of the covalent bonds. 
+The bonded potential describes the stretching, bending, and torsional of the covalent bonds. 
 
 \begin{figure}[H]
 \centering
@@ -148,20 +148,18 @@ The bonded potential describe the stretching, bending, and torsional of the cova
 
 \begin{itemize}
 \item[$\blacktriangleright$] \textbf{Bond stretching:}\\
-The bond stretching term is a 2-body potential, generally assumed to be harmonic, that describes the vibrational motion between an pair of covalently bonded atoms:
+The bond stretching term is a 2-body potential, generally assumed to be harmonic, that describes the vibrational motion between a pair of covalently bonded atoms:
 \begin{equation}\label{eq:poten-bond_int}
 U_b \: = \: k_b \: (b \,-\, b_0)^2
 \end{equation}
-where $b$ is the distance between the two atoms. Two parameters characterize each bonded
-interaction: $b_0$ the average distance between them and a force constant $k_b$.
+where $b$ is the distance between the two atoms. Two parameters characterize each bonded interaction: $b_0$ the average distance between them and a force constant $k_b$.
 
 \item[$\blacktriangleright$] \textbf{Angle bending:}\\
 The angle bending terms describes the force originating from the deformation of the valence angles between three covalently bonded atoms (3-body interactions). The angle bending term is described using a harmonic potential:
 \begin{equation}\label{eq:poten-angle_int}
 U_\theta \: = \: k_\theta \: (\theta \,-\, \theta_0)^2
 \end{equation}
-where $\theta$ is the angle between three atoms. There again two parameters characterize each
-angle in the system: the reference angle $\theta_0$ and a force constant $k_\theta$. \\
+where $\theta$ is the angle between three atoms. Two parameters characterize each angle in the system: the reference angle $\theta_0$ and a force constant $k_\theta$. \\
 
 \item[$\blacktriangleright$] \textbf{Torsional terms:}\\
 The torsional terms are weaker than the bond stretching and angle bending terms. They describe the barriers to rotations existing between four bonded atoms (4-body interaction). There are two type of torsional terms: proper and improper dihedrals. Proper torsional potentials are described by a cosine function:
@@ -205,10 +203,10 @@ The van der Waals force acts on atoms in close proximity. It is strongly repulsi
 U_{VdW} \: = \: 4 \, \epsilon \: \left[ \left(\frac{\sigma}{r}\right)^{12} \,-\; \left(\frac{\sigma}{r}\right)^6 \right]
 \end{equation}
 where $r$ is the distance between two atoms. It is parameterized by $\sigma$: the collision parameter (the separation for which the energy is zero) and $\epsilon$ the depth of the potential well.
- The Lennard–Jones potential approaches 0 rapidly as $r$ increases, so it is usually truncated (smoothly shifted) to 0 past a cutoff radius, requiring $O(N)$ computational cost.
+ The Lennard–Jones potential approaches 0 rapidly as $r$ increases, so it is usually truncated (smoothly shifted) to 0 past a cutoff radius, requiring $O(N)$ computational cost.%\footnote{It is interesting to note that, by itself, the usage of cutoff distances may not strongly reduce the computation time during dynamics. This is because all distances between atom pairs should be calculated before deciding which ones are within the cutoffs and thus relevant for the calculation.  The non-bonded neighbor list is a device by which atoms to be included in the non-bonded  calculations are automatically given at each step and only a periodical check and updating is required.  In this way one avoids the computation of N(N-1) distances at each step. The list contains all atoms within the cutoff distance of any other atom, together with all neighbor atoms, that are slightly further away than this cutoff. The distance used to calculate the neighbors, or neighbor cutoff, defines a sort of reservoir of atoms.  It should be large enough to contain all atoms that in the time between two checks can enter the interaction  range of a given atom.  The list is regularly updated during the dynamics. A typical updating frequency is every 5 steps, which is a compromise between accuracy and efficiency.}
 
 \item[$\blacktriangleright$] \textbf{Electrostatic interactions:}\\
-Finally, the long distance electrostatic interaction between two atoms is described by Coulomb's law:
+Finally, the long distance electrostatic interaction between two atoms is described by the Coulomb's law:
 \begin{equation}\label{eq:Coulomb_potential}
 U_{el} \: = \: \epsilon_{1-4} \: \cdot \: \frac{q_1 \: q_2}{4 \, \pi \, \epsilon_0 \: r_{12}}
 \end{equation}
@@ -222,7 +220,7 @@ Although the electrostatic potential may be computed with a cutoff like the Lenn
 \begin{center}
 {\textbf{\textit{Potential energy function}}}
 \end{center}
-So finally, the equation for the potential energy describing the force field can be written:
+Finally, the equation for the potential energy describing the force field can be expressed as:
 \begin{subequations}\label{eq:ForceField}
 \begin{equation}\label{eq:ForceField-bonded}
 \left.
@@ -259,7 +257,7 @@ So finally, the equation for the potential energy describing the force field can
 \vspace{0.25cm}
 
 \subsubsection{Boundary condition}
-To avoid surface effects at the boundary of the simulated system, periodic boundary conditions are often used in MD simulations; the particles are enclosed in a cell that is replicated to infinity by periodic translations. A particle that leaves the cell on one side is replaced by a copy entering the cell on the opposite side, and each particle is subject to the potential from all other particles in the system including images in the surrounding cells, thus entirely eliminating surface effects (but not finite-size effects). Because every cell is an identical copy of all the others, all the image particles move together and need only be represented once inside the molecular dynamics code.
+To avoid surface effects at the boundary of the simulated system, periodic boundary conditions are often used in MD simulations; the particles are enclosed in a cell that is replicated to infinity by periodic translations. A particle that leaves the cell on one side is replaced by a copy entering the cell on the opposite side, and each particle is subject to the potential from all other particles in the system including images in the surrounding cells, thus entirely eliminating surface effects (but not finite-size effects). Because every cell is an identical copy of all the others, all the image particles move together, consequently they should be represented only once inside the molecular dynamics code.
 \begin{figure}[H]
 \centering
 \begin{minipage}[t]{0.75\textwidth}
@@ -410,29 +408,15 @@ For a biomolecular system, the potential energy function is a very complex and m
 
 
 \subsubsection{Heating}
-
-The initial velocities at low temperature are assigned to each atom of the system and Newton's equations of motion are integrated to propagate the system in time. During the heating phase, initial velocities are assigned at a low temperature and the simulation is started with periodically assigning new velocities at a slightly higher temperature and letting the simulation continue. This step is repeated until the desired temperature is reached.
-
-Heating and cooling or equilibration at fixed temperature permits biopolymer to escape local minima
-XX
-The initial velocities of each atom of the system are typically set pseudorandomly so that the total kinetic energy of the system corresponds to the expected value at the target temperature $T$. According to the classical equipartition theorem, each normal mode has $k_B \, T \,/\,2$ energy, on average, at thermal equilibrium.
-
 The heating process, usually done in the NVT ensemble, consist in the progressively increasing of  the reservoir's temperature to heat gradually the system. This process has mainly two different aims: 
 \begin{itemize}
 \item reach the desired temperature at which the system has to be studied;
-\item change the configuration of the system with the purpose of escape from some local minima of the energy landscape that probably do not represent the real state of the system.\footnote{This might be done also in alternation with some phases of cooling.}
 \item change the configuration of the system to escape from local minima of the energy landscape that probably are reached with the minimization but that do not represent the real state of the system.\footnote{This might be done also in alternation with some phases of cooling.}
 \end{itemize}
-In any case, the need of a gradually increase of the temperature is due to the fact that, starting from the structures obtained from the x-ray experiment, typically made at low temperature, and after some manipulations and the minimization that modify these structures, the configuration of the system obtained in this way is built without taking into account the velocities and hence the contribution of the kinetic energy to the total energy. Thus starting with an artificial configuration of the``frozen'' system 
+In both cases, the need of a gradual increase of the temperature is due to the fact that, starting from the structures obtained from the x-ray experiment, typically made at low temperature, and after some manipulations and the minimization that modify these structures, the configuration of the system obtained is built without taking into account the velocities and hence the contribution of the kinetic energy to the total energy. Indeed starting a simulation at high temperature with such artificial configuration of the system that may be considered ``frozen'', might be unfeasible because the simulation will be probably numerically unstable.
 
-At the beginning of the heating the velocities of the atoms are typically set pseudorandomly so that the total kinetic energy of the system corresponds to the expected value at the target temperature $T$.
-
-Sometime, since the structures obtained from the x-ray experiment might be made at low temperature and because after the minimization, done with the system "frozen" without an the configuration of the system might correspond to a situation in which the kine, it is useful to start the simulation with velocities that correspond at temperature of the same order.
-This initialization is typically made setting pseudorandomly so that the total kinetic energy of the system corresponds to the expected value at the target temperature $T$. According to the classical equipartition theorem, each normal mode has $k_B \, T \,/\,2$ energy, on average, at thermal equilibrium.
-
-The initial velocities are typically set pseudorandomly so that the total kinetic energy of the system corresponds to the expected value at the target temperature $T$. According to the classical equipartition theorem, each normal mode has $k_B \, T \,/\,2$ energy, on average, at thermal equilibrium.
-
-During the heating phase, initial velocities are assigned at a low temperature and the simulation is started with periodically assigning new velocities at a slightly higher temperature and letting the simulation continue. This step is repeated until the desired temperature is reached.
+Therefore, during the heating phase, initial velocities are assigned at a low temperature and the simulation is started with periodically assigning new velocities at a slightly higher temperature and letting the simulation continue. This step is repeated until the desired temperature is reached.\footnote{Clearly, between the velocities of the atoms and the temperature of the system there is a strong connection. According to the classical equipartition theorem, each normal mode has $\frac{1}{2} k_B T$ energy, on average, at thermal equilibrium. Thus $\left< E \right> \:=\: \frac{1}{2}\sum_i m_i v_i^2 \:=\: \frac{1}{2} N k_B T$.
+One of the usually way to set the initial velocities is generating numbers pseudorandomly and choose them so that the total kinetic energy of the system corresponds to the expected value at the target temperature $T$.} 
 
 
 \subsubsection{Equilibration}
@@ -443,7 +427,7 @@ Once the heating process is over and the desired temperature is reached, the sim
 
 \subsection{Production and Analysis}
 
-The final step of the simulation is the production phase, wherein the system is simulated for the time length required from several hundred ps to ns or more. During this process coor- dinates of the system at different times are stored in the form of trajectories. These are then used for calculations of mean energy, root mean square (RMS) fluctuations between struc- tures etc. From MD simulations, time dependent properties such as correlation functions can also be calculated and these in turn can be related to spectroscopic measurements.
+The final step of the simulation is the production phase, wherein the system is simulated for the time length required from several hundred ps to ns or more. During this process coordinates,  and eventually velocities also, of the system at different times are stored in the form of trajectories. These are then used for calculations of mean energy, root mean square (RMS) fluctuations between structures etc. From MD simulations, time dependent properties such as correlation functions can also be calculated and these in turn can be related to spectroscopic measurements.
 
 \begin{figure}[H]
 \centering
