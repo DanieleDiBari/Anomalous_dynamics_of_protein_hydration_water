@@ -1,9 +1,10 @@
-\chapter{Introduction to molecular dynamics simulations with NAMD and VMD}
+%\chapter{Introduction to molecular dynamics simulations with NAMD and VMD}
+\chapter{Molecular dynamics simulations}
 
 Thermal neutron scattering, which is sensitive to the dynamics and the structure of condensed matter on the atomic scale, gives precise information about atomic fluctuations and dynamics in proteins, enhancing an average view of all atomic contributions.
 In this way, as seen in section \ref{}, with simple analytical models it is possible to analyze some basic feautures of the protein spectra. However, due to the high complexity of these systems, usually their internal dynamics is too complicated to for a quantitative interpretation in terms of such models based almost only upon average information. 
 
-To overcome this limitation of neutron scattering it is possible to use computer simulations, and in particular Molecular Dynamics (MD) simulations, that enable to gain a wider insight into the dynamics of proteins that are not provided from the neutron scattering experiments. The combination of both methods access in the same time and space domains, and the comparison of simulated and measured spectra is thouroughly direct, since neutrons are diffused by the atomic nuclei (neglecting magnetic scattering), which are the actual objects of study of MD simulations. Once an alignment between simulated and experimental spectra is found, thus the experimental data supports the data obtained from the computer simulation, then the simulated trajectories can be analyzed in detail and information not accessible from experiments can be extracted from computer simulations.
+To overcome this limitation of neutron scattering it is possible to use computer simulations, and in particular Molecular Dynamics (MD) simulations, that enable to gain a wider insight into the dynamics of proteins that are not provided from the neutron scattering experiments. The combination of both methods access in the same time and space domains, and the comparison of simulated and measured spectra is thoroughly direct, since neutrons are diffused by the atomic nuclei (neglecting magnetic scattering), which are the actual objects of study of MD simulations. Once an alignment between simulated and experimental spectra is found, thus the experimental data supports the data obtained from the computer simulation, then the simulated trajectories can be analyzed in detail and information not accessible from experiments can be extracted from computer simulations.
 
 In this sense, computer simulations that are built upon the actual experimental data, can overcome the limitations of neutron scattering and grasp the more complex spectra of the proteins.\footnote{Some interesting applications, relevant to the interpretation of quasielastic neutron scattering and concerning the simulation-based development of models for slow protein dynamics, are discussed in Kneller's lecture \cite{ref:QNS_Keller}.}
 
@@ -87,7 +88,7 @@ The equations \eqref{eq:newtons2law} and \eqref{eq:force-enpot} are solved simul
 %\section[Approaching to a real MD simulation: \textit{Setting up and running molecular dynamics simulations}]{Approaching to a real MD simulation\\ {\large \textit{Setting up and running molecular dynamics simulations}}}
 \section{Molecular dynamics: concepts and algorithms}
 
-In this section several useful concepts are presented to outline how MD simulations of macromolecular systems generally work. Firstly, an introduction to the problem of the calculation of the forces is set: classical MD force field and boundary condition, with a consideration of the special case of the long range Coulomb interactions, are shown. Followed by a brief introduction to the numerical integration of \eqref{eq:newtons2law} with mention to a simulation strategy for controlling temperature and pressure. Finally, the problem concerning the creation of the initial state is discussed: the starting structure, solvation, minimization and equilibration.
+In this section several useful concepts are presented to outline how MD simulations of macromolecular systems generally work. Firstly, an introduction to the problem of the calculation of the forces is set: classical MD force field and boundary condition, with a consideration of the special case of the long range Coulomb interactions, are shown. Followed by a brief introduction to the numerical integration of \eqref{eq:newtons2law} with mention to a simulation strategy for controlling temperature and pressure. Finally, the problem concerning the creation of the initial state is discussed: starting structures, solvation, minimization and equilibration.
 
 These topics are presented focusing on a particular case of MD simulations - those concerning biological system and performed with NAMD software (see section ..). 
 %Preparation of the system (i.e. creation of the initial state - $\bold{r}^N(t=0)$), 
@@ -272,7 +273,6 @@ To avoid surface effects at the boundary of the simulated system, periodic bound
 \end{minipage} 
 \end{figure}
 
-
 However, because the van der Waals and electrostatic interactions exist between every nonbonded pair of atoms in the system (including those in neighboring cells) computing the long-range interaction exactly is unfeasible. To perform this computation, the van der Waals interaction is spatially truncated at a user-specified cutoff distance. For a simulation using periodic boundary conditions, the system periodicity is exploited to compute the full (nontruncated) electrostatic interaction with minimal additional cost using the particle-mesh Ewald (PME) method described in the next paragraph.
 
 \vspace{0.25cm}
@@ -376,12 +376,17 @@ r_{n+1} \;=\; r_n \:+\: \frac{1 \,-\, 0.5 \, \gamma \, \Delta t}{1 \,+\, 0.5 \, 
 \end{equation}
 where $Z_n$ is a set of Gaussian random variables of zero mean and variance 1. The BBK integrator requires only one random number for each degree of freedom. The steady-state distribution generated by the BBK method has an error proportional to $\Delta t^2$, although the error in the time correlation function can have an error proportional to $\Delta t$.
 
-\subsection{Initial configuration of the system}
-To begin a MD simulation, before to start with the integration of the equation of motion, it is necessary to choose  an initial configuration of the system, i.e. to set first the coordinates and the velocities of all the atoms. In particular, for simulations with biomolecules, due to the complex structures of these macromolecules, the initial positions of their atoms are usually obtained from the Protein Data Bank: a great repository of information about the 3D structures, drawn by the results of X-rays crystallography and NMR experiments,
-%(drawn with X-rays crystallography and NMR measures) 
-%(X-ray crystal structure or an NMR structure) 
-of proteins, nucleic acids, and complex assemblies.
-These sets of coordinates, representing macromolecular structures, are used as the starting point of these type simulations with the aim of getting, through several processes that modify these coordinates, an initial configuration of the entire system that it is as close as possible to the configuration of the real system that it is intended to study. When the initial configuration is achieved, it is possible to make several simulations of the system that can be used to measure some of its properties (this phase of the simulation is conventionally named: \textit{production phase} and the main scope of a molecular simulation is to get some interesting results from this phase). The process generally used in MD simulations of biological system, preceding the production phase, are mainly the follow: solvation, minimization, heating (set the velocities) and equilibration; that are describe below.
+\subsection{Initial state of the system}
+In order to perform a simulation for measuring some selected properties of a given system, it is essential, like in a real experiment, to prepare first the initial state of the system. 
+This means to obtain, in some way, a set of coordinates and velocities for all the atoms that identify an initial configuration of the system compatible with the desired initial state.
+
+Specifically, for simulation of large biological molecules such as protein or nucleic acids, as a consequence of complex structures of these macromolecules, the initial positions of their atoms  are usually obtained from the results of some real experiments, like X-Rays crystallography or nuclear magnetic resonance (NMR) spectroscopy, whereas the initial velocities are typically set pseudorandomly so that the total kinetic energy of the system corresponds to the expected value at the target temperature.
+
+Actually, the sets of coordinates obtained from these experiments often do not represent an initial configuration that is compatible with the desired initial state of the system (e.g. due to the hydration of the sample or to the fact that the set of coordinates usually refer only to one macromolecule, while the real system might be formed by more).
+However, since these coordinates represent the three-dimensional structure of the macromolecules involved in the simulation, they provide a fundamental starting point for the preparation of the system. 
+Indeed form these coordinates, through several process that exploit and modify them, it is possible to derive a configuration for the entire system that, been as close as possible to the configuration of the real system that it is intended to study, can be used to simulate the its initial state.
+
+Hence, when the initial configuration is achieved, it is possible to make several simulations of the system that can be used to measure the properties that it is intended to study (this phase of the simulation is conventionally named: \textit{production phase} and the main scope of a molecular simulation is to get some interesting results from this phase). The process generally used in MD simulations of biological system, preceding the production phase, are mainly the follow: solvation, minimization, heating (set the velocities) and equilibration; that are describe below.
 
 In any case, it is important to point out that the choice of the initial configuration must be done carefully as this can influence the quality of the entire simulation.
 
@@ -408,6 +413,7 @@ For a biomolecular system, the potential energy function is a very complex and m
 
 
 \subsubsection{Heating}
+In this phase, START THE INTEGRATION of the equations of motion.
 The heating process, usually done in the NVT ensemble, consist in the progressively increasing of  the reservoir's temperature to heat gradually the system. This process has mainly two different aims: 
 \begin{itemize}
 \item reach the desired temperature at which the system has to be studied;
@@ -420,14 +426,10 @@ One of the usually way to set the initial velocities is generating numbers pseud
 
 
 \subsubsection{Equilibration}
-Once the system is set and initial coordinates and velocities are assigned, an initial round of equilibration is necessary before the production phase of the simulation can begin. In this equilibration period, there is an exchange between kinetic and potential energies. Stability is evident when both terms, and the total energy, appear to converge, with fluctuations occurring about the mean value. This is the expected behavior from a microcanonical ensemble (fixed total energy, volume, and particle number, or NVE for short); see Chapter 12, Subsection 12.5.3 and Section 13.6.
+%Once the system is set and initial coordinates and velocities are assigned, an initial round of equilibration is necessary before the production phase of the simulation can begin. In this equilibration period, there is an exchange between kinetic and potential energies. Stability is evident when both terms, and the total energy, appear to converge, with fluctuations occurring about the mean value. This is the expected behavior from a microcanonical ensemble (fixed total energy, volume, and particle number, or NVE for short); see Chapter 12, Subsection 12.5.3 and Section 13.6.
 
 
 Once the heating process is over and the desired temperature is reached, the simulation is continued and during this phase, properties such as structure, pressure, temperature and the energy are monitored. The point of the equilibration phase is to run the simulation until these properties become stable with respect to time. If in the process, the temperature increases or decreases significantly, the velocities are scaled such that the temperature returns to its desired value.
-
-\subsection{Production and Analysis}
-
-The final step of the simulation is the production phase, wherein the system is simulated for the time length required from several hundred ps to ns or more. During this process coordinates,  and eventually velocities also, of the system at different times are stored in the form of trajectories. These are then used for calculations of mean energy, root mean square (RMS) fluctuations between structures etc. From MD simulations, time dependent properties such as correlation functions can also be calculated and these in turn can be related to spectroscopic measurements.
 
 \begin{figure}[H]
 \centering
@@ -442,6 +444,10 @@ The final step of the simulation is the production phase, wherein the system is 
     }
 \end{minipage} 
 \end{figure}
+
+\subsection{Production and Analysis}
+
+The final step of the simulation is the production phase, wherein the system is simulated for the time length required, usually from several hundred $ps$ to $ns$ or more. During this process coordinates,  and eventually also velocities, of the system at different times are stored in the form of trajectories. These are then used for calculations of mean energy, root mean square (RMS) fluctuations between structures etc. From MD simulations, time dependent properties such as correlation functions can also be calculated and these in turn can be related to spectroscopic measurements.
 
 
 
