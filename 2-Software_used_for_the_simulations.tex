@@ -382,6 +382,22 @@ This means to obtain, in some way, a set of coordinates and velocities for all t
 
 Specifically, for simulation of large biological molecules such as protein or nucleic acids, as a consequence of complex structures of these macromolecules, the initial positions of their atoms  are usually obtained from the results of some real experiments, like X-Rays crystallography or nuclear magnetic resonance (NMR) spectroscopy, whereas the initial velocities are typically set pseudorandomly so that the total kinetic energy of the system corresponds to the expected value at the target temperature.
 
+\textcolor{MidnightBlue}{
+1.4. STRUCTURE DATABASES: STRUCTURES ON THE WEB
+Structure databases contain the 3-D structures of biological macromolecules determined by X-ray
+crystallography and NMR. The primary structure database is the Protein Data Bank (PDB), an
+archive of all publicly available 3-D structures of proteins, nucleic acids, carbohydrates, viruses and
+biomolecular complexes. The PDB is basically a collection of text files, each containing a structure
+entry deposited by those who determined the structure. An entry file consists of (1) text information
+of definition, source, references and comments, (2) the sequence information, (3) the secondary
+structure information and (4) the 3-D coordinates of all the atoms, as well as crystallographic structure
+factors and NMR experimental data. There is an efficient search engine for finding files of the desired
+structures. Other useful structure databases include the Nucleic acid Database (NDB) for nucleic
+acids and the Cambridge Structural Database (CSD) for organic and metal–organic compounds. The
+World Wide Web addresses for these databases are given in Table 1-1. The majority of databases in
+molecular biology are publicly available and freely accessible via the Web. }
+\cite{creighton2010biophysical}
+
 Actually, the sets of coordinates obtained from these experiments often do not represent an initial configuration that is compatible with the desired initial state of the system (e.g. due to the hydration of the sample or to the fact that the set of coordinates usually refer only to one macromolecule, while the real system might be formed by more).
 However, since these coordinates represent the three-dimensional structure of the macromolecules involved in the simulation, they provide a fundamental starting point for the preparation of the system. 
 Indeed form these coordinates, through several process that exploit and modify them, it is possible to derive a configuration for the entire system that, been as close as possible to the configuration of the real system that it is intended to study, can be used to simulate the its initial state.
