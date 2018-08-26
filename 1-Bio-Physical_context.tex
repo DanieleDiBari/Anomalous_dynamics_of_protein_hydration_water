@@ -254,9 +254,9 @@ Precisely:
 
 The residues in peptides and polipeptides are named by dropping the suffix, usually -ine, in the name of the amino acid and replacing it by -yl. Peptide chains are described by starting from the N-terminal residue;  and proceeding to the C-terminal one. The amino acid at the C-terminus is given the name of its parent amino acid without alterations. Obviously, such names for polypeptide chains of more than a few residues are extremely complicated. Hence, the pentapeptide in Fig. \ref{fig:PentaPeptide} can also be written as Ser-Gly-Tyr-Ala-Leu using the three-letter abbreviations, or SGYAL using the one-letter code.
 
-At this point it is important to focus on the fact that, actually, all molecules have structures that extend to three dimensions. In addiction, since molecules are not rigid entities, these structures are non static. On the contrary, they can vibrate and incur in random modifications of their shape as a consequence of the thermal motions. Hence, all molecules do not have a single fixed structure, but more possible configurations and, in same case, they can exhibit a well-defined average structure.
-However, generally polymers have an intrinsic tendency to be very flexible, when no one structure, or conformation, is sufficiently more stable than all the others to predominate. Instead, many biological macromolecules, especially proteins and nucleic acids tend to adopt few stable configurations that produce an average structures
-\cite{nelson2008lehninger}. This ability of polypeptide chains to get a well-defined 3-D configurations is crucially because their biological functionality is strongly connect to their specific 3-D structure. In fact, distinct proteins adopt diverse 3-D structure and, as a consequences, they can perform different functions. 
+At this point it is important to focus on the fact that, actually, all molecules have structures that extend to three dimensions. In addiction, since molecules are not rigid entities, these structures are non static. On the contrary, they can vibrate and incur also in conformational modifications of their shape as a consequence of the thermal motions. Hence, all molecules do not have a single fixed structure, but several possible conformations that, in some cases, may result to a well-defined average structure.
+In fact, polymers generally have an intrinsic tendency to be very flexible, when no one specific structure is sufficiently more stable than all the others to predominate. Nevertheless, many biological macromolecules, especially proteins and nucleic acids, tend to adopt few stable conformations that produce a well-defined average structure, known as native conformation
+\cite{nelson2008lehninger}. This ability of polypeptide chains to get a well-defined 3-D configuration is crucially because their biological functionality is strongly connect to their specific 3-D structure. In fact, distinct proteins adopt diverse 3-D structure and, as a consequences, they can perform different functions. 
 
 In this way, with 20 different choices available for each amino acid residue in a polypeptide chain, it is easy to understand that a huge number of different proteins with different structures are possible. Indeed, for a protein of $n$ residues, there are $20^n$ different sequences. Hence, for a relatively small protein of 100 residues, there are $20^{100} \approx 10^{133}$ possible unique polypeptide chains of this length -- an extraordinary huge number, far greater than the roughly estimated number of atoms in the universe ($10^{80}$). Naturally, the evolution of biological systems has produced only a tiny fraction of these theoretical possibilities \cite{creighton2010biophysical}. 
 
@@ -282,7 +282,7 @@ Practically, proteins have between 100 and 1000 residues, with an average of 355
  %However, the vast majority of polypeptides  
 %Multisubunit proteins contain several identical and/or nonidentical chains called subunits. Some proteins are synthesized as single polypeptides that are later cleaved into two or more chains that remain associated.
 
-In the next section the structure of proteins are discussed in more detail.
+At this point, before to briefly summarize the main aspects of the protein structures (next section), it is useful to clarify the concept of molecular conformations.
 %Actually, just as it is explain in more details in the next section, proteins can be described in terms of levels of organization
 
 %8.2. RANDOM-COIL POLYPEPTIDE CHAINS (RIMANE)\\
@@ -294,7 +294,39 @@ In the next section the structure of proteins are discussed in more detail.
 %For large macromolecules such as proteins, the tasks of describing and understanding structure are approached at several levels of complexity, arranged in a kind of conceptual hierarchy. Four levels of protein structure are commonly defined. A description of all covalent bonds (mainly peptide bonds and disulfide bonds) linking amino acid residues in a polypeptide chain is its primary structure. The most important element of primary structure is the sequence of amino acid residues. Secondary structure refers to particularly stable arrangements of amino acid residues giving rise to recurring structural patterns. Tertiary structure describes all aspects of the three-dimensional folding of a polypeptide. When a protein has two or more polypeptide subunits, their arrangement in space is referred to as quaternary structure. Primary structure is the focus of Section 3.4; the higher levels of structure are discussed in Chapter 4.
 
 
+Different conformations are nonidentical spatial arrangements of the atoms of a molecule achieved solely by rotations about single covalent bonds. %Molecules with identical covalent structures but different conformations are known as conformers.
+Any conformation of a molecule %of known covalent structure 
+can be specified by the rotations about its single bonds, generally measured by either the torsion angle or the dihedral angle\footnote{A dihedral angle is the angle between the two planes identified by two sets of three atoms, having two atoms in common -- four distinct atoms in all. If the four atoms are linked by consecutive covalent bonds, the dihedral angle is also called proper dihedral angle or torsion angle, otherwise the dihedral angle is known as an improper dihedral angle or improper torsion angle.}. In general, interactions between neighboring atoms, usually steric repulsions, shall ensure that not all bond rotations have the same free energy and are equally probable (see Fig. \ref{fig:EthaneConf}).
 
+
+\begin{figure}[h]
+\centering
+\begin{minipage}[t]{0.9\textwidth}
+\centering
+\includegraphics[width=0.6\textwidth]{conformations.png}
+
+\caption{\small{An example of the way the potential energy of a simple molecule changes among the several conformations that the molecule assume for different values of its torsion angle. The shown molecule is ethane and it is interesting to note that in this case the energy differences, comparing to the thermal energy at room temperature ($\approx 2.5 \text{kJ}/\text{mol}$), are small enough to allow rapid interconversion of the two limit forms -- millions of times per second
+\cite{nelson2008lehninger}.}}
+
+\label{fig:EthaneConf}
+\end{minipage} 
+\end{figure}
+
+
+%Large biological macromolecules are able to have stable 3-D structures (they native conformations), if they have sufficient stabilizing interactions between its various atoms. 
+
+Although most of the conformation of a macromolecule seems fixed and, for this reason, it is considered a single conformation, parts of the molecule may still be flexible and able to undergo rotations about certain bonds. Actually the average overall conformation can be considered a macro-conformation, whereas the variations resulting from flexibility define various micro-conformations. Interconverting different macro-conformations requires a cooperative change of a number of bond rotations simultaneously, whereas micro-conformations are interconverted by changes of just one or a few bond rotations. These cooperative changes will usually occur only slowly or infrequently under physiological conditions. This relatively slow interconversion of the two macro-conformations is described as a conformational change, in which the macromolecule has been converted from one family of micro-conformations to an experimentally distinguishable family of other micro-conformations
+\cite{creighton2010biophysical}.
+
+%In the case of a protein, its conformations will depend whether on the structures and conformational properties of their residues that on the environment -- especially the relative interactions of the protein with the solvent and with itself.
+
+The ability to adopt a number of conformations is an entropic factor that stabilizes the flexible state, known as the conformational entropy.%In this picture, the conformational entropy is a measure of the ability to adopt a number of such conformations that stabilizes the flexible state. 
+A single conformation will be adopted only if the interactions stabilizing that particular conformation are sufficiently strong to overcome the conformational entropy tending to keep the protein unfolded. The number of micro-conformations and the conformational entropy of proteins can be huge. For a protein with $n$ residues, if each residue is able to adopt an average of $k$ conformations, the total number of conformations possible will be approximately $k^N$. For example, even a short protein of 100 residues in which each residue could adopt only 2 different conformations could adopt $2^{100} \approx 10^{33}$ different protein conformations. Hence, if all these conformations have similar free energies, the probability to find the protein in a specific configuration is very small. 
+
+At 25$^\circ$ C, the free energy contribution of the conformational entropy for a protein in which each residue can adopt 10 conformations will be $1.36 \;\text{kcal}/\text{mol}$ per residue. Consequently, to maintain a stable conformation, the stabilizing interactions between the atoms in that conformation have to lead to a decrease of the potential energy grater than $1.36 \;\text{kcal}/\text{mol}$ per residue in order to overcome the decrease in entropy. In the absence of such stabilizing interactions, a polymer will tend to exist in many different conformations. However, proteins and nucleic acids are able to adopt single folded conformations that predominate. Such stable conformations can be considered macro-conformations, in contrast to the micro-conformations that are adopted only transiently
+ \cite{creighton2010biophysical}.
+
+In the next section the structure of proteins are discussed in more detail.
 
 \subsection{Four levels of protein structure}\label{ssec:4-lev-prot-struc}
 One of the keys to deciphering the function of a given protein is to understand its structure. %
@@ -307,25 +339,30 @@ Proteins and nucleic acids are linear polymers of simple monomeric subunits; the
 \cite{nelson2008lehninger}
 \\
 \textbf{The Structure of Proteins: Primary Structure} \\
-What is it that makes one protein an enzyme, another a hormone, another a structural protein, and still another an antibody? How do they differ chemically? The most obvious distinctions are structural, and to protein structure we now turn.
-The structure of large molecules such as proteins can be described at several levels of complexity, arranged in a kind of conceptual hierarchy. Four levels of protein structure are commonly defined (Fig. 3-23). A description of all covalent bonds (mainly peptide bonds and disulfide bonds) linking amino acid residues in a polypeptide chain is its primary structure. The most important element of primary structure is the sequence of amino acid residues. Secondary structure refers to particularly stable arrangements of amino acid residues giving rise to recurring structural patterns. Tertiary structure describes all aspects of the three-dimensional folding of a polypeptide. When a protein has two or more polypeptide subunits, their arrangement in space is referred to as quaternary structure. 
+%What is it that makes one protein an enzyme, another a hormone, another a structural protein, and still another an antibody? How do they differ chemically? The most obvious distinctions are structural, and to protein structure we now turn.
+The structure of large molecules such as proteins can be described at several levels of complexity, arranged in a kind of conceptual hierarchy. Four levels of protein structure are commonly defined. A description of all covalent bonds (mainly peptide bonds and disulfide bonds) linking amino acid residues in a polypeptide chain is its primary structure. The most important element of primary structure is the sequence of amino acid residues. Secondary structure refers to particularly stable arrangements of amino acid residues giving rise to recurring structural patterns. Tertiary structure describes all aspects of the three-dimensional folding of a polypeptide. When a protein has two or more polypeptide subunits, their arrangement in space is referred to as quaternary structure. 
 
-Differences in primary structure can be especially informative. Each protein has a distinctive number and sequence of amino acid residues. The primary structure of a protein determines how it folds up into its unique three-dimensional structure, and this in turn determines the function of the protein.
+Differences in primary structure can be especially informative. Each protein has a distinctive number and sequence of amino acid residues. The primary structure of a protein determines how it folds up into its unique three-dimensional structure, and this in turn determines the function of the protein.\\
 \\
-\textbf{The Covalent Structure of Proteins}\\
-What is it that makes one protein an enzyme, another a hormone, another a structural protein, and still another an antibody? How do they differ chemically? The most obvious distinctions are structural, and these distinctions can be approached at every level of struc- ture defined in Figure 3–16.
-The differences in primary structure can be espe- cially informative. Each protein has a distinctive num- ber and sequence of amino acid residues. As we shall see in Chapter 4, the primary structure of a protein de- termines how it folds up into a unique three-dimensional structure, and this in turn determines the function of the protein. Primary structure is the focus of the re- mainder of this chapter. We first consider empirical clues that amino acid sequence and protein function are closely linked, then describe how amino acid sequence is determined; finally, we outline the many uses to which this information can be put.
 
 \textbf{The Function of a Protein Depends on Its Amino Acid Sequence}\\
-The bacterium Escherichia coli produces more than 3,000 different proteins; a human has $\sim$20,000 genes encoding a much larger number of proteins (through genetic processes discussed in Part III of this text). In both cases, each type of protein has a unique amino acid sequence that confers a particular three-dimensional structure. This structure in turn confers a unique function. Some simple observations illustrate the importance of primary structure, or the amino acid sequence of a protein. First, as we have already noted, proteins with different functions always have different amino acid sequences. Second, thousands of human genetic diseases have been traced to the production of defective proteins. The defect can range from a single change in the amino acid sequence (as in sickle cell disease, described in Chapter 5) to deletion of a larger portion of the polypeptide chain (as in most cases of Duchenne muscular dystrophy: a large deletion in the gene encoding the protein dystrophin leads to production of a shortened, inactive protein). 
-Finally, on comparing functionally similar proteins from different species, we find that these proteins often have similar amino acid sequences.
-Thus, a close link between protein primary structure and function is evident. Is the amino acid sequence absolutely fixed, or invariant, for a particular protein? No; some flexibility is possible. An estimated 20\% to 30\% of the proteins in humans are polymorphic, having amino acid sequence variants in the human population. Many of these variations in sequence have little or no effect on the function of the protein. Furthermore, proteins that carry out a broadly similar function in distantly related species can differ greatly in overall size and amino acid sequence. Although the amino acid sequence in some regions of the primary structure might vary considerably without affecting biological function, most proteins contain crucial regions that are essential to their function and thus have sequences that are conserved. The fraction of the overall sequence that is critical varies from protein to protein, complicating the task of relating sequence to three-dimensional structure, and structure to function. 
-
-OLD VERSION\\
-the important relationship between amino acid sequence and biological function. First, as we have already noted, proteins with different functions always have different amino acid sequences. Second, thousands of human genetic diseases have been traced to the production of defective proteins. Perhaps one-third of these proteins are defective because of a single change in their amino acid sequence; hence, if the primary structure is altered, the function of the protein may also be changed. Finally, on comparing functionally similar proteins from different species, we find that these proteins often have similar amino acid sequences. An extreme case is ubiquitin, a 76-residue protein involved in regulating the degradation of other proteins. The amino acid sequence of ubiquitin is identical in species as disparate as fruit flies and humans. Is the amino acid sequence absolutely fixed, or invariant, for a particular protein? No; some flexibility is possible. An estimated 20\% to 30\% of the proteins in humans are polymorphic, having amino acid sequence variants in the human population. Many of these variations in sequence have little or no effect on the function of the protein. Furthermore, proteins that carry out a broadly similar function in distantly related species can differ greatly in overall size and amino acid sequence. Although the amino acid sequence in some regions of the primary structure might vary considerably without affecting biological function, most proteins contain crucial regions that are essential to their function and whose sequence is therefore conserved. The fraction of the overall sequence that is critical varies from protein to protein, complicating the task of relating sequence to three-dimensional structure, and structure to function. 
+The bacterium Escherichia coli produces more than 3,000 different proteins; a human has $\sim$20,000 genes encoding a much larger number of proteins (through genetic processes discussed in Part III of this text). In both cases, each type of protein has a unique amino acid sequence that confers a particular three-dimensional structure. This structure in turn confers a unique function. Some simple observations illustrate 
+the importance of primary structure, or the amino acid sequence of a protein. 
+%the important relationship between amino acid sequence and biological function. 
+First, as we have already noted, proteins with different functions always have different amino acid sequences. 
+Second, thousands of human genetic diseases have been traced to the production of defective proteins. 
+Perhaps one-third of these proteins are defective because of a single change in their amino acid sequence; hence, if the primary structure is altered, the function of the protein may also be changed. 
+%The defect can range from a single change in the amino acid sequence (as in sickle cell disease) to deletion of a larger portion of the polypeptide chain (as in most cases of Duchenne muscular dystrophy: a large deletion in the gene encoding the protein dystrophin leads to production of a shortened, inactive protein)
+Finally, on comparing functionally similar proteins from different species, we find that these proteins often have similar amino acid sequences. 
+Thus, a close link between protein primary structure and function is evident. 
+%An extreme case is ubiquitin, a 76-residue protein involved in regulating the degradation of other proteins. The amino acid sequence of ubiquitin is identical in species as disparate as fruit flies and humans.
+Is the amino acid sequence absolutely fixed, or invariant, for a particular protein? No; some flexibility is possible. 
+An estimated 20\% to 30\% of the proteins in humans are polymorphic, having amino acid sequence variants in the human population. Many of these variations in sequence have little or no effect on the function of the protein. 
+Furthermore, proteins that carry out a broadly similar function in distantly related species can differ greatly in overall size and amino acid sequence. 
+Although the amino acid sequence in some regions of the primary structure might vary considerably without affecting biological function, most proteins contain crucial regions that are essential to their function and whose sequence is therefore conserved. The fraction of the overall sequence that is critical varies from protein to protein, complicating the task of relating sequence to three-dimensional structure, and structure to function. 
 
 \textbf{Amino Acid Sequences Provide Important Biochemical Information}\\
-Knowledge of the sequence of amino acids in a protein can offer insights into its three-dimensional structure and its function, cellular location, and evolution. Most of these insights are derived by searching for similarities between a protein of interest and previously studied proteins. Thousands of sequences are known and available in databases accessible through the Internet. A comparison of a newly obtained sequence with this large bank of stored sequences often reveals relationships both surprising and enlightening. Exactly how the amino acid sequence determines three-dimensional structure is not understood in detail, nor can we always predict function from sequence. However, protein families that have some shared structural or functional features can be readily identified on the basis of amino acid sequence similarities. Individual proteins are assigned to families based on the degree of similarity in amino acid sequence. Members of a family are usually identical across 25\% or more of their sequences, and proteins in these families generally share at least some structural and functional characteristics. Some families, however, are defined by identities involving only a few amino acid residues that are critical to a certain function. A number of similar substructures, or “domains” (to be defined more fully in Chapter 4), occur in many functionally unrelated proteins. These domains often fold into structural configurations that have an unusual degree of stability or that are specialized for a certain environment. Evolutionary relationships can also be inferred from the structural and functional similarities within protein families. Certain amino acid sequences serve as signals that determine the cellular location, chemical modification, and half-life of a protein. Special signal sequences, usually at the amino terminus, are used to target certain proteins for export from the cell; other proteins are targeted for distribution to the nucleus, the cell surface, the cytosol, or other cellular locations. Other sequences act as attachment sites for prosthetic groups, such as sugar groups in glycoproteins and lipids in lipoproteins. Some of these signals are well characterized and are easily recognized in the sequence of a newly characterized protein (Chapter 27). 
+Knowledge of the sequence of amino acids in a protein can offer insights into its three-dimensional structure and its function, cellular location, and evolution. Most of these insights are derived by searching for similarities between a protein of interest and previously studied proteins. Thousands of sequences are known and available in databases accessible through the Internet. A comparison of a newly obtained sequence with this large bank of stored sequences often reveals relationships both surprising and enlightening. Exactly how the amino acid sequence determines three-dimensional structure is not understood in detail, nor can we always predict function from sequence. However, protein families that have some shared structural or functional features can be readily identified on the basis of amino acid sequence similarities. Individual proteins are assigned to families based on the degree of similarity in amino acid sequence. Members of a family are usually identical across 25\% or more of their sequences, and proteins in these families generally share at least some structural and functional characteristics. Some families, however, are defined by identities involving only a few amino acid residues that are critical to a certain function. A number of similar substructures, or ``domains99 (to be defined more fully in Chapter 4), occur in many functionally unrelated proteins. These domains often fold into structural configurations that have an unusual degree of stability or that are specialized for a certain environment. Evolutionary relationships can also be inferred from the structural and functional similarities within protein families. Certain amino acid sequences serve as signals that determine the cellular location, chemical modification, and half-life of a protein. Special signal sequences, usually at the amino terminus, are used to target certain proteins for export from the cell; other proteins are targeted for distribution to the nucleus, the cell surface, the cytosol, or other cellular locations. Other sequences act as attachment sites for prosthetic groups, such as sugar groups in glycoproteins and lipids in lipoproteins. Some of these signals are well characterized and are easily recognized in the sequence of a newly characterized protein (Chapter 27). 
 
 \textbf{SUMMARY 3.4 The Structure of Proteins: Primary Structure}\\
 \begin{itemize}
@@ -334,13 +371,16 @@ Knowledge of the sequence of amino acids in a protein can offer insights into it
 \end{itemize}
 
 \textbf{The ThreeDimensional Structure of Proteins}\\
-The covalent backbone of a typical protein contains hundreds of individual bonds. Because free rotation is possible around many of these bonds, the protein can assume an unlimited number of conformations. However, each protein has a specific chemical or structural function, strongly suggesting that each has a unique three-dimensional structure (Fig. 4–1). By the late 1920s, several proteins had been crystallized, including hemoglobin (Mr 64,500) and the enzyme urease (Mr 483,000). Given that the ordered array of molecules in a crystal can generally form only if the molecular units are identical, the simple fact that many proteins can be crystallized provides strong evidence that even very large proteins are discrete chemical entities with unique structures. This conclusion revolutionized thinking about proteins and their functions.
+The covalent backbone of a typical protein contains hundreds of individual bonds. Because free rotation is possible around many of these bonds, the protein can assume an unlimited number of conformations. However, each protein has a specific chemical or structural function, strongly suggesting that each has a unique three-dimensional structure (Fig. 4–1). By the late 1920s, several proteins had been crystallized, including hemoglobin (Mr 64,500) and the enzyme urease (Mr 483,000). Given that the ordered array of molecules in a crystal can generally form only if the molecular units are identical, the simple fact that many proteins can be crystallized provides strong evidence that even very large proteins are discrete chemical entities with unique structures. This conclusion revolutionized thinking about proteins and their functions.\\
+\\
+First, the three-dimensional structure of a protein is determined by its amino acid sequence. 
+Second, the function of a typical protein depends on its structure. Third, most isolated protein exists in one or a small number of stable structural forms. 
+Fourth, the most important forces stabilizing the specific structures maintained by a given protein are noncovalent interactions. 
+Finally, amid the huge number of unique protein structures, we can recognize some common structural patterns that help us organize our understanding of protein architecture.
 
- First, the three-dimensional structure or structures taken up by a protein are determined by its amino acid sequence. Second, the function of a typical protein depends on its structure. Third, most isolated proteins exist in one or a small number of stable structural forms. Fourth, the most important forces stabilizing the specific structures maintained by a given protein are noncovalent; the hydrophobic effect is particularly important. Fifth, amid the huge number of unique protein structures, we can recognize some common structural patterns that help to organize our understanding of protein architecture. Finally, protein structures are not static. All proteins undergo changes in conformation ranging from subtle to dramatic. Parts of many proteins have no discernible structure. For some proteins or parts of proteins, a lack of definable structure is critical to their function.
+%Finally, protein structures are not static. All proteins undergo changes in conformation ranging from subtle to dramatic. Parts of many proteins have no discernible structure. For some proteins or parts of proteins, a lack of definable structure is critical to their function.
+These themes should not be taken to imply that proteins have static, unchanging three-dimensional structures. Protein function often entails an interconversion between two or more structural forms. 
 
-OLD VERSION\\
-First, the three-dimensional structure of a protein is determined by its amino acid sequence. Second, the function of a protein depends on its structure. Third, an isolated protein usually exists in one or a small number of stable structural forms. Fourth, the most important forces stabilizing the specific structures maintained by a given protein are noncovalent interactions. Finally, amid the huge number of unique protein structures, we can recognize some common structural patterns that help us organize our understanding of protein architecture.
-These themes should not be taken to imply that proteins have static, unchanging three-dimensional structures. Protein function often entails an interconversion between two or more structural forms. The dynamic aspects of protein structure will be explored in Chapters 5 and 6.
 The relationship between the amino acid sequence of a protein and its three-dimensional structure is an intricate puzzle that is gradually yielding to techniques used in modern biochemistry. An understanding of structure, in turn, is essential to the discussion of function in succeeding chapters. We can find and understand the patterns within the biochemical labyrinth of protein structure by applying fundamental principles of chemistry and physics.
 
 \textbf{Overview of Protein Structure}\\
@@ -356,36 +396,15 @@ The enzymes represent a special case of protein function. They bind and chemical
 \cite{nelson2008lehninger}
 \\
 PROTEIN STRUCTURE\\
-Most dynamic activities in cells and organisms are caused by proteins, and the key to understanding
-these phenomena is their structures. Protein structures, however, consist of many atoms, often
-thousands, and can be extremely complex. Natural proteins are also folded into precise threedimensional
-(3-D) structures and are very different from random-coil forms of the polypeptide chain
-(Section 8.2), in that most of their covalent bonds adopt a single dihedral angle (Section 1.2.B) and
-Cys residues pair in specific disulfide bonds (Section 7.2.1.5), rather than the spectrum possible with
-disordered polypeptide chains (Table 7-3); this generally results in a folded conformation that can be
-considered unique. It is also very compact. No changes in covalent structure need occur when these
-folded conformations are adopted, except for the disulfide bonds that might be formed between Cys
-residues (Section 7.2.1.5); therefore the folded structure represents just one conformation of the many
-that are possible with a disordered polypeptide chain. With 20 different amino acid residues having
-diverse physical and chemical properties, a huge variety of protein sequences and conformations are
-possible. Some proteins are globular and water-soluble, others exist buried within membranes, while
-others adopt elongated and extended structures that serve primarily structural roles (Section 8.5).
+Most dynamic activities in cells and organisms are caused by proteins, and the key to understanding these phenomena is their structures. Protein structures, however, consist of many atoms, often thousands, and can be extremely complex. Natural proteins are also folded into precise threedimensional (3-D) structures and are very different from random-coil forms of the polypeptide chain, in that most of their covalent bonds adopt a single dihedral angle and Cys residues pair in specific disulfide bonds, rather than the spectrum possible with disordered polypeptide chains; this generally results in a folded conformation that can be considered unique. It is also very compact. No changes in covalent structure need occur when these folded conformations are adopted, except for the disulfide bonds that might be formed between Cys residues; therefore the folded structure represents just one conformation of the many that are possible with a disordered polypeptide chain. With 20 different amino acid residues having diverse physical and chemical properties, a huge variety of protein sequences and conformations are possible. Some proteins are globular and water-soluble, others exist buried within membranes, while others adopt elongated and extended structures that serve primarily structural roles (Section 8.5).
 Protein structure is most impressive in its diversity.
-Each protein is identified uniquely by its amino acid sequence, which is determined by the
-sequence of the gene from which the protein is produced, using the genetic code (Section 7.5.F). The
-amino acid sequence determines all further aspects of the structure of the protein and, consequently,
-its functions. It has become customary to dissect protein structure into four levels (Figure 9-1).
-The primary structure is the amino acid sequence. The secondary structure is any regular local
-structure of a linear segment of polypeptide chain, such as a helix or an extended strand (Section
-8.3). The tertiary structure is the overall topology of the folded polypeptide chain. The quaternary
-structure is the aggregation of the individual polypeptides by specific interactions between them.
-As more protein structures have been determined, two intermediate levels of structure have become
-apparent; one comprises several elements of secondary structure packed together and is known as the
-supersecondary structure or motif; the other is the domain, which can be one self-contained part
-of a tertiary structure.
-Details of virtually all the known structures of proteins can be obtained from the Protein Data Bank
-(PDB; www.rcsb.org). They can be viewed most readily online using the program Jmol at http://
-firstglance.jmol.org.
+
+Each protein is identified uniquely by its amino acid sequence, which is determined by the sequence of the gene from which the protein is produced, using the genetic code. The amino acid sequence determines all further aspects of the structure of the protein and, consequently, its functions. It has become customary to dissect protein structure into four levels.
+The primary structure is the amino acid sequence. The secondary structure is any regular local structure of a linear segment of polypeptide chain, such as a helix or an extended strand. The tertiary structure is the overall topology of the folded polypeptide chain. The quaternary structure is the aggregation of the individual polypeptides by specific interactions between them.
+As more protein structures have been determined, two intermediate levels of structure have become apparent; one comprises several elements of secondary structure packed together and is known as the supersecondary structure or motif; the other is the domain, which can be one self-contained part of a tertiary structure.
+
+Details of virtually all the known structures of proteins can be obtained from the Protein Data Bank (PDB; www.rcsb.org). They can be viewed most readily online using the program Jmol at http://firstglance.jmol.org
+\cite{creighton2010biophysical}.
 
 \begin{figure}[h]
 \centering
@@ -475,44 +494,6 @@ Figure 12- 1.
 
 \section{The free-energy landscape and conformational entropy}\label{sec:configurational-entropy}
 %\section{Hydration water}
-
-
-In particular, different conformations are nonidentical spatial arrangements of the atoms of a molecule achieved solely by rotations about single covalent bonds. Molecules with identical covalent structures but different conformations are known as conformers (see figure below).
-\begin{figure}[h]
-\centering
-\begin{minipage}[t]{0.9\textwidth}
-\centering
-\includegraphics[width=0.9\textwidth]{coformers-1.png}
-
-\caption{\small{Simple example of three coformers of ethylene glycol \cite{creighton2010biophysical}.}}
-
-\label{fig:generation-of-microcan_state}
-\end{minipage} 
-\end{figure}
-
-%Any conformation of a molecule of known covalent structure can be specified by the rotations about its single bonds, generally measured by either the torsion angle or the dihedral angle. In general, interactions between neighboring atoms, usually steric repulsions, mean that not all bond rotations have the same free energy and are equally probable
-%\begin{figure}[h]
-%\centering
-%\begin{minipage}[t]{0.9\textwidth}
-%\centering
-%\includegraphics[width=0.22\textwidth]{./images/dihedral-0.png}
-%\hspace{1cm}
-%\includegraphics[width=0.45\textwidth]{./images/improper.png}
-%
-%\caption{\small{On the left: the torsion angles within a molecule that refer to the rotations about individual covalent bonds linking a pair of atoms; they are defined using two further atoms bonded to the first pair of atoms.  \cite{creighton2010biophysical}.}}
-%
-%\label{fig:generation-of-microcan_state}
-%\end{minipage} 
-%\end{figure}
-
-A large biological macromolecule can have a stable, fixed 3-D structure, referred to as its native conformation, if it has sufficient stabilizing interactions between its various atoms. Although most of the conformation is fixed and it is considered a single conformation, parts of the molecule may still be flexible and able to undergo rotations about certain bonds. The average overall conformation can be considered a macro-conformation, whereas the variations resulting from flexibility define various micro-conformations. Interconverting different macro-conformations requires a cooperative change of a number of bond rotations simultaneously, whereas micro-conformations are interconverted by changes of just one or a few bond rotations. These cooperative changes will usually occur only slowly or infrequently under physiological conditions, although it can be speeded up dramatically under denaturing conditions. This relatively slow interconversion of the two macro-conformations is described as a conformational change, in which the macromolecule has been converted from one family of micro-conformations to an experimentally distinguishable family of other micro-conformations
-\cite{creighton2010biophysical}.
-
-In the case of a protein, its conformations will depend whether on the structures and conformational properties of their residues that on the environment -- especially the relative interactions of the protein with the solvent and with itself.
-
-In this picture, the conformational entropy is a measure of the ability to adopt a number of such conformations that stabilizes the flexible state. A single conformation will be adopted only if the interactions stabilizing that particular conformation are sufficiently strong to overcome the conformational entropy tending to keep the protein unfolded. The number of micro-conformations and the conformational entropies of proteins can be very large. For example, if each residue can adopt an average of $j$ conformations, and there are $N$ residues in the protein, the total number of conformations possible will be approximately $j^N$. If the reasonable assumption is made that $j$ is $8$ and $N$ is $500$, there will be $8^{500}$ ($\approx 10^{452}$) conformations possible, a truly astronomical number. Of course, some of these conformations will not be feasible because they would have atoms of the protein overlapping in space, the excluded volume effect. There is still, however, much scope to be conservative and predict an astronomical number of conformations. For example, even a short protein of 100 residues in which each residue could adopt only two different conformations could adopt more than $10^{30}$ different protein conformations. If all these conformations have similar free energies, each would have only a very small probability of occurring in a molecule. At 25 %\textdegree 
-$^\circ$ C, the free energy contribution of the conformational entropy for a protein in which each residue can adopt 10 conformations will be 1.36 $N$ kcal/mol. Consequently, for any one conformation to predominate will require, on average, stabilizing interactions $>$1.36 kcal/mol/residue. In the absence of such stabilizing interactions, a protein will tend to exist in many different conformations. However, proteins and nucleic acids are able to adopt single folded conformations that predominate. Such stable conformations can be considered macro-conformations, in contrast to the micro-conformations that are adopted only transiently \cite{creighton2010biophysical}.
-
 
 In the last years, there is a growing interest in the protein configurational entropy as a major factor in controlling the protein activities associated with signaling, regulation, and recognition.
 
