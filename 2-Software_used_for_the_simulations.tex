@@ -1,6 +1,7 @@
 %\chapter{Introduction to molecular dynamics simulations with NAMD and VMD}
 \chapter{Molecular dynamics simulations}
 
+DA SISTEMARE (vecchia introduzione al capitolo)\\
 Thermal neutron scattering, which is sensitive to the dynamics and the structure of condensed matter on the atomic scale, gives precise information about atomic fluctuations and dynamics in proteins, enhancing an average view of all atomic contributions.
 In this way, as seen in section \ref{}, with simple analytical models it is possible to analyze some basic feautures of the protein spectra. However, due to the high complexity of these systems, usually their internal dynamics is too complicated to for a quantitative interpretation in terms of such models based almost only upon average information. 
 
@@ -382,21 +383,21 @@ This means to obtain, in some way, a set of coordinates and velocities for all t
 
 Specifically, for simulation of large biological molecules such as protein or nucleic acids, as a consequence of complex structures of these macromolecules, the initial positions of their atoms  are usually obtained from the results of some real experiments, like X-Rays crystallography or nuclear magnetic resonance (NMR) spectroscopy, whereas the initial velocities are typically set pseudorandomly so that the total kinetic energy of the system corresponds to the expected value at the target temperature.
 
-\textcolor{MidnightBlue}{
-1.4. STRUCTURE DATABASES: STRUCTURES ON THE WEB
-Structure databases contain the 3-D structures of biological macromolecules determined by X-ray
-crystallography and NMR. The primary structure database is the Protein Data Bank (PDB), an
-archive of all publicly available 3-D structures of proteins, nucleic acids, carbohydrates, viruses and
-biomolecular complexes. The PDB is basically a collection of text files, each containing a structure
-entry deposited by those who determined the structure. An entry file consists of (1) text information
-of definition, source, references and comments, (2) the sequence information, (3) the secondary
-structure information and (4) the 3-D coordinates of all the atoms, as well as crystallographic structure
-factors and NMR experimental data. There is an efficient search engine for finding files of the desired
-structures. Other useful structure databases include the Nucleic acid Database (NDB) for nucleic
-acids and the Cambridge Structural Database (CSD) for organic and metal–organic compounds. The
-World Wide Web addresses for these databases are given in Table 1-1. The majority of databases in
-molecular biology are publicly available and freely accessible via the Web. }
-\cite{creighton2010biophysical}
+%\textcolor{MidnightBlue}{
+%1.4. STRUCTURE DATABASES: STRUCTURES ON THE WEB
+%Structure databases contain the 3-D structures of biological macromolecules determined by X-ray
+%crystallography and NMR. The primary structure database is the Protein Data Bank (PDB), an
+%archive of all publicly available 3-D structures of proteins, nucleic acids, carbohydrates, viruses and
+%biomolecular complexes. The PDB is basically a collection of text files, each containing a structure
+%entry deposited by those who determined the structure. An entry file consists of (1) text information
+%of definition, source, references and comments, (2) the sequence information, (3) the secondary
+%structure information and (4) the 3-D coordinates of all the atoms, as well as crystallographic structure
+%factors and NMR experimental data. There is an efficient search engine for finding files of the desired
+%structures. Other useful structure databases include the Nucleic acid Database (NDB) for nucleic
+%acids and the Cambridge Structural Database (CSD) for organic and metal–organic compounds. The
+%World Wide Web addresses for these databases are given in Table 1-1. The majority of databases in
+%molecular biology are publicly available and freely accessible via the Web. }
+%\cite{creighton2010biophysical}
 
 Actually, the sets of coordinates obtained from these experiments often do not represent an initial configuration that is compatible with the desired initial state of the system (e.g. due to the hydration of the sample or to the fact that the set of coordinates usually refer only to one macromolecule, while the real system might be formed by more).
 However, since these coordinates represent the three-dimensional structure of the macromolecules involved in the simulation, they provide a fundamental starting point for the preparation of the system. 
@@ -451,10 +452,10 @@ Once the heating process is over and the desired temperature is reached, the sim
 \centering
 \begin{minipage}[t]{0.8\textwidth}
 	\centering
-    \includegraphics[width=0.9\textwidth]{initial_state-01.png}
+    \includegraphics[width=0.85\textwidth]{initial_state-01.png}
     
-    \footnotesize{\caption{Schematic representation of the velocity Verlet algorithm. At each steps, the stored variables are in grey boxes.
-    \textit{Source:} Allen and Tildesley, \textit{Computer Simulation of Liquids} (1st edition, 1987) 
+    \footnotesize{\caption{...
+    \textit{Source:} a, \textit{b} (1st edition, 1987) 
     \cite{ref:AllenTildesley_1ed}.}
     \label{fig:symplettic-integrator}
     }
@@ -468,33 +469,36 @@ The final step of the simulation is the production phase, wherein the system is 
 
 
 \section{NAMD}
-Introduction to NAND envairoment and explanation of its features useful for this study (or, utilezed in this study)
+%Introduction to NAND envairoment and explanation of its features useful for this study (or, utilezed in this study)
+%
+%In order to conduct MD simulations, various computer programs have been developed including X-PLOR and CHARMM. These programs were originally developed for serial machines. Simulation of large molecules like protein, however, require enormous computing power. One way to achieve such simulations is to utilize parallel computers. In last 10 years, distributed memory parallel computers have been offering cost-effective computational power. 
+%
+%NAMD was designed to run efficiently on such parallel machines for simulating large molecules. 
+%
+%NAMD is a parallel molecular dynamics code for high-performance simulation of large biomolecular systems developed by the Theoretical and Computational Biophysics Group in the Beckman Institute for Advanced Science and Technology at the University of Illinois at Urbana-Champaign. 
+%
+%
+%NAMD scales to hundreds of processors on high-end parallel platforms, as well as tens of processors on low-cost commodity clusters, and also runs on individual desktop and laptop computers. 
+%
+%NAMD works with AMBER and CHARMM potential functions, parameters, and file formats. 
+%
+%
+%On a molecular scale, the fundamental processing units in the living cell are often huge in size and function in an even larger complex environment. Striking progress has been achieved in characterizing the immense machines of the cell, such as the ribosome, at the atomic level. Advances in biomedicine demand tools to model these machines to understand their function and their role in maintaining the health of cells. Accordingly, the purpose of NAMD is to enable high-performance classical simulation of biomolecules in realistic environments of 100,000 atoms or more. The progress made in this regard is illustrated in Figure 1. A decade ago in its first release NAMD permitted simulation of a protein-DNA complex encompassing 36,000 atoms one of the largest simulations carried out at the time. The most recent release permitted the simulation of a protein-DNA complex of 314,000 atoms. To probe the behavior of this 10-fold larger system, the simulated period actually increased 100-fold as well \cite{ref:NAMD}.
+%
+%\subsection{Introduction - What is NAMD?}
+%
+%\subsection{Molecular Dynamics Concepts and Algorithms}
+%
+%\subsection{Configuration File?}
+%
+%\subsection{Input and Output Files}
+%
+%\subsection{Force Field Parameters}
+%
+%\subsection{NAMD's features useful for this study}
 
-In order to conduct MD simulations, various computer programs have been developed including X-PLOR and CHARMM. These programs were originally developed for serial machines. Simulation of large molecules like protein, however, require enormous computing power. One way to achieve such simulations is to utilize parallel computers. In last 10 years, distributed memory parallel computers have been offering cost-effective computational power. 
 
-NAMD was designed to run efficiently on such parallel machines for simulating large molecules. 
-
-NAMD is a parallel molecular dynamics code for high-performance simulation of large biomolecular systems developed by the Theoretical and Computational Biophysics Group in the Beckman Institute for Advanced Science and Technology at the University of Illinois at Urbana-Champaign. 
-
-
-NAMD scales to hundreds of processors on high-end parallel platforms, as well as tens of processors on low-cost commodity clusters, and also runs on individual desktop and laptop computers. 
-
-NAMD works with AMBER and CHARMM potential functions, parameters, and file formats. 
-
-
-On a molecular scale, the fundamental processing units in the living cell are often huge in size and function in an even larger complex environment. Striking progress has been achieved in characterizing the immense machines of the cell, such as the ribosome, at the atomic level. Advances in biomedicine demand tools to model these machines to understand their function and their role in maintaining the health of cells. Accordingly, the purpose of NAMD is to enable high-performance classical simulation of biomolecules in realistic environments of 100,000 atoms or more. The progress made in this regard is illustrated in Figure 1. A decade ago in its first release NAMD permitted simulation of a protein-DNA complex encompassing 36,000 atoms one of the largest simulations carried out at the time. The most recent release permitted the simulation of a protein-DNA complex of 314,000 atoms. To probe the behavior of this 10-fold larger system, the simulated period actually increased 100-fold as well \cite{ref:NAMD}.
-
-\subsection{Introduction - What is NAMD?}
-
-\subsection{Molecular Dynamics Concepts and Algorithms}
-
-\subsection{Configuration File?}
-
-\subsection{Input and Output Files}
-
-\subsection{Force Field Parameters}
-
-\subsection{NAMD's features useful for this study}
+%---------------------------------------------------------
 %Based on Charm++ parallel objects, NAMD scales to hundreds of cores for typical simulations and beyond 500,000 cores for the largest simulations. NAMD uses the popular molecular graphics program VMD for simulation setup and trajectory analysis, but is also file-compatible with AMBER, CHARMM, and X-PLOR. NAMD is distributed free of charge with source code. You can build NAMD yourself or download binaries for a wide variety of platforms. 
 
 
@@ -503,9 +507,9 @@ On a molecular scale, the fundamental processing units in the living cell are of
 
 
 
-\subsection{Molecular Dynamics Concepts and Algorithms}
-
-\subsection{xxx}
+%\subsection{Molecular Dynamics Concepts and Algorithms}
+%
+%\subsection{xxx}
 
 
 Molecular dynamics (MD) simulations compute atomic trajectories by solving equations of motion numerically using empirical force fields, such as the CHARMM force field, that approximate the actual atomic force in biopolymer systems. Detailed information about MD simulations can be found in several books such as [1, 55]. In order to conduct MD simulations, various computer programs have been developed including X-PLOR [13] and CHARMM [12]. These programs were originally developed for serial machines. Simulation of large molecules, however, require enormous computing power. One way to achieve such simulations is to utilize parallel computers. In recent years, distributed memory parallel computers have been offering cost-effective computational power. NAMD was designed to run efficiently on such parallel machines for simulating large molecules. NAMD is particularly well suited to the increasingly popular Beowulf-class PC clusters, which are quite similar to the workstation clusters for which is was originally designed. Future versions of NAMD will also make efficient use of clusters of multi-processor workstations or PCs.
