@@ -87,7 +87,7 @@ where the forces are derived as the negative derivatives of the potential energy
 The equations \eqref{eq:newtons2law} and \eqref{eq:force-enpot} are solved simultaneously every time steps. The system is supervised for a certain lapse of time, taking care that temperature and pressure remain at the required values and the coordinates are written to an output file at regular intervals. The coordinates, as a function of time, represent a trajectory of the system. After the initial changes, the system will usually reach an equilibrium state. By averaging over an equilibrium trajectory many macroscopic properties can be extracted from an output file.
 
 %\section[Approaching to a real MD simulation: \textit{Setting up and running molecular dynamics simulations}]{Approaching to a real MD simulation\\ {\large \textit{Setting up and running molecular dynamics simulations}}}
-\section{Molecular dynamics: concepts and algorithms}
+\section{Molecular dynamics simulations of proteins}
 
 In this section several useful concepts are presented to outline how MD simulations of macromolecular systems generally work. Firstly, an introduction to the problem of the calculation of the forces is set: classical MD force field and boundary condition, with a consideration of the special case of the long range Coulomb interactions, are shown. Followed by a brief introduction to the numerical integration of \eqref{eq:newtons2law} with mention to a simulation strategy for controlling temperature and pressure. Finally, the problem concerning the creation of the initial state is discussed: starting structures, solvation, minimization and equilibration.
 
@@ -470,8 +470,9 @@ Once the heating process is over and the desired temperature is reached, the sim
 The final step of the simulation is the production phase, wherein the system is simulated for the time length required, usually from several hundred $ps$ to $ns$ or more. During this process coordinates,  and eventually also velocities, of the system at different times are stored in the form of trajectories. These are then used for calculations of mean energy, root mean square (RMS) fluctuations between structures etc. From MD simulations, time dependent properties such as correlation functions can also be calculated and these in turn can be related to spectroscopic measurements.
 
 
+\section{Simulations with NAMD and VMD}
 
-\section{NAMD}
+\subsection{NAMD}
 %Introduction to NAND envairoment and explanation of its features useful for this study (or, utilezed in this study)
 %
 %In order to conduct MD simulations, various computer programs have been developed including X-PLOR and CHARMM. These programs were originally developed for serial machines. Simulation of large molecules like protein, however, require enormous computing power. One way to achieve such simulations is to utilize parallel computers. In last 10 years, distributed memory parallel computers have been offering cost-effective computational power. 
@@ -549,7 +550,7 @@ A system undergoing simulation in NAMD may be viewed and altered with VMD; for i
 An important factor in parallel applications is the equal distribution of computational load among the processors. In parallel molecular simulation, a spatial decomposition that evenly distributes the computational load causes the region of space mapped to each processor to become very irregular, hard to compute and difficult to generalize to the evaluation of many different types of forces. NAMD addresses this problem by using a simple uniform spatial decomposition where the entire model is split into uniform cubes of space called patches. An initial load balancer assigns patches and the calculation of interactions among the atoms within them to processors such that the computational load is balanced as much as possible. During the simulation, an incremental load balancer monitors the load and performs necessary adjustments.
 \end{itemize}
 
-\section{VMD}
+\subsection{VMD}
 VMD (Visual Molecular Dynamics) is a molecular visualization and analysis program designed for biological systems such as proteins, nucleic acids, lipid bilayer assemblies, etc. The program is developed by the Theoretical and Computational Biophysics Group at the University of Illinois at Urbana-Champaign. Among molecular graphics programs, VMD is unique in its ability to efficiently operate on large biomolecular complexes and long-timescale molecular dynamics trajectories, its interoperability with a large number of molecular dynamics simulation tools, its integration of structure and sequence information, and its built-in support for advanced image rendering and movie making.
 
 Key features of VMD include:
@@ -566,3 +567,4 @@ Key features of VMD include:
 \item User-extensible through the built-in Tcl and Python scripting languages
 \item Extensible source code written in C and C++
 \end{itemize}
+
