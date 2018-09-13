@@ -599,14 +599,30 @@ It may seem unusual that a protein's interaction with another molecule could be 
 \begin{itemize}
 \item[$\triangleright$] The functions of many proteins involve the reversible binding of other molecules. A molecule bound reversibly by a protein is called a \textbf{ligand}. A ligand can be any type of molecule, such as small molecules, nucleic acids, peptides, other proteins, polysaccharides or lipids. The protein with the ligand bound is known as the \textbf{holo} form; without the ligand a protein is in the \textbf{apo} form. The transient nature of protein-ligand interactions is critical to life, allowing an organism to respond rapidly and reversibly to changing environmental and metabolic circumstances. 
 
-\item[$\triangleright$] A ligand binds at a site on the protein called the \textbf{binding site}, which is complementary to the ligand in size, shape, charge, and hydrophobic or hydrophilic character. Moreover, the interaction is specific: the protein can discriminate among thousands of different molecules that are present in its environment and selectively bind only to a particular type of molecule.  A given protein may have separate binding sites for several different ligands. These specific molecular interactions are crucial for the preservation of the living systems. In fact, all organisms and cells survive only because they interact effectively with their environments, hence extraneous molecules must be distinguished as either useful or dangerous and dealt with accordingly.  In these context, the specificity of the protein's interactions, discriminating among the several molecules, is a crucial tool for the organism to be aware of their environment.% At a lower level, all cells have a variety of receptors for different molecules for this purpose.
+\item[$\triangleright$] A ligand binds at a site on the protein called the \textbf{binding site}, which is complementary to the ligand in size, shape, charge, and hydrophobic or hydrophilic character. 
+\begin{figure}[h]
+\centering
+\begin{minipage}[t]{0.875\textwidth}
+\centering
+\includegraphics[width=0.65\textwidth]{induced_fit.png}
 
-\footnote{This discussion excludes the binding of water, which may interact weakly and non specifically with many parts of a protein.}  
-\item[$\triangleright$] Proteins are flexible. Changes in conformation may be subtle, reflecting molecular vibrations and small movements of amino acid residues throughout the protein. A protein flexing in this way is sometimes said to ``\textit{breathe}''. Changes in conformation may also be substantial, with major segments of the protein structure moving as much as several nanometers. Specific conformational changes are frequently fundamental to a protein's function. 
+\caption{\small{Example of the induced fit mechanism.  Enzyme changes shape by induced fit upon substrate binding to form enzyme-substrate complex. The initial interaction between enzyme and substrate is relatively weak, but that these weak interactions rapidly induce conformational changes in the enzyme that strengthen binding Hexokinase has a large induced fit motion that closes over the substrates adenosine triphosphate and xylose. Binding sites in blue, substrates in black and Mg$^{2+}$ cofactor in yellow.
+	\textit{Source:} Thomas Shafee, ``\textit{Hexokinase induced fit}'' (Wikipedia: \url{https://commons.wikimedia.org/wiki/File:Hexokinase_induced_fit.svg}).}
+}
+ 
+\label{fig:induced-fit}
+\end{minipage} 
+\end{figure}
+
+\item[$\triangleright$] The \textbf{interaction is extremely specific}: the protein can discriminate among thousands of different molecules that are present in its environment and selectively bind only to a particular type of molecule.  A given protein may have separate binding sites for several different ligands. These specific molecular interactions are crucial for the preservation of the living systems. In fact, all organisms and cells survive only because they interact effectively with their environments, hence extraneous molecules must be distinguished as either useful or dangerous and dealt with accordingly.  In these context, the specificity of the protein's interactions, discriminating among the several molecules, is a crucial tool for the organism to be aware of their environment.\footnote{This discussion excludes the binding of water, which may interact weakly and non specifically with many parts of a protein.}  
+
 \item[$\triangleright$] The binding of a protein and ligand is often coupled to a conformational change in the protein that makes the binding site more complementary to the ligand, allowing a tighter binding. The structural adaptation that occurs between protein and ligand is called \textbf{induced fit}.
+
+\item[$\triangleright$] Proteins are flexible. Changes in conformation may be subtle, reflecting molecular vibrations and small movements of amino acid residues throughout the protein. A protein flexing in this way is sometimes said to ``\textit{breathe}''. Changes in conformation may also be substantial, with major segments of the protein structure moving as much as several nanometers. Specific conformational changes are frequently fundamental to a protein's function. 
 \item[$\triangleright$] In a multisubunit protein, a conformational change in one subunit often affects the conformation of other subunits. 
 \item[$\triangleright$] Interactions between ligands and proteins may be regulated, usually through specific interactions with one or more additional ligands. These other ligands may cause conformational changes in the protein that affect the binding of the first ligand.  
 \end{itemize}
+
 
 The following section provides an insight on the changes in entropy during the binding process.
 
@@ -616,7 +632,7 @@ The following section provides an insight on the changes in entropy during the b
 
 %The understanding of how ligands bind to proteins is of fundamental importance in biology and medicine.\footnote{The structures of protein-ligand complexes at atomic resolution make possible, for example, the design of small-molecule drugs for the treatment of disease \cite{dunn2001protein}.} Indeed, the protein-ligand interactions are crucial for the determination of the biological functions and, as a consequence, these interactions underlie almost all processes occuring in living organisms. In fact, every aspect of the structure, growth and replication of an organism depends in general on the way the proteins bind ligands (i.e. small molecules, nucleic acids, peptides, other proteins, polysaccharides or lipid) \cite{creighton2010biophysical}.
 
-The association processes that bring to the formation of the binding between a protein and its ligand, also known as \textcolor{ForestGreen}{protein-ligand} complexation\footnote{A protein–ligand complex is a complex of a protein bound with a ligand.}, occurs when the free-energy of the whole system (protein, ligand and solvent) is lower for the complexed state, $G^\text{(c)}$, than for the uncomplexed one, $G^\text{(uc)}$. Defining the difference between $G^\text{(c)}$ and $G^\text{(uc)}$ as $\Delta G$, it is possible to divide $\Delta G$ into the following two terms:
+The association processes that bring to the formation of the binding between a protein and its ligand, also known as protein-ligand complexation\footnote{A protein–ligand complex is a complex of a protein bound with a ligand.}, occurs when the free-energy of the whole system (protein, ligand and solvent) is lower for the complexed state, $G^\text{(c)}$, than for the uncomplexed one, $G^\text{(uc)}$. Defining the difference between $G^\text{(c)}$ and $G^\text{(uc)}$ as $\Delta G$, it is possible to divide $\Delta G$ into the following two terms:
 \begin{equation*}
 \label{free-en}
 \Delta G = G^\text{(c)} - G^\text{(uc)} = \Delta H - T \Delta S
@@ -644,14 +660,7 @@ where $\Delta S_\text{solv}$ is the entropy change arising from accompanying mod
 
 For each of these states, the configurational entropy represents a measure of the extent of the configuration space accessible to the internal degrees of freedom of the protein-ligand subsystem. In this way, the concept of configurational entropy is strongly connected to that of free-energy landscape and, as a consequece, a full characterization of the protein-ligand free-energy landscape is of fundamental importance to understand the relationship between the configurational entropy and the protein structure and the variation of these quantities upon ligand binding and conformational change. Unfortunately, the configurational entropy is known as one of the most difficult thermodynamic quantities to estimate and the characterization of the protein free-energy landscape is a difficult task due to its complexity and, in particular, to the fact that it is rugged, i.e., it comprises numerous local minima separated by low free-energy barriers \cite{chong2015dissecting}. 
 
-In this regard, it was a keen insight to suppose that the protein configurational entropy $S_\text{config}$ may be characterized just by two terms, namely: 
-\begin{equation*}
-\label{entropy-variation:configurational}
-\Delta S_\text{intr} \equiv \Delta S_\text{config} = \Delta S_\text{conf} + \Delta S_\text{vib}
-\end{equation*}
-where  $S_\text{conf}$ is the conformational components of the configurational entropy associated with the number of accessible free-energy wells \footnote{Sometimes, specially studying the protein folding phenomena, $\Delta S_\text{config}$ and  $\Delta S_\text{conf}$ might be used interchangeably even if they are not the same. This is why, in the protein folding process usually $\Delta S_\text{vib} \simeq 0$, hence $\Delta S_\text{conf} \simeq S_\text{conf}$ \cite{karplus1987configurational}.}, whereas $S_\text{vib}$ is the vibrational component that reflects the average width of the individual wells \cite{chong2015dissecting, karplus1987configurational}.%\footnote{Although attempts to dissect the relative magnitudes of different thermodynamic effects have been criticized as not formally correct, it remains helpful in understanding protein stability to estimate these individual contributions 
-%\cite{doig1995side}.}.
-\begin{figure}%[h]
+\begin{figure}[h]
 \centering
 \begin{minipage}[t]{0.8\textwidth}
 \centering
@@ -662,6 +671,13 @@ where  $S_\text{conf}$ is the conformational components of the configurational e
 \label{fig:generation-of-microcan_state}
 \end{minipage} 
 \end{figure}
+In this regard, it was a keen insight to suppose that the protein configurational entropy $S_\text{config}$ may be characterized just by two terms, namely: 
+\begin{equation*}
+\label{entropy-variation:configurational}
+\Delta S_\text{intr} \equiv \Delta S_\text{config} = \Delta S_\text{conf} + \Delta S_\text{vib}
+\end{equation*}
+where  $S_\text{conf}$ is the conformational components of the configurational entropy associated with the number of accessible free-energy wells \footnote{Sometimes, specially studying the protein folding phenomena, $\Delta S_\text{config}$ and  $\Delta S_\text{conf}$ might be used interchangeably even if they are not the same. This is why, in the protein folding process usually $\Delta S_\text{vib} \simeq 0$, hence $\Delta S_\text{conf} \simeq S_\text{conf}$ \cite{karplus1987configurational}.}, whereas $S_\text{vib}$ is the vibrational component that reflects the average width of the individual wells \cite{chong2015dissecting, karplus1987configurational}.%\footnote{Although attempts to dissect the relative magnitudes of different thermodynamic effects have been criticized as not formally correct, it remains helpful in understanding protein stability to estimate these individual contributions 
+%\cite{doig1995side}.}.
 
 This subdivision of $\Delta S_\text{config}$ in two different contributions was suggested for the first time in 1981 by Karplus and Kushickt \cite{karplus1981method}. Although, in 1994, Mark and van Gunsteren criticized these types of models that attempt to decompose the free-energy into a sum of several contributions arising from different thermodynamic effects \cite{mark1994decomposition}, it has been shown that meaningful decompositions are possible and, if made carefully, they can be very useful \cite{lazaridis2002thermodynamics}.
 

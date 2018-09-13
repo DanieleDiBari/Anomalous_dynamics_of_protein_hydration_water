@@ -1,13 +1,16 @@
 %\chapter{Introduction to molecular dynamics simulations with NAMD and VMD}
 \chapter{Molecular dynamics simulations}
 
-DA SISTEMARE (vecchia introduzione al capitolo)\\
-Thermal neutron scattering, which is sensitive to the dynamics and the structure of condensed matter on the atomic scale, gives precise information about atomic fluctuations and dynamics in proteins, enhancing an average view of all atomic contributions.
-In this way, as seen in section \ref{}, with simple analytical models it is possible to analyze some basic feautures of the protein spectra. However, due to the high complexity of these systems, usually their internal dynamics is too complicated to for a quantitative interpretation in terms of such models based almost only upon average information. 
+The experimental method employed in this thesis is Molecular Dynamics (MD) simulation, it is one of the most extended computer simulation techniques in material science and biophysics. In short, MD is used to calculate the time evolution of a classical many-body system by numerically integrating Newton's equations of motion. It is currently applied to a large spectrum of systems, from nanomaterials to biomolecules.This method provides two key features, it offers atomistic-level resolution and allows for the calculation of transport properties and relaxation constants since it does not disrupt the kinetics of the system. However, when applied to large systems, the sampling is limited by the current computational resources, e.g. the typical limit for a system of 100,000 atoms is the microsecond timescale \cite{kalimeri2014thesis}.
 
-To overcome this limitation of neutron scattering it is possible to use computer simulations, and in particular Molecular Dynamics (MD) simulations, that enable to gain a wider insight into the dynamics of proteins that are not provided from the neutron scattering experiments. The combination of both methods access in the same time and space domains, and the comparison of simulated and measured spectra is thoroughly direct, since neutrons are diffused by the atomic nuclei (neglecting magnetic scattering), which are the actual objects of study of MD simulations. Once an alignment between simulated and experimental spectra is found, thus the experimental data supports the data obtained from the computer simulation, then the simulated trajectories can be analyzed in detail and information not accessible from experiments can be extracted from computer simulations.
+In the first section an introduction to the basic concepts of the MD simulation is presented. In the second section an insight on the MD simulation of proteins is shown - since proteins are complex systems they require specific techniques developed \textit{ad hoc}. In the last section of the chapter the software used to execute the simulations for this thesis are briefly explained.
 
-In this sense, computer simulations that are built upon the actual experimental data, can overcome the limitations of neutron scattering and grasp the more complex spectra of the proteins.\footnote{Some interesting applications, relevant to the interpretation of quasielastic neutron scattering and concerning the simulation-based development of models for slow protein dynamics, are discussed in Kneller's lecture \cite{ref:QNS_Keller}.}
+%Thermal neutron scattering, which is sensitive to the dynamics and the structure of condensed matter on the atomic scale, gives precise information about atomic fluctuations and dynamics in proteins, enhancing an average view of all atomic contributions.
+%In this way, as seen in section \ref{}, with simple analytical models it is possible to analyze some basic feautures of the protein spectra. However, due to the high complexity of these systems, usually their internal dynamics is too complicated for a quantitative interpretation in terms of such models based almost only upon average information. 
+
+%To overcome this limitation of neutron scattering it is possible to use computer simulations, and in particular Molecular Dynamics (MD) simulations, that enable to gain a wider insight into the dynamics of proteins that are not provided from the neutron scattering experiments. The combination of both methods access in the same time and space domains, and the comparison of simulated and measured spectra is thoroughly direct, since neutrons are diffused by the atomic nuclei (neglecting magnetic scattering), which are the actual objects of study of MD simulations. Once an alignment between simulated and experimental spectra is found, thus the experimental data supports the data obtained from the computer simulation, then the simulated trajectories can be analyzed in detail and information not accessible from experiments can be extracted from computer simulations.
+
+%In this sense, computer simulations that are built upon the actual experimental data, can overcome the limitations of neutron scattering and grasp the more complex spectra of the proteins.\footnote{Some interesting applications, relevant to the interpretation of quasielastic neutron scattering and concerning the simulation-based development of models for slow protein dynamics, are discussed in Kneller's lecture \cite{ref:QNS_Keller}.}
 
 \section{Introduction to molecular dynamics simulations}
 MD simulations are one of the principal tools in the theoretical study of biomolecules providing informations on thermal fluctations of atoms in a molecule as well as informations about relative positions of molecules and atoms in dependence of time. In fact, MD is a computational method which allows to calculate the time dependent behavior of complex molecular system (e.g. proteins, nucleic acids, etc.) and hence it is generally used to describe such systems in terms of a realistic atomic model, with the aim to understand and predict macroscopic properties based on detailed knowledge on an atomic scale. Indeed, starting from an atomistic level, MD simulations are used to predict and better understand the properties of complex materials. In this way MD providea a direct route from the microscopic details of a system (the masses of the atoms, the interactions between them, etc.) to macroscopic properties of experimental interest (the equation of state, transport coefficients and so on). In particular, usually biomolecular MD simulations are used to gain insight into ligand binding, enzymatic activities, signalling mechanisms and protein folding \cite{ref:NAMD-VMD_Kukol}. Additionally simulations are valuable tools for the refinement of electron microscopy, x-ray, inelastic neutron scattering or other spectroscopic data in order to obtain more accurate molecular structures.
@@ -260,6 +263,9 @@ Finally, the equation for the potential energy describing the force field can be
 
 \subsubsection{Boundary condition}
 To avoid surface effects at the boundary of the simulated system, periodic boundary conditions are often used in MD simulations; the particles are enclosed in a cell that is replicated to infinity by periodic translations. A particle that leaves the cell on one side is replaced by a copy entering the cell on the opposite side, and each particle is subject to the potential from all other particles in the system including images in the surrounding cells, thus entirely eliminating surface effects (but not finite-size effects). Because every cell is an identical copy of all the others, all the image particles move together, consequently they should be represented only once inside the molecular dynamics code.
+
+However, because the van der Waals and electrostatic interactions exist between every nonbonded pair of atoms in the system (including those in neighboring cells) computing the long-range interaction exactly is unfeasible. To perform this computation, the van der Waals interaction is spatially truncated at a user-specified cutoff distance. For a simulation using periodic boundary conditions, the system periodicity is exploited to compute the full (nontruncated) electrostatic interaction with minimal additional cost using the particle-mesh Ewald (PME) method described in the next paragraph.
+
 \begin{figure}[H]
 \centering
 \begin{minipage}[t]{0.75\textwidth}
@@ -274,19 +280,12 @@ To avoid surface effects at the boundary of the simulated system, periodic bound
 \end{minipage} 
 \end{figure}
 
-However, because the van der Waals and electrostatic interactions exist between every nonbonded pair of atoms in the system (including those in neighboring cells) computing the long-range interaction exactly is unfeasible. To perform this computation, the van der Waals interaction is spatially truncated at a user-specified cutoff distance. For a simulation using periodic boundary conditions, the system periodicity is exploited to compute the full (nontruncated) electrostatic interaction with minimal additional cost using the particle-mesh Ewald (PME) method described in the next paragraph.
-
 \vspace{0.25cm}
 
 \begin{center}
 {\textbf{\textit{Full Electrostatic Computation}}}
 \end{center}
 Ewald summation is a description of the long-range electrostatic interactions for a spatially limited system with periodic boundary conditions. The infinite sum of charge-charge interactions for a charge-neutral system is conditionally convergent, meaning that the result of the summation depends on the order in which it is taken. Ewald summation specifies the order as follows: sum over each box first, then sum over spheres of boxes of increasingly larger radii. Ewald summation is considered more reliable than a cutoff scheme, although it is noted that the artificial periodicity can lead to bias in free energy, and can artificially stabilize a protein that should have unfolded quickly.
-
-The particle-mesh Ewald (PME) method is a fast numerical method to compute the Ewald sum. The cost of PME is proportional to $N \log N$ and the time reduction is significant even for a small system of several hundred atoms. 
-The strict conservation of energy resulting from the computed force is crucial and is strongly assisted by maintaining the symplecticness of the integrator, as discussed further below.
-However the PME method does not conserve energy and momentum simultaneously, but momentum conservation can be enforced by subtracting the net force from the reciprocal sum computation, albeit at the cost of a small long-time energy drift.
-
 \begin{figure}[H]
 \centering
 \begin{minipage}[t]{0.8\textwidth}
@@ -300,6 +299,10 @@ However the PME method does not conserve energy and momentum simultaneously, but
     }
 \end{minipage} 
 \end{figure}
+
+The particle-mesh Ewald (PME) method is a fast numerical method to compute the Ewald sum. The cost of PME is proportional to $N \log N$ and the time reduction is significant even for a small system of several hundred atoms. 
+The strict conservation of energy resulting from the computed force is crucial and is strongly assisted by maintaining the symplecticness of the integrator, as discussed further below.
+However the PME method does not conserve energy and momentum simultaneously, but momentum conservation can be enforced by subtracting the net force from the reciprocal sum computation, albeit at the cost of a small long-time energy drift.
 
 \subsection{Numerical Integration}
 Biomolecular simulations often require millions of time steps. Furthermore, biological systems are chaotic; trajectories starting from slightly different initial conditions diverge exponentially fast and after a few picoseconds are completely uncorrelated. However, highly accurate trajectories is not normally a goal for biomolecular simulations; more important is a proper sampling of phase space. Therefore, for constant energy (NVE ensemble) simulations, the key features of an integrator are not only how accurate it is locally, but also how efficient it is, and how well it preserves the fundamental dynamical properties, such as energy, momentum, time-reversibility, and symplecticness.
