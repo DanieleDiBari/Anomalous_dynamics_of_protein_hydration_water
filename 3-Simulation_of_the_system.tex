@@ -1,11 +1,55 @@
 \chapter{Simulation of the system}
-Nel presente capitolo sono illustrate le metodologie ed i risultati del lavoro sperimentale di questa tesi. 
+Nel presente capitolo sono illustrate le metodologie ed i risultati del lavoro sperimentale svolto in maniera originale nel corso della tesi per sviluppare delle particolari simulazioni di dinamica molecolare di alcuni sistemi di interesse scientifico.
 
-In particolare, i sistemi prevalentemente studiati sono soluzioni di proteine in polvere, ovvero poco idratati. Oltre che da un punto di vista puramente scientifico, lo studio di questo tipo di sistemi risulta molto ineteressante per quanto riguarda, per esempio, campi di ricerca applicata che concernono lo studio e la progettazione di farmaci in cui il principio attivo è costituito da proteine\footnote{With the significant advancements in biologics and biopharmaceutical over the years, peptides and proteins have emerged with a host of new applications in the diagnostic as well as the therapeutic sector. As per the current calculations, the market for peptide and protein drugs is estimated around 10\% of the entire pharmaceutical market and will make up an even larger proportion of the market in the future. Since early 1980s, a total 239 therapeutic proteins and peptides are approved for clinical use by US-FDA (United States -- Food and Drug Administration \cite{\url{10.1371/journal.pone.0181748}}}. D'altra parte, questo tipo di sistemi in polvere, sono solitamente molto studiati con la spettroscopia neutronica che è in grado di fornire molte informazioni, in particolare sulla dinamica delle proteine.  
+In particolare, i sistemi prevalentemente analizzati in silico sono soluzioni in polvere (ovvero poco idratate) di proteine e acqua. Lo studio di questo tipo di sistemi con una bassa percentuale di idratazione, oltre che da un punto di vista puramente scientifico, risulta molto ineteressante anche da un punto di vista applicativo per quanto riguarda, per esempio, campi di ricerca che concernono lo studio e la progettazione di farmaci in cui il principio attivo è costituito da proteine\footnote{With the significant advancements in biologics and biopharmaceutical over the years, peptides and proteins have emerged with a host of new applications in the diagnostic as well as the therapeutic sector. As per the current calculations, the market for peptide and protein drugs is estimated around 10\% of the entire pharmaceutical market and will make up an even larger proportion of the market in the future. Since early 1980s, a total 239 therapeutic proteins and peptides are approved for clinical use by US-FDA (United States -- Food and Drug Administration [\url{10.1371/journal.pone.0181748}]}. 
+Per questo, sistemi di proteine in polveri sono molto studiati sperimentalmente e, in particolare, questo viene fatto di solito attraverso la spettroscopia neutronica.
+This technique, which is sensitive to the dynamics and the structure of condensed matter on the atomic scale, gives precise information about mean atomic fluctuations and dynamics in proteins, enhancing an average view of all atomic contributions.
+However, due to the high complexity of these systems, usually the internal dynamics of such systems is too complicated for a quantitative interpretation at an atomistic detail starting from the average information obtained from neutron scattering.
 
-%Thermal neutron scattering is sensitive to the dynamics and the structure of condensed matter on the atomic scalegives precise information about atomic fluctuations and dynamics in proteins, enhancing an average view of all atomic contributions.
-%However, due to the high complexity of these systems, usually their internal dynamics is too complicated for a quantitative interpretation. 
+In this context, computer simulations, and in particular Molecular Dynamics (MD) simulations, enable to gain a wider insight into the dynamics of proteins that are not provided from neutron scattering and in general from any real experiments. 
+Simulated trajectories can be analyzed in detail and information not accessible from experiments can be extracted from computer simulations\footnote{For some interesting applications, on to the interpretation of neutron scattering, see the Kneller's lecture: ``\textit{Quasielastic Neutron Scattering}'' \cite{ref:QNS_Keller}.}.
 
-%Computer simulations, and in particular Molecular Dynamics (MD) simulations, enable to gain a wider insight into the dynamics of proteins that are not provided from neutron scattering and in general from any real experiments. The combination of both methods access in the same time and space domains, and the comparison of simulated and measured spectra is thoroughly direct, since neutrons are diffused by the atomic nuclei (neglecting magnetic scattering), which are the actual objects of study of MD simulations. Once an alignment between simulated and experimental spectra is found, thus the experimental data supports the data obtained from the computer simulation, then the simulated trajectories can be analyzed in detail and information not accessible from experiments can be extracted from computer simulations.
+L'obbiettivo di questa tesi è infatti proprio quello di realizzare delle simulazioni delle forme apo e holo di una particolare proteina in ambienti polvesi che potranno permettere di ricavare preziose informazioni sull'interazioni che contribuiscono alla formazione del protein-ligand complex. Nello specifico, the protein and the ligand simulated are:
+\begin{center}
+\begin{minipage}{0.65\textwidth}
+\begin{itemize}
+\item[\textbf{Protein:}] Maltose-Binding Protein (MBP), also known as Maltosedextrin-Binding Protein
+\vspace{-0.2cm}
+\item[\textbf{Ligand:}] Maltose (Malt)
+\end{itemize}
+\end{minipage}
+\end{center}
+The MBP is a well studied model protein that plays an important role in the metabolism of Escherichia coli, e.g., in the energy-dependent translocation of maltose and maltodextrins through the cytoplasmic membrane \cite{paciaroni2008fingerprints}.
+
+
+%sebbene esistano diversi software per realizzare delle simulazioni di MD per studiare biomolecole, nel caso di sistemi scarsamente idratati   delle proteine proteine simulazioni di proteine in ambienti scarsamente idratati non sono abbasta
+
+
+Pertanto, nella prima sezione è descritta la realizzazione delle varie simulazioni realizzate nel corso della tesi. Nella seconda e nella terza sezione, invece, sono riportate alcune misure ottenute dell'analisi delle traiettorie simulate per studiare 
+
+\section{Simulations}
+Nella maggior parte dei casi, i sistemi studiati in ambito biologico sono abbondantemente idratati. Per questo motivo programmi come NAMD, che permettono di creare abbastanza rapidamente delle simulazioni di sistemi biologici che sono il più possibile accurate ed efficienti, sono sviluppati considerando principalemente sistemi molto diluti. Nel caso delle simulazioni di proteine in polveri, tuttavia, la realizzazione delle simulazioni si complica notevolemente. In particolare, a causa della scarsità di molecole d'acqua, la costruzione dello stato iniziale può risultare abbastanza difficoltosa.
+
+Per studiare la dinamica delle proteine in sistemi molto diluiti, di solito è sufficiente simulare una sola proteina in una box d'acqua abbastanza grande da evitare l'autointerazione della proteina con se stessa a causa delle condizioni di periodicità al contorno. In questi sistemi, è facile costruire queste box in modo tale che le molecole d'acqua, disposte casualemente all'interno della box, circondino totalmente la proteina e riempiono la completamente la box. 
+ Nel  Le dimensioni della scatola che contiene la proteina è quindi abbastanza più grande della  in cui  Le condizioni periodiche al contorno fanno  sistemi molto diluiti
+
+
+ Questi valori sono stati scelti per permettere, in futuro, di utilizzare le simulazioni realizzate nel corso del presente lavoro per analizzare in dettaglio i risultati di alcune misure fatte con i neutroni by Paciaroni and colleges, not yet published.
+Su questi sistemi sono state fatte di recente delle misurazioni di scattering di neutroni performed by Paciaroni and colleges, not yet published. Per questo, i sistemi simulati, non solo forniranno fin da subito nuove informazioni, ma potranno anche essere utilizzati in futuro per analizzare in dettaglio i risultati delle misure fatte con i neutroni.
+ Inoltre, su questi sistemi sono state fatte di recente delle misurazioni di scattering di neutroni performed by Paciaroni and colleges, not yet published. Perciò, oltre ai dati originali su questo tipo di sistemi ottenuti in questa tesi, le simulazioni qui sviluppate potranno essere utilizzate in futuro anche per analizzare in dettaglio i risultati delle misure fatte con i neutroni. 
+Il motivo per cui si è deciso di simulare questo tipo di sistemi è che 
+I valori di idratazione scelti per la simulazione dei due sistemi sono stati fissati in modo tale da essere consistenti con quelli di campioni fisici su cui sono state svolte di recente delle misurazioni di scattering di neutroni, not yet published, performed by A. Paciaroni and colleges at ILL. In questo modo, 
+
+ In più, 
+
+and 
+in modo tale da fornire dei che permetterann al confronto con misure sperimentali, i quali sono  delle misure di scattering di neutroni con le quali sarà possibile confrontare i dati
+MBP and Maltose have been chosen in order to compare some of the simulations' results with the measurements of inelastic neutron scattering performed on these systems by A. Paciaroni and colleges at ILL, not yet published.
+
+
+La simulazione di sistemi poco idratati come questi Si è deciso di realizzare questo tipo di simulazioni L'utilità di questo tipo di simulazioni Questo tipo di simulazioni La Maltose Binding Protein (nota anche come Maltosedextrin Binding Protein -- abbreviata MBP). Nella sua holo form, l'MPB è legata con una moleca di maltosio (MBP+Malt) in un'ambiente in polvere e
+
+
+Lo scopo di questa tesi è infatti proprio quello di realizzare delle simulazioni di una particolare proteina, la Maltose Binding Protein (nota anche come Maltosedextrin Binding Protein -- abbreviata MBP), in un'ambiente in polvere con un'idratazione del 38\% (rapporto in massa fra il solvente ed il soluto, rispettivamente, acqua ed MBP) e d
 
 %In this sense, computer simulations that are built upon the actual experimental data, can overcome the limitations of neutron scattering and grasp the more complex spectra of the proteins.\footnote{Some interesting applications, relevant to the interpretation of quasielastic neutron scattering and concerning the simulation-based development of models for slow protein dynamics, are discussed in Kneller's lecture \cite{ref:QNS_Keller}.}
