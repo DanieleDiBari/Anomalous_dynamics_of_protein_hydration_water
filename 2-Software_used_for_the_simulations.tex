@@ -497,66 +497,21 @@ Once the heating process is over and the desired temperature is reached, the sim
 The last step of the simulation is the production phase, wherein the system is simulated for the time length required, normally from several hundred $ps$ to $ns$ or more. During this process coordinates,  and eventually also velocities, of the system at different times are stored in the form of trajectories.  These are then used for calculations of mean energy, mean square fluctuations (MSF) between structures etc. From MD simulations, time dependent properties such as correlation functions can also be calculated and these in turn can be related to spectroscopic measurements.
 
 \section{Simulations with NAMD and VMD}\label{sec:software}
+This section is based on the information found in ``\textit{NAMD User's Guide}'' \cite{ref:NAMD_ug}, ``\textit{NAMD Tutorial}'' \cite{ref:NAMD_tutorial}, ``\textit{VMD User's Guide}'' \cite{ref:VMD_ug} of the Theoretical Biophysics Group from the University of Illinois and the Beckman Institute.
 
 \subsection{NAMD}\label{ssec:NAMD-expl}
 NAMD is a parallel molecular dynamics code designed for high-performance simulation of large biomolecular systems. NAMD scales to hundreds of processors on high-end parallel platforms, as well as tens of processors on low-cost commodity clusters, and also runs on individual desktop and laptop computers. NAMD is distributed free of charge with source code at \url{www.ks.uiuc.edu} \cite{ref:NAMD}.
 
-%Introduction to NAND envairoment and explanation of its features useful for this study (or, utilezed in this study)
-%
-%In order to conduct MD simulations, various computer programs have been developed including X-PLOR and CHARMM. These programs were originally developed for serial machines. Simulation of large molecules like protein, however, require enormous computing power. One way to achieve such simulations is to utilize parallel computers. In last 10 years, distributed memory parallel computers have been offering cost-effective computational power. 
-%
-%NAMD was designed to run efficiently on such parallel machines for simulating large molecules. 
-%
-%NAMD is a parallel molecular dynamics code for high-performance simulation of large biomolecular systems developed by the Theoretical and Computational Biophysics Group in the Beckman Institute for Advanced Science and Technology at the University of Illinois at Urbana-Champaign. 
-%
-%
-%NAMD scales to hundreds of processors on high-end parallel platforms, as well as tens of processors on low-cost commodity clusters, and also runs on individual desktop and laptop computers. 
-%
-%NAMD works with AMBER and CHARMM potential functions, parameters, and file formats. 
-%
-
-%
-%\subsection{Introduction - What is NAMD?}
-%
-%\subsection{Molecular Dynamics Concepts and Algorithms}
-%
-%\subsection{Configuration File?}
-%
-%\subsection{Input and Output Files}
-%
-%\subsection{Force Field Parameters}
-%
-%\subsection{NAMD's features useful for this study}
-
-
-%---------------------------------------------------------
-%Based on Charm++ parallel objects, NAMD scales to hundreds of cores for typical simulations and beyond 500,000 cores for the largest simulations. NAMD uses the popular molecular graphics program VMD for simulation setup and trajectory analysis, but is also file-compatible with AMBER, CHARMM, and X-PLOR. NAMD is distributed free of charge with source code. You can build NAMD yourself or download binaries for a wide variety of platforms. 
-
-
-
-
-
-
-
-%\subsection{Molecular Dynamics Concepts and Algorithms}
-%
-%\subsection{xxx}
-
-
-%Molecular dynamics (MD) simulations compute atomic trajectories by solving equations of motion numerically using empirical force fields, such as the CHARMM force field, that approximate the actual atomic force in biopolymer systems. Detailed information about MD simulations can be found in several books such as [1, 55]. 
-
-%In order to conduct MD simulations of complex biomolecular systems, various computer programs have been developed including X-PLOR [13] and CHARMM [12]. These programs were originally developed for serial machines. Simulation of large molecules, however, require enormous computing power. One way to achieve such simulations is to utilize parallel computers. In recent years, distributed memory parallel computers have been offering cost-effective computational power. NAMD was designed to run efficiently on such parallel machines for simulating large molecules. NAMD is particularly well suited to the increasingly popular Beowulf-class PC clusters, which are quite similar to the workstation clusters for which is was originally designed. Future versions of NAMD will also make efficient use of clusters of multi-processor workstations or PCs.
-
-NAMD has several important features:
+NAMD has several important features \cite{ref:NAMD_ug}:
 \begin{itemize}
 \item \textbf{Force Field Compatibility}\\
-The force field used by NAMD is the same as that used by the programs CHARMM [12] and X-PLOR [13]. This force field includes local interaction terms consisting of bonded interactions between 2, 3, and 4 atoms and pairwise interactions including electrostatic and van der Waals forces. This commonality allows simulations to migrate between these three programs.
+The force field used by NAMD is the same as that used by the programs CHARMM \cite{brooks1983charmm} and X-PLOR \cite{brunger1988howard}. This force field includes local interaction terms consisting of bonded interactions between 2, 3, and 4 atoms and pairwise interactions including electrostatic and van der Waals forces. This commonality allows simulations to migrate between these three programs.
 \item \textbf{Efficient Full Electrostatics Algorithms}\\
 NAMD incorporates the Particle Mesh Ewald (PME) algorithm, which takes the full electrostatic interactions into account. This algorithm reduces the computational complexity of electrostatic force evaluation from O($N^2$) to O($N \, \text{log} \, N$).
 \item \textbf{Multiple Time Stepping}\\
 The velocity Verlet integration method is used to advance the positions and velocities of the atoms in time. To further reduce the cost of the evaluation of long-range electrostatic forces, a multiple time step scheme is employed. The local interactions (bonded, van der Waals and electrostatic interactions within a specified distance) are calculated at each time step. The longer range interactions (electrostatic interactions beyond the specified distance) are only computed less often. This amortizes the cost of computing the electrostatic forces over several timesteps. A smooth splitting function is used to separate a quickly varying short-range portion of the electrostatic interaction from a more slowly varying long-range component. It is also possible to employ an intermediate timestep for the short-range non- bonded interactions, performing only bonded interactions every timestep.
 \item \textbf{Input and Output Compatibility}\\
-The input and output file formats used by NAMD are identical to those used by CHARMM and X-PLOR. Input formats include coordinate files in PDB format [6], structure files in X-PLOR PSF format, and energy parameter files in either CHARMM or X-PLOR formats. Output formats include PDB coordinate files and binary DCD trajectory files. These similarities assure that the molecular dynamics trajectories from NAMD can be read by CHARMM or X-PLOR and that the user can exploit the many analysis algorithms of the latter packages.
+The input and output file formats used by NAMD are identical to those used by CHARMM and X-PLOR. Input formats include coordinate files in PDB format \cite{bernstein1977protein}, structure files in X-PLOR PSF format, and energy parameter files in either CHARMM or X-PLOR formats. Output formats include PDB coordinate files and binary DCD trajectory files. These similarities assure that the molecular dynamics trajectories from NAMD can be read by CHARMM or X-PLOR and that the user can exploit the many analysis algorithms of the latter packages.
 \item \textbf{Dynamics Simulation Options}\\
 MD simulations may be carried out using several options, including:
 \begin{itemize}
@@ -572,7 +527,7 @@ MD simulations may be carried out using several options, including:
 \item[$\circ$] Spherical or cylindrical boundary restraints
 \end{itemize}
 \item \textbf{Easy to Modify and Extend}\\
-Another primary design objective for NAMD is extensibility and maintainability. In order to achieve this, it is designed in an object-oriented style with C++. Since molecular dynamics is a new field, new algorithms and techniques are continually being developed. NAMD’s modular design allows one to integrate and test new algorithms easily. If you are contemplating a particular modification to NAMD you are encouraged to contact the developers for guidance.
+Another primary design objective for NAMD is extensibility and maintainability. In order to achieve this, it is designed in an object-oriented style with C++. Since molecular dynamics is a new field, new algorithms and techniques are continuously being developed. NAMD's modular design allows one to integrate and test new algorithms easily. 
 \item \textbf{Interactive MD simulations}\\
 A system undergoing simulation in NAMD may be viewed and altered with VMD; for instance, forces can be applied to a set of atoms to alter or rearrange part of the molecular structure. 
 \item \textbf{Load Balancing}\\
@@ -581,43 +536,43 @@ An important factor in parallel applications is the equal distribution of comput
 
 In order to run any MD simulation, NAMD requires at least the following files \cite{ref:NAMD-VMD_Kukol}:
 \begin{itemize}
-\item A Protein Data Bank file (.pdb) which stores atomic coordinates and/or velocities for the system.
-\item A Protein Structure File (.psf) which stores structural information of the protein, such as various types of bonding interactions.
-\item A force field parameter file (.par) that contains all of the numerical constants needed to evaluate forces and energies, given a PSF structure file and atomic coordinates. The force fields that NAMD is able to use are: CHARMM, X-PLOR, AMBER, and GROMACS. 
-\item a configuration file (.conf), in which the user specifies all the options that NAMD should adopt in running a simulation. The configuration file tells NAMD how the simulation is to be run.
+\item[$\triangleright$] A Protein Data Bank file (.pdb) which stores atomic coordinates and/or velocities for the system.
+\item[$\triangleright$] A Protein Structure File (.psf) which stores structural information of the protein, such as various types of bonding interactions.
+\item[$\triangleright$] A force field parameter file (.par) that contains all of the numerical constants needed to evaluate forces and energies, given a PSF structure file and atomic coordinates. The force fields that NAMD is able to use are: CHARMM, X-PLOR, AMBER, and GROMACS. 
+\item[$\triangleright$] A configuration file (.conf), in which the user specifies all the options that NAMD should adopt in running a simulation. The configuration file tells NAMD how the simulation is to be run.
 \end{itemize}
 During the simulation, several types of output data may be written by NAMD. In particular, at the end of every simulation, NAMD returns at least two files: 
 one containing the final coordinates of all atoms in the system and the other containing the final velocities of all atoms in the system; 
 the extensions for these files are (.coor) and (.vel), respectively. During the simulation, NAMD can also create a binary file that contains the atomic coordinates at different times, that are written over the course of a simulation. This file provides a discrete trajectory of the system over the runtime. 
 
-In addition, when NAMD runs, it also prints on the standard output a log of the simulation which it is often redirect into a (.log) file. This file can hold important information on the progress of the simulation. In particular, the values of the energy (kinetic, bounded, unbounded and so forth), temperature and pressure of the system during the simulation. The unit of measurement used by NAMD are: kcal/mol for the energies, bar for the pressures and Kelvin for the temperatures.
+In addition, when NAMD runs, it also prints on the standard output a log of the simulation which it is often redirected into a (.log) file. This file can hold important information on the progress of the simulation. In particular, the values of the energy (kinetic, bounded, unbounded and so forth), temperature and pressure of the system during the simulation. The unit of measurement used by NAMD are: kcal/mol for the energies, bar for the pressures and Kelvin for the temperatures.
 
-\subsubsection{PDB files}
-The term PDB can refer to the Protein Data Bank (\url{http://www.rcsb.org/pdb/}), to a data file provided there, or to any file following the PDB format. Files in the PDB include information such as the name of the compound, the species and tissue from which is was obtained, authorship, revision history, journal citation, references, amino acid sequence, stoichiometry, secondary structure locations, crystal lattice and symmetry group, and finally the ATOM and HETATM records containing respectively the coordinates of the protein and any waters, ions, or other heterogeneous atoms in the crystal. Some PDB files include multiple sets of coordinates for some or all atoms. Due to the limits of x-ray crystallography and NMR structure analysis, the coordinates of hydrogen atoms are not included in the PDB.
+\subsubsection{PDB files}\label{sssec:PDB}
+The term PDB can refer to the Protein Data Bank (\url{http://www.rcsb.org/pdb/}), to a data file provided there, or to any file following the PDB format \cite{bernstein1977protein}. Files in the PDB include information such as the name of the compound, the species and tissue from which it was obtained, authorship, revision history, journal citation, references, amino acid sequence, stoichiometry, secondary structure locations, crystal lattice and symmetry group, and finally the ATOM and HETATM records containing respectively the coordinates of the protein and any waters, ions, or other heterogeneous atoms in the crystal. Some PDB files include multiple sets of coordinates for some or all atoms. Due to the limits of X-ray crystallography and NMR structure analysis, the coordinates of hydrogen atoms are not included in the PDB.
 
 \subsubsection{PSF files}
 A PSF file, also called a protein structure file, contains all of the molecule-specific information needed to apply a particular force field to a molecular system. 
 
-The CHARMM force field is divided into a topology file, which is needed to generate the PSF file, and a parameter file, which supplies specific numerical values for the generic CHARMM potential function. The topology file defines the atom types used in the force field; the atom names, types, bonds, and partial charges of each residue type; and any patches necessary to link or otherwise mutate these basic residues. The parameter file provides a mapping between bonded and nonbonded interactions involving the various combinations of atom types found in the topology file and specific spring constants and similar parameters for all of the bond, angle, dihedral, improper, and van der Waals terms in the CHARMM potential function.
+The CHARMM force field is divided into a topology file, which is needed to generate the PSF file, and a parameter file, which supplies specific numerical values for the generic CHARMM potential function. The topology file defines the atom types used in the force field; the atom names, types, bonds, and partial charges of each residue type; and any patches necessary to link or otherwise mutate these basic residues. The parameter file provides a mapping between bonded and non-bonded interactions involving the various combinations of atom types found in the topology file and specific spring constants and similar parameters for all of the bond, angle, dihedral, improper, and van der Waals terms in the CHARMM potential function.
 
 \subsubsection{Topology and parameter files}
 A CHARMM forcefield topology file contains all of the information needed to convert a list of residue names into a complete PSF structure file. It also contains internal coordinates that allow the automatic assignment of coordinates to hydrogens and other atoms missing from a crystal PDB file.
 
 A CHARMM forcefield parameter file contains all of the numerical constants needed to evaluate forces and energies, given a PSF structure file and atomic coordinates. The parameter file is closely tied to the topology file that was used to generate the PSF file, and the two are typically distributed together and given matching names.
 
-Often the topology files are used only in the phases of the preparation of the system, before that the simulation starts. On the other hand, the parameter files are needed during the integration of the equation of motions to evaluate the forces. Hence, the parameter files are use during all the simulation.
+Often the topology files are used only in the phases of the preparation of the system, before the simulation starts. On the other hand, the parameter files are needed during the integration of the equation of motions to evaluate the forces. Hence, the parameter files are use during all the simulation.
 
 The last versions of the CHARMM forcefield, used in this work, is CHARMM36.
 
 \subsubsection{Configuration files}
-The NAMD configuration file, also called a config file, (.conf) file, or (.namd) file, is given to NAMD on the command line and specifies virtually everything about the simulation to be done. The only exceptions are details relating to the parallel execution environment, which vary between platforms. Therefore, the config file should be portable between machines, platforms, or numbers of processors in a run, as long as the referenced input files are available.
+The NAMD configuration file, also called a \textit{config file}, (.conf) file, or (.namd) file, is given to NAMD on the command line and specifies virtually everything about the simulation to be done. The only exceptions are details relating to the parallel execution environment, which vary between platforms. Therefore, the \textit{config file} should be portable between machines, platforms, or numbers of processors in a run, as long as the referenced input files are available.
 
 
 
 \subsection{VMD}
-VMD (Visual Molecular Dynamics) is a molecular visualization and analysis program designed for biological systems such as proteins, nucleic acids, lipid bilayer assemblies, etc. The program is developed by the Theoretical and Computational Biophysics Group at the University of Illinois at Urbana-Champaign. Among molecular graphics programs, VMD is unique in its ability to efficiently operate on large biomolecular complexes and long-timescale molecular dynamics trajectories, its interoperability with a large number of molecular dynamics simulation tools, its integration of structure and sequence information, and its built-in support for advanced image rendering and movie making.
+VMD (Visual Molecular Dynamics) is a molecular visualization and analysis program designed for biological systems such as proteins, nucleic acids, lipid bilayer assemblies, etc. The program is developed by the Theoretical and Computational Biophysics Group at the University of Illinois at Urbana-Champaign. Among molecular graphics programs, VMD is unique in its ability to efficiently operate on large biomolecular complexes and long-timescale molecular dynamics trajectories, its interoperability with a large number of molecular dynamics simulation tools, its integration of structure and sequence information, and its built-in support for advanced image rendering and movie making \cite{humphrey1996vmd}.
 
-Key features of VMD include:
+Key features of VMD include \cite{ref:VMD_ug}:
 \begin{itemize}
 \item[$\triangleright$] General 3-D molecular visualization with extensive drawing and coloring methods and strong support for visualization of molecular dynamics
 \item[$\triangleright$] Supports all major molecular data file formats, with no limits to structure or trajectory sizes except memory capacity and addressing
