@@ -46,7 +46,7 @@ When studying the dynamics of proteins in very diluted systems, frequently it is
 	\centering
     \includegraphics[width=0.70\textwidth]{dil-1omp.jpg}
     
-    \footnotesize{\caption{Example of a MBP in a highly hydrated cubic box of $80 \times 80 \times 80$ $\AA^3$. Picture realized with VMD.}
+    \footnotesize{\caption{Example of a MBP in a highly hydrated cubic box of $80 \times 80 \times 80$ $\AA^3$. \textit{Picture realized with VMD.}}
     \label{fig:diluted-syst}
     }
 \end{minipage} 
@@ -61,8 +61,18 @@ On the other hand, in the case of powder solutions, due to the reduced number of
 %Se si costruisce una box delle dimensioni pari circa a quelle della proteina, le auto interazioni sono tutt'altro che trascurabili rendendo il sistema simulato ampiamente diverso da quello reale che si intende studiare. Inoltre, a causa della forma inregolare della proteina e della scarsità di molecole d'acqua, anche in questo caso le ridotte dimensioni della box non garantirebbere l'assenza di vuoti all'interno della box.
 \end{enumerate}
 
-INSERIRE IMMAGINE: tentativo di creare una conf. a 8 proteine per 1omp\\
-\\
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{pbc-1omp-cube-wrongbox02.png}
+    
+    \footnotesize{\caption{Example of a large box containing a MBP in a poor hydrated solution. After several time simulations, alternating phases of heating in NVT and equilibration in NPT, the final state is still physically unacceptable. \textit{Picture realized with VMD.}}
+    \label{fig:wrong-hydr}
+    }
+\end{minipage} 
+\end{figure}
+
 These type of complications imply that even if real experiments are performed in powder samples, very often, hydrated systems are however simulated for simplification. For example, in 2004, Balog et al. made an experiment of neutron scattering and showed that a particular protein in the holo form vibrates more intensively at lower frequencies (between 50 and 500 GHz) compared to the same protein in the apo form.
 In 2011, also Balog along with other colleges, performed a series of MD simulations to deepen the analysis of the previously studied systems. Even if the interesting results collected were a product of the analysis of simulations that represented much more hydrates solutions from those studied with neutrons.
 %Questo tipo di complicazione fa si che, anche se si svolgono esperimenti reali su campioni in polvere, molto spesso si simulano comunque sistemi idratati. Ad esempio, nel 2004, Balog et al. fecero un esperimento di neutron scattering e mostrarono che una patricolare proteina nella forma holo vibra più intensamente alle basse frequenze (fra $500$ e $50$ GHz) rispetto alla stessa proteina nella forma apo. Nel 2011, sempre Balog insieme ad altri colleghi, realizzò una serie di MD simulazioni per approfondire l'analisi dei sistemi studiato precedentemente. Sebbene i risultati interessanti che ottenerro, di fatto nelle loro simulazioni vennero fatti evolvere dinamicamente dei sistemi che di fatto rappresentavano soluzioni molto più idratate di quelle studiate con i neutroni.\footnote{Per ovviare a questo, dopo l'evoluzione dinamica dei sistemi abbondantemente idratati, rimossero l'acqua in eccesso ed effettuarono una minimizzazione localizzata dell'energia utilizzando the ABNR (adopted basis Newton Raphson) method -- a minimization method applied in a small subspace of the molecule.}
@@ -87,45 +97,111 @@ The main programs used for this phase were: NAMD \cite{ref:NAMD} and VMD \cite{h
 %Il programma principalemnte utilizzati in questa fase sono stati: NAMD \cite{ref:NAMD} and VMD \cite{humphrey1996vmd} e per ottenere la configurazione iniziale dei vari sistemi diversi script originali in tcl sono stati scritti. In particolare, i passi principali che sono stati messi in pratica sono:
 \begin{itemize}
 \item \textbf{Getting the PDB files}\\
-The (.pdb) files representing the three-dimensional structures of the systems that are to be studied were retrieved from the site \url{http://www.rcsb.org/}. The selected files were, respectively, \textit{1anf.pdb} for MBP and Malt \cite{quiocho1997extensive} and \textit{1omp.pdb} for MBP \cite{sharff1992crystallographic}.
+The (.pdb) files representing the three-dimensional structures of the systems that are to be studied were retrieved from the site: \url{http://www.rcsb.org/}. The selected files were, respectively, \textit{1omp.pdb} for MBP \cite{sharff1992crystallographic} and \textit{1anf.pdb} for MBP+Malt \cite{quiocho1997extensive}.
 %Sul sito \url{http://www.rcsb.org/} si sono per individuati i files .pdb ottenuti tramite X-ray crystallography che rappresentano le strutture tridimensionali dei sistemi che si intende studiare. Rispettivamente, \textit{1anf.pdb} per MBP+Malt \cite{quiocho1997extensive} e \textit{1omp.pdb} per MBP \cite{sharff1992crystallographic}.
+%\begin{center}
+%{\large \textbf{CHRYSTAL STRUCTURES}}
+%\end{center}
+\vspace{-0.25cm}
+\begin{figure}[h]
+\begin{center}
+\begin{minipage}[t]{0.9\textwidth}
+\centering
+\hspace{0.75cm}
+\includegraphics[width=0.45\textwidth]{mbp.jpg}
+\hspace{0.2cm}
+\includegraphics[width=0.45\textwidth]{mbp+malt.jpg}
+\end{minipage} 
+
+\hspace{1.65cm}
+\textbf{MBP}
+\hspace{4.75cm}
+\textbf{MBP+Maltose}
+
+\hspace{0.6cm}
+\textbf{(}\small{PDB code: 1omp}\textbf{)}
+\hspace{3.8cm}
+\textbf{(}\small{PDB code: 1anf}\textbf{)}
+\end{center}
+
+\vspace{-0.25cm}
+    \footnotesize{\caption{Chrystal structures of the studied system. \textit{Picture realized with VMD.}}
+    \label{fig:pdb-structures}
+    }
+\end{figure}
 
 \item \textbf{Generating the PSF files}\\
-Using the \textit{psfgen} package of VMD, brief scripts in tcl language were implemented that allow to create the (.psf) file of each system from their (.pdb) file. Moreover, during this phase, the coordinates of the hydrogen atoms were added. Indeed, in the structures described in the (.pdb) file downloaded from the web, the hydrogen atoms were missing because those structures were obtained by X-ray crystallography. The (.top) files used, were the ones related to forcefield CHARMM36 that was decided to use for the simulations -- they were downloaded from the site: \url{http://mackerell.umaryland.edu/charmm_ff.shtml}. \\
-\\
-INSERIRE IMMAGINE: proteina apo e proteina holo\\
+Using the \textit{psfgen} package of VMD, brief scripts in tcl language were implemented that allow to create the (.psf) file of each system from their (.pdb) file. Moreover, during this phase, the coordinates of the hydrogen atoms were added. Indeed, in the structures described in the (.pdb) file downloaded from the web, the hydrogen atoms were missing because those structures were obtained by X-ray crystallography. The (.top) files used, were the ones related to forcefield CHARMM36 that was decided to use for the simulations -- they were downloaded from the site: \url{http://mackerell.umaryland.edu/charmm_ff.shtml}. 
 
 \item \textbf{Building the 3D arrangement of the 8 proteins in a powder}\\
-Initially, as it is usual in powder system simulations \cite{rahaman2017configurational, fichou2015molecular}, an attempt to arrange the eight proteins in the vertex of the unit cell indicated in the files \textit{1anf.pdb} and \textit{1omp.pdb} was made. In both cases, the original samples were triclinic crystal and this would have implied a complication in the data analysis for taking into account the periodic conditions -- in a triclinic crystal the vectors of the unit cell are of unequal length and the angles between them are all different, hence the boundary conditions applied on such systems are more complex than those usually applied on orthorhombic crystal\footnote{For orthorhombic crystals, the angles between the vectors of the unit cell are all of 90$^\circ$}. Furthermore, in the \textit{1anf.pdb} (MBP+Malt), the dimensions of the unit cell were bigger with respect to the protein dimensions and this would have lead to the problematic described in the first scenario of the previous section. \\
+Initially, as it is usual in powder system simulations \cite{rahaman2017configurational, fichou2015molecular}, an attempt to arrange the eight proteins in the vertex of the unit cell indicated in the files \textit{1anf.pdb} and \textit{1omp.pdb} was made. In both cases, the original samples were triclinic crystal and this would have implied a complication in the data analysis for taking into account the periodic conditions -- in a triclinic crystal the vectors of the unit cell are of unequal length and the angles between them are all different, hence the boundary conditions applied on such systems are more complex than those usually applied on orthorhombic crystal\footnote{For orthorhombic crystals, the angles between the vectors of the unit cell are all of 90$^\circ$}. Furthermore, in the \textit{1anf.pdb} (MBP+Malt), the dimensions of the unit cell were bigger with respect to the protein dimensions and this would have lead to the problematic described in the first scenario of the previous section.
+\begin{figure}[h]
+\begin{center}
+\begin{minipage}[t]{0.9\textwidth}
+\centering
+\hfill
+\includegraphics[width=0.45\textwidth]{1anf-l8.png}
+\hspace{0.65cm}
+\includegraphics[width=0.45\textwidth]{1omp-l8.png}
+\hfill
+\end{minipage} 
+
+\hspace{1.5cm}
+\textbf{MBP}
+\hspace{4.75cm}
+\textbf{MBP+Maltose}
+
+    \footnotesize{\caption{3D arrangement of the proteins in two studied systems. \textit{Picture realized with VMD.}}
+    \label{fig:protein-box}
+    }
+\end{center}
+\end{figure}
+
 %Inizialmente, as usual for simulations of powder systems \cite{rahaman2017configurational}, si è provato a posizionare le otto proteine ai vertici della celle unitarie dei crystal lattices indicati, rispettivamente, nei file \textit{1anf.pdb} e \textit{1omp.pdb}. In entrambi i casi, i sistemi studiati con la cristallografia erano dei triclinic crystal e questo avrebbe comportato una complicazione nell'analisi dati per tenere conto delle condizioni periodiche -- in a triclinic crystal the vectors of the unit cell are of unequal length and the angles between them are all different, hence the boundary conditions applied on these systems are more complex than those usually applied on orthorhombic crystal\footnote{For orthorhombic crystals, the angles between the vectors of the unit cell are all of 90$^\circ$}. Per di più, in \textit{1anf.pdb} (MBP+Malt), la dimensione della cella unitaria era molto grande rispetto alla dimensione dela proteina e questo avrebbe portato alla condizione problematica descritta nel primo scenario nella sezione precedente.\\
-\\
-INSERIRE IMMAGINE: reticoli di 1anf e 1omp\\
-\\
 Therefore, considering that powders are actually highly disordered and hence do not present a real crystal structure, to solve these problems, the eight proteins were arranged in an arbitrary configuration, chosen to get an orthorhombic box with the proteins packed as mush as possible. In order to achieve this, several scripts were implemented to relocate and rotate the various proteins, so that in the end, using the package \textit{topotools} of VMD \cite{vmd-topotools}, the following files could be created:
 %Quindi, considerando che in realtà le polveri sono altamente disordinate e non presentano una vera struttura cristallina, si è pensato di posizionare le otto proteine in una configurazione arbitraria che è scelta in modo da avere una box di orthorhombic shape e un sistema il più compatto possibile. Per fare questo si sono implementati vari script per spostare e ruotare le diverse proteine, così da crare alla fine, utilizzando il pacchetto \textit{topotools} di VMD \cite{vmd-topotools}, i files:
 \begin{itemize}
 \item[$\triangleright$] \textit{1anf-l8.pdb} and \textit{1anf-l8.psf} -- positions and structure of the MBP+Malt systems.
 \item[$\triangleright$] \textit{1omp-l8.pdb} and \textit{1omp-l8.psf} -- positions and structure of the MBP systems.
 \end{itemize}
-In any case, finding an optimal configuration is quite complicated, in fact, several attempts were needed to find the right configuration in the end (see Fig. \ref{}). The final configuration is shown in Fig. \ref{}. \\
-\\
-INSERIRE IMMAGINE: configurazione 8 proteine di 1anf e 1omp\\
-\\
+In any case, finding an optimal configuration is quite complicated, in fact, several attempts were needed to find the right configuration in the end. The final configuration is shown in Fig. \ref{fig:protein-box}.
+
 \item \textbf{Adding water}\\
 The values of hydration $h$ selected to simulate both systems, were chosen to allow, in the future, to use the results collected by Paciaroni and colleagues, which measurements were made with neutrons, their results have not yet been published. In this sense, the MBP+Malt hydration value was established at $h = 35.6\%$  (which corresponds to circa 6,488 molecules of water) and MBP with $h = 34.8\%$ (which would represent 6,289 molecules of water).
 Thus, the simulated systems may provide not only interesting information from the beginning, but can also be used in the future to analyze in detail the results obtained with the neutrons.\\
-In particular, when adding water to the systems, some tcl scripts were realized using the packages: solvate, psfgen and topotools of VMD. For each one of the systems a box filled with water was created in such a way, that it would contain all eight proteins and to leave 6A   of distance between the proteins and the surface of the box. In this way the molecules of water, located randomly surrounded the protein entirely, Nevertheless, the number of water molecules added of both systems were more than the ones needed to obtain the desired quantity of hydration. For this reason, after adding the water, some H2O molecules that were at a distance x from the protein were removed.
+%Per i valori di idratazione dell'idratazione $h$ da ricreare per i due sistemi, si è deciso di simulare MBP+Malt con $h = 35.6\%$ (corrispondente a circa 6,488 molecole di acqua) e MBP con $h = 34.8\%$ (corrispondente a  6,289). Questi valori sono stati scelti per permettere, in futuro, di utilizzare le simulazioni realizzate nel corso del presente lavoro per analizzare in dettaglio i risultati di alcune misure fatte con i neutroni by Paciaroni and colleges, not yet published. In questo modo i sistemi simulati, non solo forniranno fin da subito nuove informazioni, ma potranno anche essere utilizzati in futuro per analizzare in dettaglio i risultati delle misure fatte con i neutroni.\\
+Specifically, to add water to the systems, some tcl scripts were realized using the packages: \textit{solvate}, \textit{psfgen} and \textit{topotools} of VMD. For each one of the systems a box filled with water was created in such a way, that it would contain all eight proteins and to leave 6 $\AA$ of distance between the proteins and the surfaces of the box. In this way the molecules of water, located randomly in the box surrounded entirely the protein. Nevertheless, the number of water molecules added in both systems were more than the ones needed to obtain the desired quantity of hydration. For this reason, after adding the water, the H$_2$O molecules with a distance greater than a fixed quantity $x$ from their nearest protein were removed. Changing the value of the $x$, change the total number of H$_2$O still in the box. Hence, for each one of the systems, a certain $x$ was selected to obtain the number of water molecules required. This was possible because the starting configurations \textit{1anf-l8.pdb} and \textit{1omp-l8.pdb} were compact enough and therefore, even after the removal of some water molecules no empty regions of great dimensions were created between the proteins. The results, saved in \textit{1anf-hyd.pdb} and \textit{1omp-hyd.pdb} (and the associated PSF files) are displayed in Fig. \ref{fig:water-box}.
+%Nello specifico, per aggiungere l'acqua ai sistemi, sono stati implementati alcuni script in tcl utilizzando i pacchetti: \textit{solvate}, \textit{psfgen} and \textit{topotools} di VMD. In particolare, per ognuno dei due sistemi si è creata una box piena d'acqua tale da contenere tutte e otto le proteine e da lasciare 6$\AA$ di distanza fra le proteine e le superfici della box. In questo modo le molecole d'acqua posizionate casualemente hanno circondato completamente le proteine. Tuttavia, il numero di molecole d'acqua aggiunte in questo modo nei due sistemi è risutlato troppo elevato rispetto al numero di molecole d'acqua necessarie per ottenere le idratazioni volute. Per questo motivo, dopo aver aggiunto l'acqua, si provveduto a rimuovere le molecole di H$_2O$ distanti più di una certa quantità $x$ dalle proteine. Per ognuno dei due sistemi, si è scelta perciò una $x$ tale da ottenere il numero di molecole d'acqua richiesto. Questo è stato possibile proprio grazie al fatto che le configurazioni di partenza \textit{1anf-l8.pdb} e \textit{1omp-l8.pdb} erano molto compatte e quindi, anche dopo aver rimosso le molecole d'acqua non si sono creati regioni vuote fra le proteine di dimensioni eccessive. I risultati, salvati in \textit{1anf-hyd.pdb} e \textit{1omp-hyd.pdb} (più i relativi file PSF associati) sono mostrati in Fig. \ref{}
 
-Per i valori di idratazione dell'idratazione $h$ da ricreare per i due sistemi, si è deciso di simulare MBP+Malt con $h = 35.6\%$ (corrispondente a circa 6,488 molecole di acqua) e MBP con $h = 34.8\%$ (corrispondente a  6,289). Questi valori sono stati scelti per permettere, in futuro, di utilizzare le simulazioni realizzate nel corso del presente lavoro per analizzare in dettaglio i risultati di alcune misure fatte con i neutroni by Paciaroni and colleges, not yet published. In questo modo i sistemi simulati, non solo forniranno fin da subito nuove informazioni, ma potranno anche essere utilizzati in futuro per analizzare in dettaglio i risultati delle misure fatte con i neutroni.\\
-Nello specifico, per aggiungere l'acqua ai sistemi, sono stati implementati alcuni script in tcl utilizzando i pacchetti: \textit{solvate}, \textit{psfgen} and \textit{topotools} di VMD. In particolare, per ognuno dei due sistemi si è creata una box piena d'acqua tale da contenere tutte e otto le proteine e da lasciare 6$\AA$ di distanza fra le proteine e le superfici della box. In questo modo le molecole d'acqua posizionate casualemente hanno circondato completamente le proteine. Tuttavia, il numero di molecole d'acqua aggiunte in questo modo nei due sistemi è risutlato troppo elevato rispetto al numero di molecole d'acqua necessarie per ottenere le idratazioni volute. Per questo motivo, dopo aver aggiunto l'acqua, si provveduto a rimuovere le molecole di H$_2O$ distanti più di una certa quantità $x$ dalle proteine. Per ognuno dei due sistemi, si è scelta perciò una $x$ tale da ottenere il numero di molecole d'acqua richiesto. Questo è stato possibile proprio grazie al fatto che le configurazioni di partenza \textit{1anf-l8.pdb} e \textit{1omp-l8.pdb} erano molto compatte e quindi, anche dopo aver rimosso le molecole d'acqua non si sono creati regioni vuote fra le proteine di dimensioni eccessive. I risultati, salvati in \textit{1anf-hyd.pdb} e \textit{1omp-hyd.pdb} (più i relativi file PSF associati) sono mostrati in Fig. \ref{}
-\\
-INSERIRE IMMAGINE: configurazione 8 proteine di 1anf e 1omp + H2O\\
-\\
+\begin{figure}[h]
+\begin{center}
+\begin{minipage}[t]{0.9\textwidth}
+\centering
+\hfill
+\includegraphics[width=0.45\textwidth]{1omp-hyd.png}
+\hspace{0.5cm}
+\includegraphics[width=0.45\textwidth]{1anf-hyd.png}
+\hfill
+\end{minipage} 
+
+\hspace{1cm}
+\textbf{MBP}
+\hspace{4.75cm}
+\textbf{MBP+Maltose}
+
+    \footnotesize{\caption{Box of the two systems after the adding of water. \textit{Picture realized with VMD.}}
+    \label{fig:water-box}
+    }
+\end{center}
+\end{figure}
+
 \item \textbf{Adding ions}\\
-Alla fine, a causa della presenza di residui carichi elettricamente nella MBP che non si bilanciano completamente si riscontra che proteina presenta una carica elettrica complessiva pari a -8. Nello specifio, i resiudui carichi in una MBP sono: 37 Lys (+), 27 Glu (-), 24 Asp (-), 6 Arg(-). Pertanto per rendere neutri i sistemi simulati è stato necessario aggiungere degli ioni alle soluzioni acquose. Questo è stato fatto utilizzando il pacchetto \textit{autoionize} di VMD. Le strutture ottenute sono possono essere così utilizzate per iniziare la fase di minimizzazione nell'energia.
+Finally, due to the presence of residues electrically charged in the MBP that do not balance entirely in the system, the protein exhibit a net electric charge. Precisely, the charged residues in an MBP are: 37 Lys (+), 27 Glu (-), 24 Asp (-), 6 Arg(-); hence the MBP has an electric charge of -8. To restore the electrical neutrality of the simulated systems, it was necessary to add ions to the water solution. This was possible using the \textit{autoionize} package of VMD. The structures obtained in this way, can be used to start the energy minimization phase.
+%Alla fine, a causa della presenza di residui carichi elettricamente nella MBP che non si bilanciano completamente si riscontra che proteina presenta una carica elettrica complessiva pari a -8. Nello specifio, i resiudui carichi in una MBP sono: 37 Lys (+), 27 Glu (-), 24 Asp (-), 6 Arg(-). Pertanto per rendere neutri i sistemi simulati è stato necessario aggiungere degli ioni alle soluzioni acquose. Questo è stato fatto utilizzando il pacchetto \textit{autoionize} di VMD. Le strutture ottenute sono possono essere così utilizzate per iniziare la fase di minimizzazione nell'energia.
 
 \item \textbf{Minimization}\\
-In questa fase si iniziato ad utilizzare NAMD. Il forcefield utilizzato è CHARMM36 ed i principali parametri impostati nel \textit{config} file, per entrambi i sistemi, sono\footnote{Come riferimento al significato dei vari comandi si rimanda alla ``\textit{NAMD User's guide}'' reperibile sul sito \url{https://www.ks.uiuc.edu/Research/namd/2.12/ug.pdf} \cite{ref:NAMD_ug}}:\\
+In this phase NAMD were largely employed. The forcefield adopted was CHARMM36 and the main parameters set in the \textit{config} file, for both systems, were\footnote{As a reference of the NAMD commands see ``\textit{NAMD User's guide}'' retrievable at \url{https://www.ks.uiuc.edu/Research/namd/2.12/ug.pdf} \cite{ref:NAMD_ug}}:\\
+%In questa fase si iniziato ad utilizzare NAMD. Il forcefield utilizzato è CHARMM36 ed i principali parametri impostati nel \textit{config} file, per entrambi i sistemi, sono\footnote{Come riferimento al significato dei vari comandi si rimanda alla ``\textit{NAMD User's guide}'' reperibile sul sito \url{https://www.ks.uiuc.edu/Research/namd/2.12/ug.pdf} \cite{ref:NAMD_ug}}:\\
 \begin{center}
 \textbf{Forcefield parameters:}
 \vspace{-0.25cm}
@@ -140,13 +216,25 @@ In questa fase si iniziato ad utilizzare NAMD. Il forcefield utilizzato è CHARM
 \end{array}
 \end{equation*}
 \end{center}
-Il numero di steps per la minimizzazione è stato impostato a 5,000. Come si può vedere dalla Fig. \ref{}, questo numero di steps è sufficiente a raggiungere un minimo locale sufficientemente stabile, infatti anche se si aumentasse ulteriormente il numero di steps non si otterrebbe una diminuzione significativa dell'energia totale.\\
-\\
-INSERIRE IMMAGINE: energy minimization di 1anf e 1omp\\
-\\
+The number of steps for the minimization process are set as 5,000. As shown in Fig. \ref{fig:energy-min}, this number of steps is enough to achieve a quite stable local minimum, indeed, an increase of the number of steps would not produce a significant decrease in the total energy.
+%Il numero di steps per la minimizzazione è stato impostato a 5,000. Come si può vedere dalla Fig. \ref{}, questo numero di steps è sufficiente a raggiungere un minimo locale sufficientemente stabile, infatti anche se si aumentasse ulteriormente il numero di steps non si otterrebbe una diminuzione significativa dell'energia totale.\\
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.775\textwidth}
+	\centering
+    \includegraphics[width=0.95\textwidth]{first-minimization.png}
+    
+    \footnotesize{\caption{Results of the energy minimization. \textit{Picture realized with QtGrace.}}
+    \label{fig:energy-min}
+    }
+\end{minipage} 
+\end{figure}
+
 
 \item \textbf{Heating and NPT equilibration}\\
-In questa fase inizia la vera e propria evoluzione dinamica del sistema. Per arrivare ad una ad avere i sistemi in un buono stato a 300K si sono effettuata una serie di simulazioni di 1 $ns$ ciascuna dove si sono alterante fasi di heating in NVT e equilibrature in NPT. Le temperature intermedie sono state: 60 K, 120 K, 180 K, 240 K, 270 K, 285 K, 300 K. I parametri principali impostati nei \textit{conifg} files, per queste simulazioni, sono stati\footnote{I parametri per il forcefield sono stati lasciati uguali a quelli impostati per la minimizzazione.}:
+The real dynamic evolution of the system starts in this phase. To achieve an acceptable state of the system at 300 K a series of simulations at 1 $ns$ were performed, alternating heating in NVT and NPT equilibration. The intermediate temperatures for the heating process were: 60 K, 120 K, 180 K, 240 K, 270 K, 285 K, 300 K. The main parameters in the \textit{config} files for this simulations were set as shown in the following tables\footnote{The forcefield parameters were the same as the ones for the minimization.}:
+%In questa fase inizia la vera e propria evoluzione dinamica del sistema. Per arrivare ad una ad avere i sistemi in un buono stato a 300K si sono effettuata una serie di simulazioni di 1 $ns$ ciascuna dove si sono alterante fasi di heating in NVT e equilibrature in NPT. Le temperature intermedie sono state: 60 K, 120 K, 180 K, 240 K, 270 K, 285 K, 300 K. I parametri principali impostati nei \textit{conifg} files, per queste simulazioni, sono stati\footnote{I parametri per il forcefield sono stati lasciati uguali a quelli impostati per la minimizzazione.}:
 \begin{center}
 \begin{minipage}{0.45\textwidth}
 \begin{center}
@@ -202,12 +290,14 @@ In questa fase inizia la vera e propria evoluzione dinamica del sistema. Per arr
 \end{equation*}
 \end{center}
 
-Il risultato di queste simulazioni per il sistema MBP è riportato nelle Fig. \ref{} dove sono mostrati i grafici dell'andamento dell'energia e del volume durante queste simulazioni e Fig. \ref{} dopo è mostrato una sorta di riassunto della simulazione da due angolazioni diverse. Come si può vedere, alla fine di questa fase, la configurazione assunta dal sistema è abbastanza compatta e non presenta regioni vuote che non sarebbero sappresentative del sistema reale che si vuole studiare. Analoghi risultati, non sono stati riportati qui solo per motivi di spazio, sono stati raggiunti anche per MBP+Malt.\\
+The results of these simulations for the MBP system are reported in Fig. \ref{} and Fig. \ref{}. In the first figure are displayed the energy and the volume of the simulated system as a function of the time. In Fig. \ref{} are shown three frames drawn from the simulations that represent a sort of summary of the evolution of the MBP system during the heating and NPT equilibration phase. As one can observe, at the end of the simulations, the configuration assumed by the system is reasonably packed and does not display any empty regions, thus it provides a good starting point for simulations of the MBP powder. The results obtained for the MBP+Malt system are not displayed in this section, because they are similar to those of the MBP system. 
+%Il risultato di queste simulazioni per il sistema MBP è riportato nelle Fig. \ref{} dove sono mostrati i grafici dell'andamento dell'energia e del volume durante queste simulazioni e Fig. \ref{} dopo è mostrato una sorta di riassunto della simulazione da due angolazioni diverse. Come si può vedere, alla fine di questa fase, la configurazione assunta dal sistema è abbastanza compatta e non presenta regioni vuote che non sarebbero sappresentative del sistema reale che si vuole studiare. Analoghi risultati, non sono stati riportati qui solo per motivi di spazio, sono stati raggiunti anche per MBP+Malt.\\
 \\
 INSERIRE IMMAGINI: ht and NPT eq 1omp\\
 
 \item \textbf{Equilibration}\\
-Questa è stata l'ultima fase della preparazione dello stato iniziale delle simulazioni. Si è eseguita una equilibratura di 100 $ns$ in NPT a 300 K su ciascun sistema. Per fare questo, ciascuna simulazione è stata divisa in due run da 50 $ns$ e, andando a svolgere delle simulazioni per tempi lunghi, si è tenuto conto che questi sistemi sono più stabili rispetto a quelli che erano stati trattati nella fase precedente permettendo così di aumentare sia il \textit{timestep}, da 1 $fs$ a 2 $fs$, che il \textit{PMEGridSpacing}, da 1.3 a 2, e ridurre così i costi computazionali. In Fig. \ref{} sono riportati i grafici dell'andamento del volume e dell'energia totale dei due sistemi nel corso dell'equilibratura.\\ 
+This is the last phase of the preparation of the starting state of the simulations. An NPT equilibration of 100 $ns$ at 300 K was carried out for each system. In order to achieve this, each simulation was divided into two runs of 50 $ns$. Moreover, it was evident that these systems were more stable in comparison to those manipulated in the previous phase, hence allowing to raise the \textit{timestep} from 1 $fs$ to 2 $fs$ and the \textit{PMEGridSpacing} from 1.3 to 2, and thus reducing the computational costs. In Fig. \ref{} the graphs on the evolution of the volume and the total energy of both systems are displayed. \\
+%Questa è stata l'ultima fase della preparazione dello stato iniziale delle simulazioni. Si è eseguita una equilibratura di 100 $ns$ in NPT a 300 K su ciascun sistema. Per fare questo, ciascuna simulazione è stata divisa in due run da 50 $ns$ e, andando a svolgere delle simulazioni per tempi lunghi, si è tenuto conto che questi sistemi sono più stabili rispetto a quelli che erano stati trattati nella fase precedente permettendo così di aumentare sia il \textit{timestep}, da 1 $fs$ a 2 $fs$, che il \textit{PMEGridSpacing}, da 1.3 a 2, e ridurre così i costi computazionali. In Fig. \ref{} sono riportati i grafici dell'andamento del volume e dell'energia totale dei due sistemi nel corso dell'equilibratura.\\ 
 \\
 INSERIRE IMMAGINI: grafici V e TOT eq lunghe\\
 \end{itemize} 
