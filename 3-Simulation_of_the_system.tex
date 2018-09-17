@@ -189,4 +189,23 @@ Questa è stata l'ultima fase della preparazione dello stato iniziale delle simu
 INSERIRE IMMAGINI: grafici V e TOT eq lunghe\\
 \end{itemize} 
 
+\subsection{An appropriate water model}
+Puntando a realizzare delle simulazioni che possano essere utilizzare per analizzare più approfonditamente i dati emersi da recenti neutron scattering experiments, è bene andare tenere in considerazione l'ulteriore risultato ottenuto da Tarek e Tobias nel loro articolo \cite{tarek2000dynamics}. 
+Regarding the water model considered in the calculation, it appears that results obtained with the SPC/E model are in much better agreement with neutron scattering experiments than TIP3P. This was clearly demonstrated by the density of states and the dynamical susceptibility, where both the modification of water dynamics from bulk behavior by the protein environment and its temperature dependence were accurately reproduced over a broad frequency range. The overall agreement with neutron data validates the methodologies and potential used, and provides a solid ground for accurately describing the water motion in relation to the protein dynamics and function
+
+Nonbonded interactions between pairs of atoms  are represented by the last two terms. By definition, the nonbonded forces are only applied to atom pairs separated by at least three bonds. The van Der Waals (VDW) energy is calculated with a standard 12-6 Lennard-Jones potential and the electrostatic energy with a Coulombic potential. In the Lennard-Jones potential above, the  term is not the minimum of the potential, but rather where the Lennard-Jones potential crosses the x-axis (i.e. where the Lennard-Jones potential is zero)
+
+The atomic LJ parameters ε, rmin are combined with the appropriate mixing rules for a pair of atoms i, j. In the current CHARMM force fields, these are  (geometric mean) and  (arithmetic mean). Note that other force fields may use other mixing rules, such as the geometric instead of the arithmetic mean for Rij
+\begin{equation}
+V_{\text{LJ}} \: = \:\,  \mathlarger{\sum}\limits_{\substack{i, \, j\\j<i}} \: \epsilon_{i j} \left[ \left(\frac{R_{ij}}{r_{ij}}\right)^{12} - 2 \left(\frac{R_{ij}}{r_{ij}}\right)^{6} \right]
+\end{equation}
+
+\begin{equation}
+\epsilon_{i j} \: = \: \sqrt{\epsilon_i \cdot \epsilon_j}
+\end{equation}
+
+\begin{equation}
+R_{i j} \: = \: \frac{R_{i}}{2} + \frac{R_{j}}{2}
+\end{equation}
+
 
