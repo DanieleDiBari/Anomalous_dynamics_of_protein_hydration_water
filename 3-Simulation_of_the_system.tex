@@ -190,22 +190,21 @@ INSERIRE IMMAGINI: grafici V e TOT eq lunghe\\
 \end{itemize} 
 
 \subsection{An appropriate water model}
-Puntando a realizzare delle simulazioni che possano essere utilizzare per analizzare più approfonditamente i dati emersi da recenti neutron scattering experiments, è bene andare tenere in considerazione l'ulteriore risultato ottenuto da Tarek e Tobias nel loro articolo \cite{tarek2000dynamics}. 
-Regarding the water model considered in the calculation, it appears that results obtained with the SPC/E model are in much better agreement with neutron scattering experiments than TIP3P. This was clearly demonstrated by the density of states and the dynamical susceptibility, where both the modification of water dynamics from bulk behavior by the protein environment and its temperature dependence were accurately reproduced over a broad frequency range. The overall agreement with neutron data validates the methodologies and potential used, and provides a solid ground for accurately describing the water motion in relation to the protein dynamics and function
+Un altro importante risultato ottenuto da Tarek e Tobias riguarda the comparison between neutron-scattering experiments and water model used for the simulations.
+In the analysis of their initial results obtained with the TIP3P model \cite{jorgensen1983comparison} for the H$_2$O molecules, they found poor agreement with the neutron data. Therefore, afterward they performed additional simulations with the SPC/E \cite{berendsen1987missing} model for the water molecules to investigate the dependence of the results on the water model. In this way, they discovered that the SPC/E model gives much better agreement than the TIP3P compared with neutron data.  
+In particular this was clearly demonstrated by the density of states and the  the intermediate scattering functions, where both the modification of water dynamics from bulk behavior by the protein environment and its temperature dependence were accurately reproduced over a broad frequency range with the SPC/E model. The overall agreement with neutron data validates the methodologies and potential used, and provides a solid ground for accurately describing the water motion in relation to the protein dynamics and function  \cite{tarek2000dynamics}.
 
-Nonbonded interactions between pairs of atoms  are represented by the last two terms. By definition, the nonbonded forces are only applied to atom pairs separated by at least three bonds. The van Der Waals (VDW) energy is calculated with a standard 12-6 Lennard-Jones potential and the electrostatic energy with a Coulombic potential. In the Lennard-Jones potential above, the  term is not the minimum of the potential, but rather where the Lennard-Jones potential crosses the x-axis (i.e. where the Lennard-Jones potential is zero)
+Quindi, puntando a realizzare delle simulazioni che possano essere utilizzare per analizzare più approfonditamente i dati emersi da recenti misure di neutron scattering, è bene tenere a questo risultato. Actually, nei file che descrivono il forcefield CHARMM (.top e .par), per le molecole d'acqua viene definito solo il modello TIP3P. Per facilitare la creazione degli stati iniziali dei due sistemi, si è deciso utilizzare inizialmente questo modello poiché is the CHARMM36 default model utilizzato per definire la forma e le interazioni delle molecole d'acqua. 
 
-The atomic LJ parameters ε, rmin are combined with the appropriate mixing rules for a pair of atoms i, j. In the current CHARMM force fields, these are  (geometric mean) and  (arithmetic mean). Note that other force fields may use other mixing rules, such as the geometric instead of the arithmetic mean for Rij
-\begin{equation}
-V_{\text{LJ}} \: = \:\,  \mathlarger{\sum}\limits_{\substack{i, \, j\\j<i}} \: \epsilon_{i j} \left[ \left(\frac{R_{ij}}{r_{ij}}\right)^{12} - 2 \left(\frac{R_{ij}}{r_{ij}}\right)^{6} \right]
-\end{equation}
+Realizzati gli stati iniziali si sono quindi andati a modificare i file (.psf) dei due sistemi e ad aggiungere i parametri del modello SPC/E nel file (.par) di CHARMM36. Dopo di che, per stabilizzare i sistemi, si è effettuata un'ulteriore equilibratura a 300 K di 50 $ns$.
 
-\begin{equation}
-\epsilon_{i j} \: = \: \sqrt{\epsilon_i \cdot \epsilon_j}
-\end{equation}
+\subsection{Production phase}
+In questa fase, per studiare le simulazioni e trarre allo stesso tempo informazioni utili sui sistemi studiati, si è deciso di andare di andare ad eseguire due serie si simulazioni:
+\begin{enumerate}
+\item \textbf{Scan in temperature} per misurare la funzione di autorelazione temporale delle posizioni, ovvero i mean square displacement (MSD), degli atomi delle proteine nei diversi sistemi simulati in funzione della temperatura e della finestra temporale su cui viene colata la funzione di correlazione (nota anche come $t_w$ o \textit{time window}). Questo permette di studiare come cambiano le fluttuazioni medie degli atomi delle proteine per i diversi sistemi a diverse temperature. Hence, sono state eseguite several NPT simulations at different temperatures -- precisely: 200 K, 220 K, 240 K, 260 K, 280 K and 300K -- alternano fasi di equilibratura da 5 $ns$ con frequenza di campionamento\footnote{Per frequenza di campionamento si intende la frequenza con cui sono stati salvate le posizioni calcolate durante la simulazione. Una frequenza di campionamento di $(0.4 ps)^{-1}$ che la posizione viene salvata ogni 0.4 $ps$ e che quindi, per una simulazione di 5 $ns$ le traiettorie sono composte di 12,500 frames.} bassa $(1 ns)^{-1}$ e fasi di presa dati altrettanto lunghe dove la frequenza di campionamento è stata alzata a $(0.4 ps)^{-1}$. 
+\item \textbf{Long time simulation} per andare ad approcciare una clustering analysis per studiare i cambiamenti conformazionali delle proteine. In questo caso, sono state fatte delle simulazioni di 1 $\mu s$ a 300 K. 
+\end{enumerate}
+In entrambi i casi, nei \textit{config} files delle diverse simulazioni performed for the production phase, i parametri del forcefield ed il PME sono stati impostati con i stessi setting used in the heating and equilibration phase della realizzazione dello stato iniziale.
 
-\begin{equation}
-R_{i j} \: = \: \frac{R_{i}}{2} + \frac{R_{j}}{2}
-\end{equation}
-
+\section{Results from the simulations}
 
