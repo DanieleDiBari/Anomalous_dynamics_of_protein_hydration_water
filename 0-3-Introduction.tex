@@ -1,16 +1,23 @@
 \chapter*{Introduction} 
 \addcontentsline{toc}{chapter}{Introduction} % aggiunge la bibliografia all'indice
 
-The objective of the thesis is to study, with molecular dynamics simulations, the protein-ligand binding in a specific case to evaluate the change of the conformational entropy upon the complexation taking into account the effect of the hydration water. Molecular Dynamics simulations are used to obtain an atomistic detail of this process.
-The protein and the ligand chose for the simulation are:
-\begin{center}
-\begin{minipage}{0.7\textwidth}
-\begin{itemize}
-\item[] \textbf{Protein:} Maltose-Binding Protein (MBP)
-\vspace{-0.2cm}
-\item[] \textbf{Ligand:} Maltose
-\end{itemize}
-\end{minipage}
-\end{center}
-MBP and Maltose have been chosen in order to compare some of the simulations' results with the measurements of inelastic neutron scattering performed on these systems by A. Paciaroni and colleges at ILL, not yet published.\footnote{MBP is a well studied model protein that plays an important role in the metabolism of Escherichia coli, e.g., in the energy-dependent translocation of maltose and maltodextrins through the cytoplasmic membrane. The ILL-EMBL Deuteration Laboratory (D-Lab) in Grenoble has developed a high-yield expression system to make available significant amounts of hydrogenated and fully deuterated MBP powder
-\cite{paciaroni2008fingerprints}.}
+Proteins are one of the essential components of living systems. Indeed, proteins are at the center of action in the majority of the biological processes, they contribute to the structure of organisms and execute most of the tasks required for the living systems to function.
+
+One of the most used experimental techniques in this field is Molecular Dynamics (MD) simulations that allow to obtain an atomistic-level resolution of the studied systems.
+Starting from an atomistic level, these simulations are used to predict and better understand the properties of complex materials. MD simulations provide a direct route from the microscopic details of a system (the masses of the atoms, the interactions between them, etc.) to macroscopic properties of experimental interest (the equation of state, transport coefficients and so on).
+
+On the other hand, since biological environments are often abundantly hydrated, in most part of the cases, MD simulations of proteins are performed for solutions rich of water. As a consequence, the computer programs that are used to create, easily, efficient simulations of biological systems, are usually developed considering principally very diluted systems. 
+
+Nevertheless, the study of systems with a low hydration, is really important. Not only from a scientific perspective, but also for the potential applications, in particular, in fields that concern the study and the design of pharmaceutical products where the main active substance are proteins.
+With the significant advancements in biology and biopharmacy over the years, peptides and proteins have emerged with a host of new applications in the diagnostic as well as the therapeutic sector. The market for peptide and protein drugs is estimated to be around 10\% of the entire pharmaceutical market and will make up an even larger proportion of the market in the future. Since early 1980s, a total 239 therapeutic proteins and peptides were approved for clinical use by the Food and Drug Administration of the United States.
+
+In the case of the simulations of proteins in powders, the performing of simulations is notably much more difficult. In particular, due to the lack of water molecules, the building of the initial state can become quite cumbersome and difficult. This type of complications imply that even if real experiments are performed in powder samples, very often, hydrated systems are however simulated for simplification. Actually, in literature, simulations of proteins in powders are rarely performed. This justifies the relevance of the present work. 
+
+The objective of this thesis is that of performing simulations of the \textit{apo} and \textit{holo} forms of the Maltose-Binding Protein (MBP) in powder environments that will enhance to collect valuable information about the interactions that contribute to the formation of the protein-ligand complex. Moreover, such simulations can be used, in the future, to analyze in detail the data emerged from recent measures of neutron scattering performed by A. Paciaroni and colleges, whose results have not yet been published.\\
+
+The thesis is divided into three chapters with several subsections:
+\begin{enumerate}
+\item The first chapter called ``Biophysical background'' explains briefly the main concepts from biophysics. It deals with the polymeric nature of proteins, their building blocks, the bonds between the monomeric unit of the proteins, the structure of the proteins, their functionality and the entropic changes upon the binding process.
+\item The second chapter, named ``Molecular Dynamics simulations'', is an introduction to MD simulations of proteins and to the software used to perform and visualize the simulations.
+\item In the third chapter the original methodologies and results of the experimental process are displayed; they were collected and developed during the thesis research with the aim of devising MD simulations that are of relevant scientific interest.
+\end{enumerate}
