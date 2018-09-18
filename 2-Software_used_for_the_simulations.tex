@@ -129,18 +129,11 @@ U \: = \: U_{\text{bonded}} \, + \, U_{\text{non-bonded}}
 The bonded potential $U_{\text{bonded}}$ involve 2 , 3, and 4-body interactions of covalently bonded atoms, with $O(N)$ terms in the summation.\footnote{Indeed, the number of covalent bound is proportional to the number of atoms.}
 The non-bonded potential $U_{\text{non-bonded}}$ involves long-range interactions between all pairs of atoms (usually excluding pairs of atoms already involved in a bonded term), with $O(N^2)$ terms in the summation, although fast evaluation techniques are used to compute good approximations to their contribution to the potential with $O(N)$ or $O(N$ log $N )$ computational cost. The different terms will be explained in more detail in following sections.
 
-\vspace{0.25cm}
-
-\begin{center}
-{\textbf{\textit{Bonded potential terms}}}
-\end{center}
-The bonded potential describes the stretching, bending, and torsional of the covalent bonds. 
-
 \begin{figure}[H]
 \centering
 \begin{minipage}[t]{0.725\textwidth}
 	\centering
-    \includegraphics[width=0.85\textwidth]{bounded_interactions.png}
+    \includegraphics[width=0.725\textwidth]{bounded_interactions.png}
     
     \footnotesize{\caption{Schematic representation of the bonded interaction terms contributing to the force field.
     %: bond stretching, angle bending, proper and improper dihedrals.
@@ -150,6 +143,13 @@ The bonded potential describes the stretching, bending, and torsional of the cov
     }
 \end{minipage} 
 \end{figure}
+
+\begin{center}
+{\textbf{\textit{Bonded potential terms}}}
+\end{center}
+The bonded potential describes the stretching, bending, and torsional of the covalent bonds. 
+
+
 
 \begin{itemize}
 \item[$\blacktriangleright$] \textbf{Bond stretching:}\\
@@ -264,8 +264,6 @@ Finally, the equation for the potential energy describing the force field can be
 \subsubsection{Boundary condition}
 To avoid surface effects at the boundary of the simulated system, periodic boundary conditions are often used in MD simulations; the particles are enclosed in a cell that is replicated to infinity by periodic translations. A particle that leaves the cell on one side is replaced by a copy entering the cell on the opposite side, and each particle is subject to the potential from all other particles in the system including images in the surrounding cells, thus entirely eliminating surface effects (but not finite-size effects). Because every cell is an identical copy of all the others, all the image particles move together, consequently they should be represented only once inside the molecular dynamics code.
 
-However, because the van der Waals and electrostatic interactions exist between every nonbonded pair of atoms in the system (including those in neighboring cells) computing the long-range interaction exactly is unfeasible. To perform this computation, the van der Waals interaction is spatially truncated at a user-specified cutoff distance. For a simulation using periodic boundary conditions, the system periodicity is exploited to compute the full (nontruncated) electrostatic interaction with minimal additional cost using the particle-mesh Ewald (PME) method described in the next paragraph.
-
 \begin{figure}[H]
 \centering
 \begin{minipage}[t]{0.75\textwidth}
@@ -280,6 +278,8 @@ However, because the van der Waals and electrostatic interactions exist between 
 \end{minipage} 
 \end{figure}
 
+However, because the van der Waals and electrostatic interactions exist between every nonbonded pair of atoms in the system (including those in neighboring cells) computing the long-range interaction exactly is unfeasible. To perform this computation, the van der Waals interaction is spatially truncated at a user-specified cutoff distance. For a simulation using periodic boundary conditions, the system periodicity is exploited to compute the full (nontruncated) electrostatic interaction with minimal additional cost using the particle-mesh Ewald (PME) method described in the next paragraph.
+
 \vspace{0.25cm}
 
 \begin{center}
@@ -288,7 +288,7 @@ However, because the van der Waals and electrostatic interactions exist between 
 Ewald summation is a description of the long-range electrostatic interactions for a spatially limited system with periodic boundary conditions. The infinite sum of charge-charge interactions for a charge-neutral system is conditionally convergent, meaning that the result of the summation depends on the order in which it is taken. Ewald summation specifies the order as follows: sum over each box first, then sum over spheres of boxes of increasingly larger radii. Ewald summation is considered more reliable than a cutoff scheme, although it is noted that the artificial periodicity can lead to bias in free energy, and can artificially stabilize a protein that should have unfolded quickly.
 \begin{figure}[H]
 \centering
-\begin{minipage}[t]{0.8\textwidth}
+\begin{minipage}[t]{0.775\textwidth}
 	\centering
     \includegraphics[width=0.325\textwidth]{PME.png}
     
