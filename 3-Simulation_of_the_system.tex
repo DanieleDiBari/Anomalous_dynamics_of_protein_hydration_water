@@ -350,22 +350,106 @@ This is the last phase of the preparation of the starting state of the simulatio
 \end{itemize}
 
 \subsection{An appropriate water model}
-Un altro importante risultato ottenuto da Tarek e Tobias riguarda the comparison between neutron-scattering experiments and water model used for the simulations.
-In the analysis of their initial results obtained with the TIP3P model \cite{jorgensen1983comparison} for the H$_2$O molecules, they found poor agreement with the neutron data. Therefore, afterward they performed additional simulations with the SPC/E \cite{berendsen1987missing} model for the water molecules to investigate the dependence of the results on the water model. In this way, they discovered that the SPC/E model gives much better agreement than the TIP3P compared with neutron data.  
-In particular this was clearly demonstrated by the density of states and the  the intermediate scattering functions, where both the modification of water dynamics from bulk behavior by the protein environment and its temperature dependence were accurately reproduced over a broad frequency range with the SPC/E model. The overall agreement with neutron data validates the methodologies and potential used, and provides a solid ground for accurately describing the water motion in relation to the protein dynamics and function  \cite{tarek2000dynamics}.
+Another important result obtained by Tarek and Tobias concerns the comparison between neutron-scattering experiments and water model used for the simulations. In the analysis of their initial results obtained with the TIP3P model \cite{jorgensen1983comparison} for the H$_2$O molecules, they found poor agreement with the neutron data. Therefore, after they performed additional simulations with the SPC/E \cite{berendsen1987missing} model for the water molecules to investigate the dependence of the results on the water model. They found out that the SPC/E model gives a much better agreement than the TIP3P compared with neutron data. 
+In particular this was clearly demonstrated by the density of states and the intermediate scattering functions, where both the modification of water dynamics from bulk behavior by the protein environment and its temperature dependence were accurately reproduced over a broad frequency range with the SPC/E model. The overall agreement with neutron data validates the methodologies and potential use, and provides a solid ground for accurately describing the water motion in relation to the protein dynamics and function \cite{tarek2000dynamics}.
 
-Quindi, puntando a realizzare delle simulazioni che possano essere utilizzare per analizzare più approfonditamente i dati emersi da recenti misure di neutron scattering, è bene tenere a questo risultato. Actually, nei file che descrivono il forcefield CHARMM (.top e .par), per le molecole d'acqua viene definito solo il modello TIP3P. Per facilitare la creazione degli stati iniziali dei due sistemi, si è deciso utilizzare inizialmente questo modello poiché is the CHARMM36 default model utilizzato per definire la forma e le interazioni delle molecole d'acqua. 
+Thus, pointing at performing simulations that can be used to analyze in detail the data emerged from recent measures of neutron scattering, it is helpful to keep this results in mind. Actually, in the files that describe the forcefield CHARMM (.top e .par), only the TIP3P model is defined for the water molecules. Hench, to simplify the creation of the initial state of both systems, it was decided to use initially this model to define the form and the interactions of the water molecules.
 
-Realizzati gli stati iniziali si sono quindi andati a modificare i file (.psf) dei due sistemi e ad aggiungere i parametri del modello SPC/E nel file (.par) di CHARMM36. Dopo di che, per stabilizzare i sistemi, si è effettuata un'ulteriore equilibratura a 300 K di 50 $ns$.
+Once the initial states were completed, the (.psf) files for both systems and the (.par) file of the forcefield were corrected accordingly to the parameters of the SPC/E. In order to stabilize the new systems, an equilibration of 300 K of 50 $ns$ was carried out.
 
 \subsection{Production phase}
-In questa fase, per studiare le simulazioni e trarre allo stesso tempo informazioni utili sui sistemi studiati, si è deciso di andare di andare ad eseguire due serie si simulazioni:
+During this phase, in order to study the powder systems, it was decided to run two set simulations:
+%In questa fase, per studiare le simulazioni e trarre allo stesso tempo informazioni utili sui sistemi studiati, si è deciso di andare di andare ad eseguire due serie si simulazioni:
 \begin{enumerate}
-\item \textbf{Scan in temperature} per misurare la funzione di autorelazione temporale delle posizioni, ovvero i mean square displacement (MSD), degli atomi delle proteine nei diversi sistemi simulati in funzione della temperatura e della finestra temporale su cui viene colata la funzione di correlazione (nota anche come $t_w$ o \textit{time window}). Questo permette di studiare come cambiano le fluttuazioni medie degli atomi delle proteine per i diversi sistemi a diverse temperature. Hence, sono state eseguite several NPT simulations at different temperatures -- precisely: 200 K, 220 K, 240 K, 260 K, 280 K and 300K -- alternano fasi di equilibratura da 5 $ns$ con frequenza di campionamento\footnote{Per frequenza di campionamento si intende la frequenza con cui sono stati salvate le posizioni calcolate durante la simulazione. Una frequenza di campionamento di $(0.4 ps)^{-1}$ che la posizione viene salvata ogni 0.4 $ps$ e che quindi, per una simulazione di 5 $ns$ le traiettorie sono composte di 12,500 frames.} bassa $(1 ns)^{-1}$ e fasi di presa dati altrettanto lunghe dove la frequenza di campionamento è stata alzata a $(0.4 ps)^{-1}$. 
-\item \textbf{Long time simulation} per andare ad approcciare una clustering analysis per studiare i cambiamenti conformazionali delle proteine. In questo caso, sono state fatte delle simulazioni di 1 $\mu s$ a 300 K. 
+\item \textbf{Scanning in temperature} to measure the temporary auto-corealization function of the atomic positions of the proteins systems, dependent on the temperature and on the time window use to calculate the auto-corealization function. This allows to study how the average fluctuations of the atoms of the proteins change for the different systems. Hence, a series of simulations of 5 $ns$ were performed at different temperatures, namely at: 200 K, 220 K, 240 K, 260 K, 280 K and 300K; alternating phases of heating with the low sampling frequency $(1000 ps)^{-1}$ and phases of equilibration in NPT where the frequency of the sampling was raised to $(0.4 ps)^{-1}$.\footnote{The term sampling frequency is referred to the frequency at which the positions were saved during the simulations. A sampling frequency of $(0.4 ps)^{-1}$ means that the positions was saved every 0.4 $ps$ and therefore, in a 5 $ns$ simulation a trajectory is formed by 12,500 frames.}
+%per misurare la funzione di autorelazione temporale delle posizioni, ovvero i mean square displacement (MSD), degli atomi delle proteine nei diversi sistemi simulati in funzione della temperatura e della finestra temporale su cui viene colata la funzione di correlazione (nota anche come $t_w$ o \textit{time window}). Questo permette di studiare come cambiano le fluttuazioni medie degli atomi delle proteine per i diversi sistemi a diverse temperature. Hence, sono state eseguite several NPT simulations at different temperatures -- precisely: 200 K, 220 K, 240 K, 260 K, 280 K and 300K -- alternano fasi di equilibratura da 5 $ns$ con frequenza di campionamento\footnote{Per frequenza di campionamento si intende la frequenza con cui sono stati salvate le posizioni calcolate durante la simulazione. Una frequenza di campionamento di $(0.4 ps)^{-1}$ che la posizione viene salvata ogni 0.4 $ps$ e che quindi, per una simulazione di 5 $ns$ le traiettorie sono composte di 12,500 frames.} bassa $(1 ns)^{-1}$ e fasi di presa dati altrettanto lunghe dove la frequenza di campionamento è stata alzata a $(0.4 ps)^{-1}$. 
+\item \textbf{Long time simulation} to approach a clustering analysis and study the conformational changes of the proteins. In this case, simulations of 1 $\mu s$ to 300 K were performed.%per andare ad approcciare una clustering analysis per studiare i cambiamenti conformazionali delle proteine. In questo caso, sono state fatte delle simulazioni di 1 $\mu s$ a 300 K. 
 \end{enumerate}
-In entrambi i casi, nei \textit{config} files delle diverse simulazioni performed for the production phase, i parametri del forcefield ed il PME sono stati impostati con i stessi setting used in the heating and equilibration phase della realizzazione dello stato iniziale.
+In both cases, in the \textit{config} files of the different simulations executed during the production phase, the parameters of the forcefield and the PME were set with the same setting used in the heating and equilibration phase during the initial state.
+%In entrambi i casi, nei \textit{config} files delle diverse simulazioni performed for the production phase, i parametri del forcefield ed il PME sono stati impostati con i stessi setting used in the heating and equilibration phase della realizzazione dello stato iniziale.
 
 \section{Results from the simulations}
-The characterization of atomic motions in proteins is essential for understanding their biological relevance; indeed, a huge variety of experimental and theoretical work has been devoted to the subject
+\subsection{Scan in temperatures}
+To perform a first qualitative analysis delle traiettorie da questo tipo di simulazioni, si è computato the mean square displacement (MSD) which is the auto-correlation of the atomic positions. Inoltre, dato che lo scattering di neutroni è prevalentemente deteminato dall'interazione dei neutroni con gli atomi di idrogeno, con l'obiettivo di fornire dei dati confrontabili con delle misure di questo tipo, le MSD sono state calcolate for hydrogens attached to carbon atoms of the proteins. Gli atomi di hidrogeno essendo molto leggeri, sono in grado di partecipare facilmente ai moti interni della proteina e, dato che solitamente in una proteina sono presenti molti atomi di idrogeno (circa la metà del numero totale di atomi) che sono distribuiti uniformemente, i loro spostamenti sono rappresentativi della dinamica interna delle proteine. Perciò andando a studiare MSD degli atomi di idrogeno di una proteina si ottengono informazioni sulla sua dinamica interna.
+
+The MSD is usually defined as:
+\begin{equation}\label{eq:MSD}
+\text{MSD}(t_w) \: = \: \langle \, \frac{1}{N} \sum_{i}  \left| \textbf{r}(t_0 + t_w) - \textbf{r}(t_0) \right|^2 \, \rangle
+\end{equation}
+where the index $i$ run over the $N$ hydrogen atoms and MSD does not depend on the starting time $t_0$, because the MSD is invariant under time translation.
+
+Moreover, for a system with a characteristic relaxation times $\tau$, the Einstein relation describe the connection between the MSD and the self-diffusion constant $D$ defined as the linear proportionality constant between the mass/molar flux and the concentration gradient (Fick's law):
+\begin{equation}
+D \: = \: \lim_{t_w \rightarrow \infty} \frac{\text{MSD}(t_w)}{6 \cdot t_w} 
+\end{equation}
+
+Hench, for $t_w \gg \tau$, MSD is a linear funtion of $t_w$, proportional to $D$:
+\begin{equation}
+\text{MSD}(t_w) \: \approx \: 6 \, D \cdot t_w
+\end{equation}
+
+This enable to identify different regimes in particle diffusion:
+\begin{itemize}
+\item \textbf{Ballistic regime --}  At very short correlation times ($t_w \ll \tau$), particles do not ``feel'' each other, $\textbf{r} \approx \textbf{v} \, t_w$, and the mean squared displacement simply scales as $\text{MSD} \approx v^2 \, t_w^2$.  Plotting the MSD values in function of the $t_w$ in a \textit{loglog} graph, it would expect to see a slope of 2 at short times -- $\ln(\text{MSD}) \approx 2\, \ln t_w$. 
+\item \textbf{Diffusive  regime --} At long times ($t_w \gg \tau$), particles have lost memory of their initial positions and are performing a random walk according to the diffusion constant, $\text{MSD} \approx D \cdot tw$.  We should only use data from this regime when computing the diffusion constant.  Notably, the slope in this regime on the above plot should be 1, $\ln(\text{MSD}) \approx \ln t_w$.
+\item \textbf{Caged regime --} At intermediate times ($t_w \approx \tau$), the mean squared displacement may not follow either of these scaling laws.  Often, MSD will appear to plateau for some time period.  This behavior is typical of sluggish dynamics in viscous liquids and polymers. 
+\end{itemize}
+
+In the following the graph of the MSD at 220 K as a function of $t_w$ for the powder systems with the SPC/E model is presented.\footnote{Others graphs are displayed in the appendix \ref{}}
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{./MSD/twS-hspce-ll220.png}
+    
+    \footnotesize{\caption{MSD at 220 K as a function of $t_w$ for the powder systems with the SPC/E model. \textit{Graph realized with the library Matplotlib of Python.}}
+    \label{fig:wrong-hydr}
+    }
+\end{minipage} 
+\end{figure}
+
+\subsection{Long time simulations}
+The long time simulation were carry out to provide a large set of data that, in future, can be use to perform a clustering analysis to study of the change in conformations of protein ligand upon the complexation. Clustering conformations of a large system such as a protein is useful, since it offers a way to characterize a large amount of data and guides the analysis to focus on the most important changes seen in the course of the simulation. %There are presumably several levels of substates available to proteins. Hence, using a hierarchical clustering algorithm, it is possible to distinguish both the substates and the hierarchy of states within other states defined by increasing distance criteria. 
+
+To cluster protein structures, a single measure of their relatedness is needed. This it is possible with the calculation of the MSD of the C$_\alpha$ atoms of superimposed proteins to estimate their similarity. In fact, the MSD condenses the conformational dissimilarity between two molecules into a single representative number. For this reason, the MSD is a commonly-used, well-understood global measure of structural similarity for proteins close in structure \cite{troyer1995protein}.
+
+It is interesting to observe that, since the MSD between two structures is a measure of their differences, it is possible to imagine a ``conformational space'' in which the MSD between two structures represents the Euclidean distance between them. Hence, the MSD matrix \{MSD$_{ij}$\}, where $i$ and $j$ are any two structures, can be used to create a set of points which represent the disposition of structures in this multidimensional space.\footnote{This representation is slightly different than of the energy landscape usually described studyng the conformational changes of proteins (for instance, see section \ref{sec:configurational-entropy}). Indeed the potential energy is not involved in this projection.}
+ 
+%Proteins show evidence of moving between multiple conformations at room temperature. These conformational substates can exist on many levels, from large domain or hinge motions to small rearrangements of side chain. Using computational techniques such as molecular dynamics (MD), it is possible to characterize the nature of these substate. Concerning the landscape of a protein's potential energy over all possible structures of that protein, a conformational substate represents a low-energy region in this space, separated from other substates by a higher-energy barrier. 
+
+A first attempt to perform this analysis was done. One of the early results is reported in the following figure.
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{\textwidth}
+	\centering
+    \includegraphics[width=\textwidth]{./MSD/twS-hspce-ll220.png}
+    
+    \footnotesize{\caption{MSD at 220 K as a function of $t_w$ for the powder systems with the SPC/E model. \textit{Graph realized with the library Matplotlib of Python.}}
+    \label{fig:wrong-hydr}
+    }
+\end{minipage} 
+\end{figure}
+
+
+
+%The MSD condenses the conformational dissimilarity between two molecules into a single representative number. It is a commonly-used, well-understood global measure of structural similarity for proteins close in structure.
+%
+%The MSD between two structures is a measure of their differences. It is possible to imagine a ``conformational space'' in which the rms deviation be- tween two structures represents the Euclidean dis- tance between them. T
+%
+%The clustering was done using the well-established leader algorithm, based on the pairwise root MSD, as deﬁned in eq. \eqref{eq:MSD}, between diﬀerent snapshots of the trajectory after removing rigid body motions.
+%
+%The most popular estimator of structural similarity is the root-mean-square distance (r.m.s.d.) between equivalent atoms, computed after optimal superposition of the two structures that are compared. It is known that r.m.s.d. values do not depend only on conformational differences but also on other features, for example the dimensions of the structures that are compared. 
+%
+%The    ability    to   detect    similar   three-dimensional    atomic
+%arrangements  among  different  protein  structures  is  essential
+%to modern structural biology in both delineating evolutionary
+%relationships  and  extracting  biological  information  from  the
+%rough structural data (Koehl, 2001). Such a need is expected to
+%become even more crucial as a consequence of the numerous
+%structural   genomics   initiatives   (Mittl   \&   Grutter,   2001).
+%Despite other similarity scores having been proposed (Carugo
+%\&  Pongor,  2002;  Yang  \&  Honig,  2000),  protein  structure
+%similarity  is  routinely  measured  with  the  root-mean-square
+%distance   (r.m.s.d.)   between   equivalent   atoms   after   their
+%optimal   superposition.
 
